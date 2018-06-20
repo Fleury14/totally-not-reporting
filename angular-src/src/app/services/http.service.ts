@@ -25,4 +25,9 @@ export class HttpService {
         return this._http.delete(this._apiURL + url, {headers});
     }
 
+    public get(url:string) {
+        const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+        return this._http.get(this._apiURL + url, {headers});
+    }
+
 }
