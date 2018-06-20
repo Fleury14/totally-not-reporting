@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SideBarComponent } from './components/sidebar/sidebar.component';
 import { RoutingComponents, AppRoutingModule } from './app.routing.module';
+
 import { SearchService } from './services/search.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule
   ],
-  providers: [ SearchService ],
+  providers: [ SearchService, HttpService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
