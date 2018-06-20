@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchService } from '../../services/search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-result',
@@ -6,4 +8,16 @@ import { Component } from '@angular/core';
     styleUrls: [ './results.component.scss' ]
 })
 
-export class ResultComponent {}
+export class ResultComponent implements OnInit {
+
+    public storedResults:any;
+    public resultSub: Subscription;
+
+    constructor(private _search: SearchService) {}
+
+    ngOnInit(): void {
+        // this._search.getResults().subscribe(results => this.storedResults = results)
+        this._search.resultsSubscription().subscribe(results => this.storedResults = results.data);
+    }
+    
+}
