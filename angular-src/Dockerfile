@@ -6,7 +6,7 @@ WORKDIR /home/node/client
 
 COPY package.json /home/node/client
 
-RUN npm install
+RUN npm install --no-bin-links
 
 EXPOSE 4200
 
