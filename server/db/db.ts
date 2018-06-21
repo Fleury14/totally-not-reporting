@@ -6,7 +6,7 @@ import { error } from 'util';
 console.log('Initializing database');
 const cn = {
     host: 'localhost',
-    port: 5436,
+    port: 5432,
     database: 'postgres',
     user: 'postgres',
     password: 'postgres'
