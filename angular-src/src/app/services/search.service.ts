@@ -8,6 +8,7 @@ import { of, Subject, Observable } from 'rxjs';
 export class SearchService {
 
     public searchSubj:Subject<any> = new Subject<any>();
+    private storedSearchData: any;
 
     constructor(private _http:HttpService) {}
 
@@ -19,7 +20,15 @@ export class SearchService {
     }
 
     public storeResults(data:any) {
+        this.storedSearchData = data;
         this.searchSubj.next({data})
+    }
+
+    public refreshResults() {
+        if(this.storedSearchData) {
+            this.searchSubj.next(this.storedSearchData);
+        }
+        
     }
 
     public resultsSubscription():Observable<any> {
