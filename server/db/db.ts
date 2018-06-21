@@ -5,7 +5,7 @@ import { error } from 'util';
 
 console.log('Initializing database');
 const cn = {
-    host: '192.168.99.100',
+    host: `${process.env.APIURL}`,
     port: 5436,
     database: 'postgres',
     user: 'postgres',

@@ -10,6 +10,6 @@ COPY package.json /home/node/server
 
 RUN npm install -g nodemon
 
-RUN npm install
+RUN npm install --no-bin-links
 
 CMD ["npm", "run", "watch"];
