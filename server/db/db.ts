@@ -5,11 +5,15 @@ import { error } from 'util';
 
 console.log('Initializing database');
 const cn = {
-    host: '192.168.99.100',
+    host: 'localhost',
     port: 5436,
     database: 'postgres',
     user: 'postgres',
     password: 'postgres'
+}
+
+if (process.platform == 'win32') {
+    cn.host = '192.168.99.100';
 }
 
 const pgp:IMain = pgPromise({
