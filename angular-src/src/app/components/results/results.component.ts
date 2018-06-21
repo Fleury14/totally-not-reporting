@@ -17,7 +17,13 @@ export class ResultComponent implements OnInit {
 
     ngOnInit(): void {
         // this._search.getResults().subscribe(results => this.storedResults = results)
-        this._search.resultsSubscription().subscribe(results => this.storedResults = results.data);
+        this._search.resultsSubscription().subscribe(results => {
+            console.log('recieving data', results);
+            this.storedResults = results;
+            console.log('stored results:', this.storedResults);
+        });
+
+        this._search.refreshResults();
     }
     
 }
