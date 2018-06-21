@@ -5,8 +5,8 @@ import { error } from 'util';
 
 console.log('Initializing database');
 const cn = {
-    host: '192.168.99.100',
-    port: 5436,
+    host: `tnr-database`,
+    port: 5432,
     database: 'postgres',
     user: 'postgres',
     password: 'postgres'
