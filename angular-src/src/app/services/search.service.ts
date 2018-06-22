@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { of, Subject, Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { IDynamicRequest } from '../interfaces/dynamic-request';
+import { map } from 'rxjs/operators';
+import { IMovie } from '../interfaces/movie';
 
 
 @Injectable()
@@ -12,11 +15,35 @@ export class SearchService {
 
     constructor(private _http:HttpService) {}
 
-    public basicSearch(search:string) {
+    public basicSearch(search:string, returnType?:IDynamicRequest) {
         const payload = {
             search: search
         }
-        return this._http.post('search-title', payload);
+        return this._http.post('search-title', payload).pipe(
+            map( (response) => {
+                return this._mapResults(response, returnType);      
+            })
+        );
+    }
+
+    private _mapResults(response:any, returnType:IDynamicRequest) {
+        if (returnType) {
+            const movies:IMovie[] = response['result'];
+            const dataToBeSent = []
+            movies.forEach( (movie:IMovie) => {
+                const newMovie = {};
+                for (let key in returnType) {
+                    if(returnType[key]) {
+                        newMovie[key] = movie[key];
+                    }
+                }
+                dataToBeSent.push(newMovie);
+            } )
+            response['result'] = dataToBeSent;
+            return response;
+        } else {
+            return response;
+        }
     }
 
     public storeResults(data:any) {
