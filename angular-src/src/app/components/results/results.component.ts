@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs';
-import { MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatPaginator, MatTableDataSource, PageEvent, MatSort } from '@angular/material';
 import { IMovie } from '../../interfaces/movie';
 
 @Component({
@@ -16,6 +16,7 @@ export class ResultComponent implements OnInit {
     public resultSub: Subscription;
     public columnsToDisplay:String[] = [];
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
     pageEvent: PageEvent;
     public pageSize = 10;
     public pageSizeOptions = [5, 10, 20];
@@ -43,8 +44,10 @@ export class ResultComponent implements OnInit {
                 return subjectOrder.indexOf(a) - subjectOrder.indexOf(b);
             })
             this.storedResults = new MatTableDataSource<IMovie>(this.storedResults);
-
+            console.log('sort', this.sort);
+            this.storedResults.sort = this.sort;
             this.storedResults.paginator = this.paginator;
+            console.log(this.storedResults);
         });
 
         this._search.refreshResults();
