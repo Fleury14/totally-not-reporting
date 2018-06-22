@@ -17,22 +17,23 @@ export class NavComponent {
     constructor (private _search: SearchService, private _router: Router) {}
 
     public searchMovie() {
-        const returntype:IDynamicRequest = {
-            adult: false,
-            budget: true,
-            original_title: false,
-            overview: false,
-            popularity: false,
-            release_date: false,
-            revenue: false,
-            runtime: false,
-            tagline: false,
-            title: true,
-            vote_average: false,
-            vote_count: false
-        }
+        // Example of request object. Incluse this in the search method function if you wish to try it out
+        // const returntype:IDynamicRequest = {
+        //     adult: false,
+        //     budget: true,
+        //     original_title: false,
+        //     overview: false,
+        //     popularity: false,
+        //     release_date: false,
+        //     revenue: false,
+        //     runtime: false,
+        //     tagline: false,
+        //     title: true,
+        //     vote_average: false,
+        //     vote_count: false
+        // }
         if(this.search) {
-            this._search.basicSearch(this.search, returntype).pipe( take(1) ).subscribe( data => {
+            this._search.basicSearch(this.search).pipe( take(1) ).subscribe( data => {
                 console.log(data);
                 this._search.storeResults(data);
                 this._router.navigate(['results'])
