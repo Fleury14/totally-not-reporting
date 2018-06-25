@@ -49,6 +49,10 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Vote Count</th>
         <td mat-cell *matCellDef="let movie">{{ movie?.vote_count }}</td>
     </ng-container>
+    <ng-container matColumnDef="movie_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Movie ID</th>
+        <td mat-cell *matCellDef="let movie">{{ movie?.movie_id }}</td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
 </table>

@@ -20,17 +20,18 @@ app.use(bodyParser.json());
 
 // cors
 app.use( (req:express.Request, res:express.Response, next:express.NextFunction) => {
-    var allowedOrigins = ['http://192.168.99.100:4200', 'http://localhost:4200']; // origin whitelist
+    var allowedOrigins = ['http://192.168.99.100:4200', 'http://localhost:4200', 'http://fleur.localhost.run']; // origin whitelist
     var origin:any = req.headers.origin;
     if(Array.isArray(origin)) {origin = origin[0];}
     if(allowedOrigins.indexOf(origin) > -1){
          res.header('Access-Control-Allow-Origin', origin);
     }
-    // res.header("Access-Control-Allow-Origin", "http://192.168.99.100:4200");
+    // res.header("Access-Control-Allow-Origin:", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     next();
 })
+
 
 initAPI(app);
 
