@@ -12,7 +12,7 @@ import { IDynamicRequest } from '../../interfaces/dynamic-request';
 
 export class NavComponent {
 
-    public search:string;
+    public search: string;
 
     constructor (private _search: SearchService, private _router: Router) {}
 
@@ -32,13 +32,13 @@ export class NavComponent {
         //     vote_average: false,
         //     vote_count: false
         // }
-        if(this.search) {
+        if (this.search) {
             this._search.basicSearch(this.search).pipe( take(1) ).subscribe( data => {
                 console.log(data);
                 this._search.storeResults(data);
-                this._router.navigate(['results'])
+                this._router.navigate(['results']);
             } );
         }
-       
+
     }
 }
