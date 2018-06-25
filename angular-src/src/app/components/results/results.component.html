@@ -1,5 +1,38 @@
 <h1>Search Results</h1>
-<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+
+<div class="flex-container">
+    <div class="search-result">
+        1
+    </div>
+    <div class="search-result">
+        2
+    </div>
+    <div class="search-result">
+        3
+    </div>
+    <div class="search-result">
+        4
+    </div>
+    <div class="search-result">
+        5
+    </div>
+    <div class="search-result">
+        6
+    </div>
+    <div class="search-result">
+        7
+    </div>
+    <div class="search-result">
+        8
+    </div>
+    <div class="search-result">
+        9
+    </div>
+    <div class="search-result">
+        10
+    </div>
+</div>
+<!-- <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
 <table class="mat-elevation-z8 results-table" mat-table [dataSource]="storedResults"  matSort>
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
@@ -51,7 +84,7 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-</table>
+</table> -->
 
 <!-- <pre *ngIf="storedResults">
     {{ storedResults | json }}
