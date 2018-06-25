@@ -3,7 +3,9 @@
 <table class="mat-elevation-z8 results-table" mat-table [dataSource]="storedResults"  matSort>
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
-        <td mat-cell *matCellDef="let movie">{{ movie?.title }}</td>
+        <td mat-cell *matCellDef="let movie">{{ movie?.title }}
+          <button mat-raised-button (click)="showMovieModal(movie)">See Movie Info</button>
+        </td>
     </ng-container>
     <ng-container matColumnDef="tagline">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tagline</th>
@@ -47,7 +49,7 @@
     </ng-container>
     <ng-container matColumnDef="vote_count">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Vote Count</th>
-        <td mat-cell *matCellDef="let movie">{{ movie?.vote_count }}</td>
+        <td mat-cell *matCellDef="let movie">{{ movie?.vote_count}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
