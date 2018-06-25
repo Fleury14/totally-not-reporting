@@ -23,7 +23,7 @@ h1 {
 }
 .grid-container{
     // grid-gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 .flex-container{
     flex-wrap: wrap;
@@ -31,8 +31,47 @@ h1 {
 }
 .search-result{
     width: 88%;
-    height: 275px;
+    height: 325px;
     margin: 20px 10px 10px 20px;
-    background-color: red;
-    border-radius: 10px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 4px;
+    box-shadow: 5px 5px 15px hsl(0, 0%, 92%);
+    display: grid;
+    grid-template-rows: 60% 1fr;
+    grid-template-areas: 
+        "top"
+        "info";
+}
+.top{
+    grid-area: top;
+    background-color: hsl(0, 0%, 85%);
+    border-radius: 4px 4px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .fas{
+        color: hsl(0, 0%, 80%);
+    }
+}
+.info{
+    grid-area: info;
+    position: relative;
+}
+.rating{
+    position: absolute;
+    right: 0px;
+    margin: 11px 10px 0px 0px;
+
+}
+.title{
+    margin: 10px 0px 0px 10px;
+    font-size: 20px;
+}
+.year{
+    margin: 7px 0px 7px 10px;
+    font-size: 15px;
+}
+.description{
+    font-size: 12px;
+    margin: 0px 0px 10px 10px;
 }

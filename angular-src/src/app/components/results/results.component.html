@@ -1,38 +1,52 @@
-<h1>Search Results</h1>
+<!-- <h1>Search Results</h1> -->
 
 <div class="grid-container">
     <div class="search-result">
-        1
+        <div class="top">
+            <i class="fas fa-film fa-6x"></i>
+        </div>
+        <div class="info">
+            <p class="rating">5.0</p>
+            <h2 class="title">Jurassic Park</h2>
+            <h3 class="year">1993</h3>
+            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
+        </div>
     </div>
     <div class="search-result">
-        2
+        <div class="top">
+            <i class="fas fa-film fa-6x"></i>
+        </div>
+        <div class="info">
+            <p class="rating">5.0</p>
+            <h2 class="title">Jurassic Park</h2>
+            <h3 class="year">1993</h3>
+            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
+        </div>
     </div>
     <div class="search-result">
-        3
+        <div class="top">
+            <i class="fas fa-film fa-6x"></i>
+        </div>
+        <div class="info">
+            <p class="rating">5.0</p>
+            <h2 class="title">Jurassic Park</h2>
+            <h3 class="year">1993</h3>
+            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
+        </div>
     </div>
     <div class="search-result">
-        4
-    </div>
-    <div class="search-result">
-        5
-    </div>
-    <div class="search-result">
-        6
-    </div>
-    <div class="search-result">
-        7
-    </div>
-    <div class="search-result">
-        8
-    </div>
-    <div class="search-result">
-        9
-    </div>
-    <div class="search-result">
-        10
+        <div class="top">
+            <i class="fas fa-film fa-6x"></i>
+        </div>
+        <div class="info">
+            <p class="rating">5.0</p>
+            <h2 class="title">Jurassic Park</h2>
+            <h3 class="year">1993</h3>
+            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
+        </div>
     </div>
 </div>
-<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+<!-- <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator> -->
 <table class="mat-elevation-z8 results-table" mat-table [dataSource]="storedResults"  matSort>
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
