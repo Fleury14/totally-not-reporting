@@ -2,6 +2,3 @@ node_modules
 
 server/package-lock.json
 server/.env
-
-
-ts-node
