@@ -22,9 +22,6 @@ export class ResultComponent implements OnInit {
     pageEvent: PageEvent;
     public pageSize = 10;
     public pageSizeOptions = [5, 10, 20];
-    // animal: string;
-    // name: string;
-
 
     constructor(private _search: SearchService, public dialog: MatDialog) {}
 
@@ -54,23 +51,18 @@ export class ResultComponent implements OnInit {
             // console.log('sort', this.sort);
             this.storedResults.sort = this.sort;
             this.storedResults.paginator = this.paginator;
-            console.log(this.storedResults);
+            // console.log(this.storedResults);
         });
 
         this._search.refreshResults();
     }
-    showMovieModal(): void {
+    showMovieModal(movie: any): void {
+      console.log(movie);
       const openModal = this.dialog.open(ModalComponent, {
-        width: '900px',
-        height: '700px',
-        movie?: {storedResults: this.storedResults},
-        // data: { name: this.name, animal: this.animal }
+        width: '950px',
+        height: '950px',
+        data: movie
       });
-
-      // openModal.afterClosed().subscribe(result => {
-      //   console.log('The dialog was closed');
-      //   this.animal = result;
-      // });
     }
 
   }
@@ -82,11 +74,15 @@ export class ResultComponent implements OnInit {
 
   })
 
-  export class ModalComponent {
+  export class ModalComponent implements OnInit {
 
     constructor(
       public openModal: MatDialogRef<ModalComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+    ngOnInit(): void {
+      console.log(this.data);
+    }
 
     onNoClick(): void {
       this.openModal.close();

@@ -1,41 +1,41 @@
 <div class="container">
   <div class="row">
-    <h3>Title<h3>
-    <p>{{ movie?.title }}</p>
+    <h3>Title</h3>
+    <p>{{ data?.title }}</p>
   <div class="row">
-    <h3>Tagline<h3>
-    <p>{{ movie?.tagline }}</p>
+    <h3>Tagline</h3>
+    <p>{{ data?.tagline }}</p>
   <div class="row">
-    <h3>Release Date<h3>
-    <p>{{ movie?.release_date | date }}</p>
+    <h3>Release Date</h3>
+    <p>{{ data?.release_date | date }}</p>
   <div class="row">
-    <h3>Original Title<h3>
-    <p>{{ movie?.original_title }}</p>
+    <h3>Original Date</h3>
+    <p>{{ data?.original_title }}</p>
   <div class="row">
-    <h3>Budget<h3>
-    <p>{{ movie?.budget | currency:'USD' }}</p>
+    <h3>Budget</h3>
+    <p>{{ data?.budget | currency:'USD' }}</p>
   <div class="row">
     <h3>Revenue</h3>
-    <p>{{ movie?.revenue | currency:'USD' }}</p>
+    <p>{{data?.revenue | currency:'USD' }}</p>
   <div class="row">
     <h3>Run Time</h3>
-    <p>{{ movie?.runtime }}</p>
+    <p>{{ data?.runtime }}</p>
   <div class="row">
     <h3>Overview</h3>
-    <p>{{ movie?.overview }}</p>
+    <p>{{ data?.overview }}</p>
   <div class="row">
     <h3>Popularity</h3>
-    <p>{{ movie?.popularity }}</p>
+    <p>{{ data?.popularity }}</p>
   <div class="row">
     <h3>Adult?</h3>
-    <p>{{ movie?.adult && 'Yes' || 'No' }}</p>
+    <p>{{ data?.adult && 'Yes' || 'No' }}</p>
   <div class="row">
     <h3>Vote Average</h3>
-    <p>{{ movie?.vote_average }}</p>
+    <p>{{ data?.vote_average }}</p>
   </div>
   <div class="row">
     <h3>Vote Count</h3>
-    <p>{{ movie?.vote_count}}</p>
+    <p>{{ data?.vote_count}}</p>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Close Info</button>
   </div>
