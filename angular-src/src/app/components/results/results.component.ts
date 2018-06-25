@@ -15,6 +15,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ResultComponent implements OnInit {
 
     public storedResults: any;
+    private _rawResults:any;
     public resultSub: Subscription;
     public columnsToDisplay: String[] = [];
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,17 +27,13 @@ export class ResultComponent implements OnInit {
     constructor(private _search: SearchService, public dialog: MatDialog) {}
 
     ngOnInit(): void {
-        // this._search.getResults().subscribe(results => this.storedResults = results)
         this._search.resultsSubscription().subscribe(results => {
-            console.log('receiving data', results);
-            this.storedResults = results;
-            console.log('stored results:', this.storedResults);
-            this.storedResults = results.data.result;
+            this._rawResults = results.result;
             // console.log(this.storedResults);
 
             this.columnsToDisplay = [];
-            for (const key in this.storedResults[0]) {
-                if (this.storedResults[0][key]) {
+            for (const key in this._rawResults[0]) {
+                if (this._rawResults[0][key]) {
                     this.columnsToDisplay.push(key);
                     console.log('pushing...', key);
                 }
@@ -48,7 +45,7 @@ export class ResultComponent implements OnInit {
 
                 return subjectOrder.indexOf(a) - subjectOrder.indexOf(b);
             });
-            this.storedResults = new MatTableDataSource<IMovie>(this.storedResults);
+            this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
             // console.log('sort', this.sort);
             this.storedResults.sort = this.sort;
             this.storedResults.paginator = this.paginator;

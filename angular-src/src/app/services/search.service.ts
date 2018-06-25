@@ -48,7 +48,7 @@ export class SearchService {
 
     public storeResults(data:any) {
         this.storedSearchData = data;
-        this.searchSubj.next({data})
+        this.searchSubj.next(data)
     }
 
     public refreshResults() {
