@@ -55,12 +55,21 @@ p {
     justify-content: center;
     align-items: center;
     transition: all linear 0.1s;
-    .fas{
+    i{
         color: hsl(0, 0%, 80%);
+        position: absolute;
+    }
+    .tagline{
+        position: relative;
+        margin: 0px;
+        font-size: 16px;
+        max-width: 400px;
+        text-align: center;
     }
     &:hover{
-        background-color: hsla(0, 0%, 10%, 0.8);
+        // background-color: hsla(0, 0%, 10%, 0.8);
         cursor: pointer;
+        opacity: 0.1;
     }
 }
 .info{
