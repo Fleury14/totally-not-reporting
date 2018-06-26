@@ -55,10 +55,15 @@ export class ResultComponent implements OnInit {
     }
 
     public stringCutoff(string:string) {
-        const maxLength = 300;
+        const maxLength = 200;
 
-        const result = string.substr(0,maxLength);
-        return result;
+        if(string.length <= maxLength){
+            const result = string.substr(0,maxLength);
+            return result;
+        } else {
+            const result = string.substr(0,maxLength) + "...";
+            return result;
+        }
     }
     
 }
