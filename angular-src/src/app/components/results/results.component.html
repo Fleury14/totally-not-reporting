@@ -1,11 +1,27 @@
-<h1>Search Results</h1>
+<!-- <h1>Search Results</h1> -->
+<div class="grid-container">
+    <div class="search-result" *ngFor="let result of storedResults?.data">
+        <div class="top" (click)="showMovieModal(result)">
+            <i class="fas fa-film fa-6x"></i>
+            <p class="tagline">{{ result.tagline }}</p>
+        </div>
+        <div class="info">
+            <p class="rating">5.0</p>
+            <h2 class="title">{{ result.title }}</h2>
+            <h3 class="year">{{ result.release_date | date:'yyyy' }}</h3>
+            <p class="description">{{ stringCutoff(result.overview) }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- <h1>Search Results</h1>
 <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
 <div *ngIf="storedResults">
     <table class="mat-elevation-z8 results-table" mat-table [dataSource]="storedResults"  matSort>
         <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
             <td mat-cell *matCellDef="let movie">{{ movie?.title }}
-              <button mat-raised-button (click)="showMovieModal(movie)">See Movie Info</button>
+              <button mat-raised-button >See Movie Info</button>
             </td>
         </ng-container>
         <ng-container matColumnDef="tagline">
@@ -60,7 +76,7 @@
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
     </table>
     
-</div>
+</div> -->
 
 <!-- <pre *ngIf="storedResults">
     {{ storedResults | json }}

@@ -50,20 +50,34 @@ export class ResultComponent implements OnInit {
             this.storedResults.sort = this.sort;
             this.storedResults.paginator = this.paginator;
             // console.log(this.storedResults);
+            console.log(this.storedResults.data.overview);
         });
 
         this._search.refreshResults();
     }
-    showMovieModal(movie: any): void {
-      console.log(movie);
-      const openModal = this.dialog.open(ModalComponent, {
-        width: '950px',
-        height: '950px',
-        data: movie
-      });
+
+    public stringCutoff(string:string) {
+        const maxLength = 200;
+
+        if(string.length <= maxLength){
+            const result = string.substr(0,maxLength);
+            return result;
+        } else {
+            const result = string.substr(0,maxLength) + "...";
+            return result;
+        }
     }
 
-  }
+    showMovieModal(movie: any): void {
+        console.log(movie);
+        const openModal = this.dialog.open(ModalComponent, {
+          width: '950px',
+          height: '950px',
+          data: movie
+        });
+      }
+}
+    
 
   @Component({
     selector: 'app-modal',
