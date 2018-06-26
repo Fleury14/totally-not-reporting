@@ -1,6 +1,7 @@
 export interface IDynamicRequest {
     adult: boolean;
     budget: boolean;
+    movie_id: boolean;
     original_title: boolean;
     overview: boolean;
     popularity: boolean;

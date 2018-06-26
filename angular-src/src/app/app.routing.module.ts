@@ -4,8 +4,11 @@ import { AdvSearchComponent } from './components/adv-search/adv-search.component
 import { NgModule } from '@angular/core';
 import { ErrorComponent } from './components/error/error.component';
 import { ResultComponent } from './components/results/results.component';
+import { ModalComponent } from './components/results/results.component';
 
-const routes:Route[] = [{
+
+const routes: Route[] = [{
+
     path: 'home',
     component: HomeComponent
 },
@@ -25,7 +28,13 @@ const routes:Route[] = [{
 {
     path: '**',
     component: ErrorComponent
-}];
+},
+{
+    path: 'modal',
+    component: ModalComponent
+}
+
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
@@ -34,4 +43,4 @@ const routes:Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent];
+export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent, ModalComponent];

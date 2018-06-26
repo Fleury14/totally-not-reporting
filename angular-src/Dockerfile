@@ -8,6 +8,8 @@ COPY package.json /home/node/client
 
 RUN npm install --no-bin-links
 
+RUN npm install -g @angular/cli 
+
 EXPOSE 4200
 
 CMD ["npm", "start"]
