@@ -49,8 +49,13 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all linear 0.1s;
     .fas{
         color: hsl(0, 0%, 80%);
+    }
+    &:hover{
+        background-color: hsla(0, 0%, 10%, 0.8);
+        cursor: pointer;
     }
 }
 .info{
