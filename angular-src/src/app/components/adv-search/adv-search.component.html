@@ -1,29 +1,49 @@
 <main>
     <h1>Advanced Search</h1>
-    <form #searchForm="ngForm">
+    <form #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
         <p>Return Type:</p>
-        <mat-radio-group class="return-type" name="return-type" ngModel>
+        <mat-radio-group class="return-type" name="returnType" ngModel>
             <mat-radio-button value="table">Table</mat-radio-button>
             <mat-radio-button value="cards">Cards</mat-radio-button>
         </mat-radio-group>
         <p class="small-font">Table will display the results you select in a traditional table. Cards will display a basic summary. Both formats will have the option to click on the result to get a detailed description.</p>
+        <p>Search by:</p>
+        <mat-select placeholder="Category" name="category" class="category-select" ngModel [(value)]="selectedCategory">
+            <mat-option *ngFor="let option of searchCategory" [value]="option">{{option.name}}</mat-option>
+        </mat-select>
+        <!-- <p>Category Selected: {{ selectedCategory?.name }}, {{ selectedCategory?.type }}</p> -->
+        <mat-form-field *ngIf="selectedCategory?.type === 'text'">
+                <input matInput [placeholder]="selectedCategory.name" ngModel name="categoryValue" class="category-value"> 
+        </mat-form-field>
+        <mat-form-field *ngIf="selectedCategory?.type === 'number'" >
+                <input matInput [placeholder]="selectedCategory.name" type="number"ngModel name="categoryValue" class="category-value"> 
+        </mat-form-field>
+        <mat-select *ngIf="selectedCategory" placeholder="Order" name="order" ngModel class="search-order">
+            <mat-option value="ASC">Ascending</mat-option>
+            <mat-option value="DESC">Descending</mat-option>
+        </mat-select>
         <p>Return the following data:</p>
         <div class="return-checks">
-            <mat-checkbox [disabled]="searchFrom?.controls.return-type?.value === 'cards'">Title</mat-checkbox>
-            <mat-checkbox>Budget</mat-checkbox>
-            <mat-checkbox>Movie ID#</mat-checkbox>
-            <mat-checkbox>Original Title</mat-checkbox>
-            <mat-checkbox>Overview</mat-checkbox>
-            <mat-checkbox>Popularity</mat-checkbox>
-            <mat-checkbox>Release Date</mat-checkbox>
-            <mat-checkbox>Revenue</mat-checkbox>
-            <mat-checkbox>Run Time</mat-checkbox>
-            <mat-checkbox>Tag Line</mat-checkbox>
-            <mat-checkbox>Title</mat-checkbox>
-            <mat-checkbox>Vote Average</mat-checkbox>
-            <mat-checkbox>Vote Count</mat-checkbox>
+            <div class="return-check-container" *ngFor="let column of searchCategory">
+                <mat-checkbox
+                [disabled]="searchForm?.controls.returnType?.value === 'cards'"
+                [(ngModel)]="requestedColumns[column.ref]"
+                [name]="column.ref"
+                >{{ column.name }}
+                </mat-checkbox>
+            </div>
+            <div class="return-check-container">
+                <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.adult" name="adult">Is Adult?</mat-checkbox>
+            </div>
+            <div class="return-check-container">
+                <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.movie_id" name="movie_id">Movie ID#</mat-checkbox>
+            </div>
+        </div>
+        <div class="submit-row">
+            <button mat-fab color="primary" type="submit">Go!</button>
         </div>
     </form>
-    <button (click)="whatAmI()">What am i</button>
+
+    <!-- <button (click)="whoAmI()">Who am i</button> -->
 </main>
 
