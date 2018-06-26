@@ -1,6 +1,7 @@
 export interface IMovie {
     adult: boolean;
     budget: number;
+    movie_id: number;
     original_title: string;
     overview: string;
     popularity: number;

@@ -1,0 +1,30 @@
+h1 {
+    text-align: center;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 12px;
+}
+.mat-cell, .mat-header-cell {
+    font-size: 10px !important;
+}
+
+.results-table {
+
+    margin-left: 10px;
+    width: 1250px;
+
+    td {
+        padding-right: 20px;
+    }
+
+    th {
+        padding-right: 20px;
+    }
+
+
+}
