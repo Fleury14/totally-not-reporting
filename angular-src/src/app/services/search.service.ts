@@ -72,7 +72,7 @@ export class SearchService {
         );
     }
 
-    public getByYearSearch(search: number, returnType?: IDynamicRequest) {
+    public getByYearSearch(search: any, returnType?: IDynamicRequest) {
         const payload = {
             search: search
         };

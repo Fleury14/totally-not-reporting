@@ -24,9 +24,9 @@ export class SideBarComponent {
     }
 
     public byYearSearch() {
-        const byYear = document.getElementById('byYear').value;
-        console.log(byYear);
-        this._search.getByYearSearch(byYear).pipe( take(1)).subscribe( (data) => {
+        const byYear = document.querySelector<HTMLInputElement>('#byYear').value;
+        console.log(byYear, typeof byYear);
+        this._search.getByYearSearch( parseInt(byYear) ).pipe( take(1)).subscribe( (data) => {
             console.log(data);
             this._search.storeResults(data);
             this._router.navigate(['results']);
