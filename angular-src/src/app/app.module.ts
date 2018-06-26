@@ -14,8 +14,10 @@ import { RoutingComponents, AppRoutingModule } from './app.routing.module';
 import { ModalComponent } from './components/results/results.component';
 import { ResultComponent } from './components/results/results.component';
 
+
 import { SearchService } from './services/search.service';
 import { HttpService } from './services/http.service';
+import { RecentSearchService } from './services/recent-search.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { HttpService } from './services/http.service';
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule,
     HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule,
     MatDialogModule],
-  providers: [ SearchService, HttpService, MatDialog ],
+  providers: [ SearchService, HttpService, MatDialog, RecentSearchService ],
   entryComponents: [ ModalComponent ],
 
   bootstrap: [AppComponent]
