@@ -71,8 +71,8 @@ export class ResultComponent implements OnInit {
     showMovieModal(movie: any): void {
         console.log(movie);
         const openModal = this.dialog.open(ModalComponent, {
-          width: '950px',
-          height: '950px',
+          width: '700px',
+          height: '650px',
           data: movie
         });
       }

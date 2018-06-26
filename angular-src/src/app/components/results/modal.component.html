@@ -1,4 +1,97 @@
 <div class="container">
+  <div class="row header-row">
+    <div class="header-left">
+      <h1 class="modal-title">{{ data?.title }}</h1>
+      <p class="tagline">{{ data?.tagline }}</p>
+    </div>
+    <div class="header-right">
+      <div class="closeBtn" mat-dialog-actions>
+        <i class="fas fa-times buttonRight" (click)="onNoClick()"></i>
+        <!-- <button class="buttonRight" mat-button (click)="onNoClick()">X</button> -->
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row header-row">
+    <div class="header-left">
+      <h2>Overview</h2>
+      <p>{{ data?.overview }}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Information</h2>
+  <div class="information-row-left">
+    <div class="row information-row">
+      <h3 class="content-left">Release Date</h3>
+      <p class="content-right">{{ data?.release_date | date }}</p>
+    </div>
+    <div class="row information-row">
+      <h3 class="content-left">Budget</h3>
+      <p class="content-right">{{ data?.budget | currency:'USD' }}</p>
+    </div>
+    <div class="row information-row">
+      <h3 class="content-left">Revenue</h3>
+      <p class="content-right">{{ data?.revenue | currency:'USD' }}</p>
+    </div>
+    <div class="row information-row">
+      <h3 class="content-left">Run Time</h3>
+      <p class="content-right">{{ data?.runtime }}</p>
+    </div>
+  </div>
+  
+  <div class="information-row-right">
+    <div class="row information-row">
+      <h3 class="content-left">Popularity</h3>
+      <p class="content-right">{{ data?.popularity }}</p>
+    </div>
+    <div class="row information-row">
+      <h3 class="content-left">Adult</h3>
+      <p class="content-right">{{ data?.adult && 'Yes' || 'No' }}</p>
+    </div>
+    <div class="row information-row">
+      <h3 class="content-left">Vote Average</h3>
+      <p class="content-right">{{ data?.vote_average }}</p>
+    </div>
+    <div class="row information-row">
+      <h3 class="content-left">Vote Count</h3>
+      <p class="content-right">{{ data?.vote_count }}</p>
+    </div>
+  </div>
+  
+
+  <hr>
+
+  <!-- <div class="content-left">
+        <h3>Release Date</h3>
+        <h3>Original Title</h3>
+        <h3>Budget</h3>
+        <h3>Revenue</h3>
+        <h3>Run Time</h3>
+        <h3>Popularity</h3>
+        <h3>Adult?</h3>
+        <h3>Vote Average</h3>
+        <h3>Vote Count</h3>
+      </div>
+  
+      <div class="content-right">
+        <p>{{ data?.release_date | date }}</p>
+        <p>{{ data?.original_title }}</p>
+        <p>{{ data?.budget | currency:'USD' }}</p>
+        <p>{{ data?.revenue | currency:'USD' }}</p>
+        <p>{{ data?.runtime }}</p>
+        <p>{{ data?.popularity }}</p>
+        <p>{{ data?.adult && 'Yes' || 'No' }}</p>
+        <p>{{ data?.vote_average }}</p>
+        <p>{{ data?.vote_count}}</p>
+      </div> -->
+</div>
+
+
+<!-- <div class="container">
   <div class="row">
     <h3>Title</h3>
     <p>{{ data?.title }}</p>
@@ -39,4 +132,4 @@
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Close Info</button>
   </div>
-</div>
+</div> -->
