@@ -1,3 +1,32 @@
-.i-width {
-  width: 60px;
+
+aside {
+  margin: -10px;
+  padding: 0px;
+}
+
+aside h2 {
+  padding-left: 1em;
+
+}
+
+// aside mat-toolbar {
+//   font-size: 15px;
+//   font-weight: light;
+//   padding: 0em 0.5em;25px;
+//   margin: 0px;
+// } 
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  font-size: 13px;
+  height: 46px;
+  font-weight: bold;
+  padding: 0px 16px;
+
+}
+
+input {
+  font-size: 15px;
+  width: 90px;
+  margin-left: 24px;
+  color: red;
 }
