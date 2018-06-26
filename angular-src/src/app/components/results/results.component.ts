@@ -48,9 +48,18 @@ export class ResultComponent implements OnInit {
             this.storedResults.sort = this.sort;
             this.storedResults.paginator = this.paginator;
             // console.log(this.storedResults);
+            console.log(this.storedResults.data);
         });
 
         this._search.refreshResults();
+    }
+
+    public stringCutoff(string:string) {
+        const description = this.storedResults.data.overview;
+        const maxLength = 10;
+
+        const result = description.substr(0,maxLength);
+        return result;
     }
     
 }

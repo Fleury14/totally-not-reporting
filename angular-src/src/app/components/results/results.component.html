@@ -1,53 +1,20 @@
 <!-- <h1>Search Results</h1> -->
 
 <div class="grid-container">
-    <div class="search-result">
+    <div class="search-result" *ngFor="let result of storedResults?.data">
         <div class="top">
             <i class="fas fa-film fa-6x"></i>
         </div>
         <div class="info">
             <p class="rating">5.0</p>
-            <h2 class="title">Jurassic Park</h2>
-            <h3 class="year">1993</h3>
-            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
-        </div>
-    </div>
-    <div class="search-result">
-        <div class="top">
-            <i class="fas fa-film fa-6x"></i>
-        </div>
-        <div class="info">
-            <p class="rating">5.0</p>
-            <h2 class="title">Jurassic Park</h2>
-            <h3 class="year">1993</h3>
-            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
-        </div>
-    </div>
-    <div class="search-result">
-        <div class="top">
-            <i class="fas fa-film fa-6x"></i>
-        </div>
-        <div class="info">
-            <p class="rating">5.0</p>
-            <h2 class="title">Jurassic Park</h2>
-            <h3 class="year">1993</h3>
-            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
-        </div>
-    </div>
-    <div class="search-result">
-        <div class="top">
-            <i class="fas fa-film fa-6x"></i>
-        </div>
-        <div class="info">
-            <p class="rating">5.0</p>
-            <h2 class="title">Jurassic Park</h2>
-            <h3 class="year">1993</h3>
-            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus iusto dolorum suscipit illo tempore? Accusamus culpa facilis dolores eaque itaque!</p>
+            <h2 class="title">{{ result.title }}</h2>
+            <h3 class="year">{{ result.release_date | date:'yyyy' }}</h3>
+            <p class="description">{{ stringCutoff(result.overview) }}</p>
         </div>
     </div>
 </div>
 <!-- <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator> -->
-<table class="mat-elevation-z8 results-table" mat-table [dataSource]="storedResults"  matSort>
+<!-- <table class="mat-elevation-z8 results-table" mat-table [dataSource]="storedResults"  matSort>
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
         <td mat-cell *matCellDef="let movie">{{ movie?.title }}</td>
@@ -98,7 +65,7 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-</table>
+</table> -->
 
 <!-- <pre *ngIf="storedResults">
     {{ storedResults | json }}
