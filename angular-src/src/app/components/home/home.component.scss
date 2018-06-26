@@ -1,0 +1,31 @@
+main {
+    padding: 20px;
+
+    h1 {
+        text-align: center;
+    }
+    
+    button {
+        display: inherit;
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }
+} 
+
+
+
+.copyright {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        height: 12px;
+        width: 12px;
+        background-image: url("https://cfr.slack-edge.com/c00d19/img/emoji_2017_12_06/sheet_google_64_indexed_256.png"); 
+        background-position: 80.3922% 98.0392%; 
+        background-size: 5200% 5200%;
+        margin-left: 10px;
+    }
+}

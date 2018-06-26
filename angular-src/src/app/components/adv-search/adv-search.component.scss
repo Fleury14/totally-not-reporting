@@ -1,0 +1,44 @@
+main {
+    padding: 20px;
+}
+
+mat-radio-group {
+    mat-radio-button {
+        margin-right: 20px;
+    }
+}
+
+.small-font {
+    font-size: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+// Search checkbox styles in styles.scss
+
+.category-select, .search-order {
+    width: 50%;
+    background-color: lighten(dodgerblue, 30);
+    padding: 10px 5px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.return-check-container {
+    width: 25%;
+    display: inline-block;
+}
+
+.submit-row {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
