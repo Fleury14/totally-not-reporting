@@ -35,7 +35,6 @@ export class ResultComponent implements OnInit {
             for (const key in this._rawResults[0]) {
                 if (this._rawResults[0][key]) {
                     this.columnsToDisplay.push(key);
-                    console.log('pushing...', key);
                 }
             }
             // console.log('final columns to display', this.columnsToDisplay);
@@ -58,14 +57,17 @@ export class ResultComponent implements OnInit {
 
     public stringCutoff(string:string) {
         const maxLength = 200;
-
-        if(string.length <= maxLength){
+        if(!string) { return string; }
+        else {
+          if(string.length <= maxLength){
             const result = string.substr(0,maxLength);
             return result;
         } else {
             const result = string.substr(0,maxLength) + "...";
             return result;
         }
+        }
+        
     }
 
     showMovieModal(movie: any): void {
