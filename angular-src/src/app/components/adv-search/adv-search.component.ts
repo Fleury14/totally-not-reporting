@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-adv-search',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
     styleUrls: [ './adv-search.component.scss' ]
 })
 
-export class AdvSearchComponent {}
+export class AdvSearchComponent {
+    @ViewChild('searchForm') private _searchForm: NgForm;
+
+    public whatAmI() {
+        console.log(this._searchForm);
+    }
+}

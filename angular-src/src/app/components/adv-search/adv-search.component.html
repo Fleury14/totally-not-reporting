@@ -1,1 +1,29 @@
-<h1>Advanced Search</h1>
+<main>
+    <h1>Advanced Search</h1>
+    <form #searchForm="ngForm">
+        <p>Return Type:</p>
+        <mat-radio-group class="return-type" name="return-type" ngModel>
+            <mat-radio-button value="table">Table</mat-radio-button>
+            <mat-radio-button value="cards">Cards</mat-radio-button>
+        </mat-radio-group>
+        <p class="small-font">Table will display the results you select in a traditional table. Cards will display a basic summary. Both formats will have the option to click on the result to get a detailed description.</p>
+        <p>Return the following data:</p>
+        <div class="return-checks">
+            <mat-checkbox [disabled]="searchFrom?.controls.return-type?.value === 'cards'">Title</mat-checkbox>
+            <mat-checkbox>Budget</mat-checkbox>
+            <mat-checkbox>Movie ID#</mat-checkbox>
+            <mat-checkbox>Original Title</mat-checkbox>
+            <mat-checkbox>Overview</mat-checkbox>
+            <mat-checkbox>Popularity</mat-checkbox>
+            <mat-checkbox>Release Date</mat-checkbox>
+            <mat-checkbox>Revenue</mat-checkbox>
+            <mat-checkbox>Run Time</mat-checkbox>
+            <mat-checkbox>Tag Line</mat-checkbox>
+            <mat-checkbox>Title</mat-checkbox>
+            <mat-checkbox>Vote Average</mat-checkbox>
+            <mat-checkbox>Vote Count</mat-checkbox>
+        </div>
+    </form>
+    <button (click)="whatAmI()">What am i</button>
+</main>
+
