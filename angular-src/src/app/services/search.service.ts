@@ -18,7 +18,7 @@ export class SearchService {
     public basicSearch(search:string, returnType?:IDynamicRequest) {
         const payload = {
             search: search
-        }
+        };
         return this._http.post('search-title', payload).pipe(
             map( (response) => {
                 return this._mapResults(response, returnType);      
@@ -29,7 +29,7 @@ export class SearchService {
     private _mapResults(response:any, returnType:IDynamicRequest) {
         if (returnType) {
             const movies:IMovie[] = response['result'];
-            const dataToBeSent = []
+            const dataToBeSent = [];
             movies.forEach( (movie:IMovie) => {
                 const newMovie = {};
                 for (let key in returnType) {
@@ -38,7 +38,7 @@ export class SearchService {
                     }
                 }
                 dataToBeSent.push(newMovie);
-            } )
+            } );
             response['result'] = dataToBeSent;
             return response;
         } else {
@@ -49,17 +49,38 @@ export class SearchService {
     public storeResults(data:any) {
         this.storedSearchData = data;
         this.searchSubj.next(data)
+
     }
 
     public refreshResults() {
         if(this.storedSearchData) {
             this.searchSubj.next(this.storedSearchData);
         }
-        
     }
 
     public resultsSubscription():Observable<any> {
         return this.searchSubj.asObservable();
     }
 
+    public topTenSearch(category: string, returnType?: IDynamicRequest){
+        const payload = {
+            category: category
+        };
+        return this._http.post('top10', payload).pipe(
+            map( (response) => {
+                return this._mapResults(response, returnType);
+            })
+        );
+    }
+
+    public getByYearSearch(search: any, returnType?: IDynamicRequest) {
+        const payload = {
+            search: search
+        };
+        return this._http.post('get-by-year', payload).pipe(
+            map( (response) => {
+                return this._mapResults(response, returnType);
+            })
+        );
+    }
 }

@@ -1,3 +1,52 @@
 <aside>
-    <p>Side bar</p>
+    <!--Start of sidebar-->
+    <h2>Hot Links:</h2> <!--Hot Links section-->
+    <mat-toolbar>
+        <mat-toolbar-row [matMenuTriggerFor]="linkMenu">
+            Top Ten: <i class="material-icons">
+                    keyboard_arrow_down
+                    </i>
+            <mat-menu #linkMenu="matMenu">
+                <button mat-menu-item (click)="topTen('popularity')">Popularity</button>
+                <button mat-menu-item (click)="topTen('revenue')">Revenue</button>
+                <button mat-menu-item (click)="topTen('budget')">Budget</button>
+                <button mat-menu-item (click)="topTen('runtime')">Runtime</button>
+            </mat-menu>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+            <form>
+                By Year:
+                <input type="number" name="byYear" id="byYear" class="i-width"><button (click)="byYearSearch()">ok</button>
+            </form>
+        </mat-toolbar-row>
+        <mat-toolbar-row [matMenuTriggerFor]="voteMenu">
+            Top Ten Voted: <i class="material-icons">
+                    keyboard_arrow_down
+                    </i>
+            <mat-menu #voteMenu="matMenu">
+                    <button mat-menu-item (click)="topTen('vote_count')">Voted Count</button>
+                    <button mat-menu-item (click)="topTen('vote_average')">Voted Average</button>
+            </mat-menu>
+        </mat-toolbar-row>
+        
+    </mat-toolbar>
+    <!--End of HL-->
+
+    <h2>Recent Searches</h2> <!--Start of Recent Searches-->
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <a href="#">Jurassic Park</a>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+            <a href="#">Top Grossed Movies</a>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+            <a href="#">Thor Ragnorak</a>
+        </mat-toolbar-row>
+    </mat-toolbar> 
+    <!--End of RS-->
+    <a routerLink="/home" class="h-btn">
+        <i class="material-icons md-48">home</i>
+    </a>
+    <!--End of sidebar-->
 </aside>
