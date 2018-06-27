@@ -30,11 +30,13 @@ services:
      - /home/node/server/node_modules
 
   tnr-database:
-    image: postgres:latest
+    build: './database'
     ports:
      - "5436:5432"
     networks:
      - backend
+    volumes:
+     - ./database:/docker-entrypoint-initdb.d/
 
 networks:
   backend:

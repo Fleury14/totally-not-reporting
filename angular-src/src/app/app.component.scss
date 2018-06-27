@@ -1,0 +1,23 @@
+aside {
+    height: 100%;
+    width: 250px;
+    min-height: 100vh;
+    background-color: hsl(0, 0%, 100%);
+    position: fixed;
+}
+
+main {
+    background-color: hsl(210, 25%, 95%);
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    margin-left: 250px;
+    
+}
+
+.bottom-part {
+    display: flex;
+}
+.routed-item{
+    margin-top: 80px;
+}
