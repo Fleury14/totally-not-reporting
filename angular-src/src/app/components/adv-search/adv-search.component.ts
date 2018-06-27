@@ -77,6 +77,18 @@ export class AdvSearchComponent {
 
     public submit(value) {
         console.log('submitting...', value, this.requestedColumns);
+        if (value.returnType === 'table') {
+            this.tableSearch(value);
+        } else if (value.returnType === 'cards') {
+            this.cardSearch(value);
+        }
+    }
+
+    public tableSearch(value) {
+
+    }
+
+    public cardSearch(value) {
     }
 
 }
