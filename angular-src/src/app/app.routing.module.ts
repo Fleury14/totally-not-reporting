@@ -4,7 +4,7 @@ import { AdvSearchComponent } from './components/adv-search/adv-search.component
 import { NgModule } from '@angular/core';
 import { ErrorComponent } from './components/error/error.component';
 import { ResultComponent } from './components/results/results.component';
-import { ModalComponent } from './components/results/results.component';
+import { ModalComponent } from './components/results/modal.component';
 
 
 const routes: Route[] = [{
