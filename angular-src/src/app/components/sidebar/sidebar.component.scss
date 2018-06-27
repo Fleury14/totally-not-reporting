@@ -1,3 +1,18 @@
-.i-width {
-  width: 60px;
+aside h2 {
+  padding-left: 0.5em;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  background-color: #EFF2F5;
+  font-size: 13px;
+  height: 46px;
+  font-weight: bold;
+  padding: 0px 16px;
+}
+
+input {
+  font-size: 15px;
+  width: 90px;
+  margin-left: 24px;
+  color: red;
 }
