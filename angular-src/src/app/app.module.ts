@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule, MatMenuModule, MatDialog, MatDialogModule} from '@angular/material';
+import { MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule, MatMenuModule,
+   MatDialog, MatDialogModule, MatCheckboxModule, MatRadioModule, MatSelectModule} from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +24,9 @@ import { HttpService } from './services/http.service';
     AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule, MatMenuModule, MatDialogModule
+    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule,
+    HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule,
+    MatToolbarModule, MatMenuModule, MatDialogModule, MatCheckboxModule, MatRadioModule, MatSelectModule
   ],
   providers: [ SearchService, HttpService, MatDialog ],
   entryComponents: [ ModalComponent ],

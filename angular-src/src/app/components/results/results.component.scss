@@ -1,6 +1,6 @@
-h1 {
-    text-align: center;
-}
+// h1 {
+//     text-align: center;
+// }
 
 h3 {
   font-size: 16px;
@@ -101,3 +101,63 @@ p {
     font-size: 12px;
     margin: 0px 17px 17px 17px;
 }
+
+/* Modal Styles */
+.container {
+    hr {
+        border-top: 1px solid #8c8b8b;
+    }
+    .header-row {
+        display: flex;
+
+        .header-left{
+            justify-content: flex-start;
+            width: 100%;
+            
+            .tagline {
+                font-style: italic;
+            }
+        }
+        
+        .header-right{
+            justify-content: flex-end;
+            display: inline-block;
+            width: 100%;
+
+            .closeBtn {
+                justify-content: flex-end;
+
+                .buttonRight {
+                    cursor: pointer;
+                }
+            }    
+        }
+    }
+
+
+    .information-row-left, .information-row-right {
+        display: inline-block;
+        width: 50%;
+
+        .information-row{
+        display: flex;
+        
+        .content-left{
+            width: 50%;
+            justify-content: flex-start;
+        }
+
+        .content-right{
+            width: 50%;
+            justify-content: flex-start;
+            margin: {
+                top: 21px;
+                bottom: 16px
+            }
+        }
+    }
+    }
+    
+}
+
+/* End of Modal Styles */ 
