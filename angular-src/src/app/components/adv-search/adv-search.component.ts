@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CatergorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 
@@ -9,53 +9,57 @@ import { IDynamicRequest } from '../../interfaces/dynamic-request';
     styleUrls: [ './adv-search.component.scss' ]
 })
 
-export class AdvSearchComponent {
+export class AdvSearchComponent implements OnInit {
     @ViewChild('searchForm') private _searchForm: NgForm;
     public searchCategory: CatergorySelection[] = [{
-        name: "Budget",
-        ref: "budget",
-        type: "number"
+        name: 'Budget',
+        ref: 'budget',
+        type: 'number'
     }, {
-        name: "Original Title",
-        ref: "original_title",
-        type: "text"
+        name: 'Original Title',
+        ref: 'original_title',
+        type: 'text'
     }, {
-        name: "Overview",
-        ref: "overview",
-        type: "text"
+        name: 'Overview',
+        ref: 'overview',
+        type: 'text'
     }, {
-        name: "Popularity",
-        ref: "original_title",
-        type: "number"
+        name: 'Popularity',
+        ref: 'original_title',
+        type: 'number'
     }, {
-        name: "Release Year",
-        ref: "release_date",
-        type: "number"
+        name: 'Release Year',
+        ref: 'release_date',
+        type: 'number'
     }, {
-        name: "Revenue",
-        ref: "revenue",
-        type: "number"
+        name: 'Revenue',
+        ref: 'revenue',
+        type: 'number'
     }, {
-        name: "Run Time",
-        ref: "run_time",
-        type: "number"
+        name: 'Run Time',
+        ref: 'run_time',
+        type: 'number'
     }, {
-        name: "Tag Line",
-        ref: "tag_line",
-        type: "text"
+        name: 'Tag Line',
+        ref: 'tag_line',
+        type: 'text'
     }, {
-        name: "Title",
-        ref: "title",
-        type: "text"
+        name: 'Title',
+        ref: 'title',
+        type: 'text'
     }, {
-        name: "Vote Average",
-        ref: "vote_average",
-        type: "number"
+        name: 'Vote Average',
+        ref: 'vote_average',
+        type: 'number'
     }, {
-        name: "Vote Count",
-        ref: "vote_count",
-        type: "number"
+        name: 'Vote Count',
+        ref: 'vote_count',
+        type: 'number'
     }];
+
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+    thirdFormGroup: FormGroup;
 
     public selectedCategory: string;
     public categoryValueNum: number;
@@ -73,6 +77,22 @@ export class AdvSearchComponent {
         title: false,
         vote_average: false,
         vote_count: false
+    };
+
+    constructor(private _formBuilder: FormBuilder) {}
+
+    ngOnInit() {
+      this.firstFormGroup = this._formBuilder.group({
+        firstCtrl: ['', Validators.required]
+      });
+
+      this.secondFormGroup = this._formBuilder.group({
+        secondCtrl: ['', Validators.required]
+      });
+
+      this.thirdFormGroup = this._formBuilder.group({
+        thirdCtrl: ['', Validators.required]
+      });
     }
 
     public submit(value) {
