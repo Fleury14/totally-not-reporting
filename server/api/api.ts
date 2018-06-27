@@ -6,6 +6,7 @@ import { search } from "./endpoints/search-title-endpoint";
 import { topTen } from "./endpoints/top-10-vote-endpoint";
 import { getByYear } from "./endpoints/get-by-year-endpoint";
 import { testJoin } from "./endpoints/test-join";
+import { categorySearch } from "./endpoints/custom-queries/search-by-category-endpoint";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -18,4 +19,6 @@ export function initAPI (app:Application) {
     app.route('/api/get-by-year').post(getByYear);
 
     app.route('/api/join-test').post(testJoin);
+
+    app.route('/api/custom-search').post(categorySearch);
 }
