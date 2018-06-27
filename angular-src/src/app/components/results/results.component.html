@@ -6,7 +6,6 @@
             <p class="tagline">{{ result.tagline }}</p>
         </div>
         <div class="info">
-            <p class="rating">5.0</p>
             <h2 class="title">{{ result.title }}</h2>
             <h3 class="year">{{ result.release_date | date:'yyyy' }}</h3>
             <p class="description">{{ stringCutoff(result.overview) }}</p>
