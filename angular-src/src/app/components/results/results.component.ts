@@ -57,7 +57,20 @@ export class ResultComponent implements OnInit {
     }
 
     public stringCutoff(string: string) {
-        const maxLength = 200;
+        const maxLength = 100;
+        if (!string) { return string; } else {
+          if (string.length <= maxLength) {
+            const result = string.substr(0, maxLength);
+            return result;
+        } else {
+            const result = string.substr(0, maxLength) + '...';
+            return result;
+        }
+        }
+    }
+
+    public titleCutoff(string: string){
+        const maxLength = 24;
         if (!string) { return string; } else {
           if (string.length <= maxLength) {
             const result = string.substr(0, maxLength);
