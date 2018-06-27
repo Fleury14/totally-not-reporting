@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SideBarComponent } from './components/sidebar/sidebar.component';
 import { RoutingComponents, AppRoutingModule } from './app.routing.module';
-import { ModalComponent } from './components/results/results.component';
+import { ModalComponent } from './components/results/modal.component';
 import { ResultComponent } from './components/results/results.component';
 
 import { SearchService } from './services/search.service';

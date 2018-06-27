@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { MatPaginator, MatTableDataSource, PageEvent, MatSort } from '@angular/material';
 import { IMovie } from '../../interfaces/movie';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
+import { ModalComponent } from './modal.component';
 
 @Component({
     selector: 'app-result',
@@ -15,7 +15,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ResultComponent implements OnInit {
 
     public storedResults: any;
-    private _rawResults:any;
+    private _rawResults: any;
     public resultSub: Subscription;
     public columnsToDisplay: String[] = [];
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -40,7 +40,8 @@ export class ResultComponent implements OnInit {
             // console.log('final columns to display', this.columnsToDisplay);
             this.columnsToDisplay.sort(function(a, b) {
 
-                const subjectOrder:String[] = ['title', 'tagline', 'release_date', 'original_title', 'budget', 'revenue', 'runtime', 'overview', 'popularity', 'adult', 'vote_average', 'vote_count', 'movie_id'];
+                const subjectOrder: String[] = ['title', 'tagline', 'release_date', 'original_title', 'budget',
+                'revenue', 'runtime', 'overview', 'popularity', 'adult', 'vote_average', 'vote_count', 'movie_id'];
 
                 return subjectOrder.indexOf(a) - subjectOrder.indexOf(b);
             });
@@ -55,50 +56,25 @@ export class ResultComponent implements OnInit {
         this._search.refreshResults();
     }
 
-    public stringCutoff(string:string) {
+    public stringCutoff(string: string) {
         const maxLength = 200;
-        if(!string) { return string; }
-        else {
-          if(string.length <= maxLength){
-            const result = string.substr(0,maxLength);
+        if (!string) { return string; } else {
+          if (string.length <= maxLength) {
+            const result = string.substr(0, maxLength);
             return result;
         } else {
-            const result = string.substr(0,maxLength) + "...";
+            const result = string.substr(0, maxLength) + '...';
             return result;
         }
         }
-        
     }
 
     showMovieModal(movie: any): void {
         console.log(movie);
-        const openModal = this.dialog.open(ModalComponent, {
+        const openModal = this.dialog.open( ModalComponent, {
           width: '700px',
           height: '650px',
           data: movie
         });
       }
 }
-    
-
-  @Component({
-    selector: 'app-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: [ './results.component.scss' ]
-
-  })
-
-  export class ModalComponent implements OnInit {
-
-    constructor(
-      public openModal: MatDialogRef<ModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-    ngOnInit(): void {
-      console.log(this.data);
-    }
-
-    onNoClick(): void {
-      this.openModal.close();
-    }
-  }
