@@ -3,7 +3,8 @@ aside {
     width: 20%;
     min-width: 150px;
     min-height: 100vh;
-    background-color: lighten(dodgerblue, 30);
+    background-color: hsl(0, 0%, 100%);
+    position: fixed;
 }
 
 main {
@@ -11,9 +12,13 @@ main {
     height: 100%;
     min-height: 100vh;
     width: 80%;
+    margin-left: 20%;
     
 }
 
 .bottom-part {
     display: flex;
+}
+.routed-item{
+    margin-top: 80px;
 }
