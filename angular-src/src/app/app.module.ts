@@ -14,8 +14,10 @@ import { RoutingComponents, AppRoutingModule } from './app.routing.module';
 import { ModalComponent } from './components/results/modal.component';
 import { ResultComponent } from './components/results/results.component';
 
+
 import { SearchService } from './services/search.service';
 import { HttpService } from './services/http.service';
+import { RecentSearchService } from './services/recent-search.service';
 import { AppMaterialModule } from './material.module';
 
 @NgModule({
@@ -26,7 +28,7 @@ import { AppMaterialModule } from './material.module';
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule, 
   ],
-  providers: [ SearchService, HttpService ],
+  providers: [ SearchService, HttpService, RecentSearchService  ],
   entryComponents: [ ModalComponent ],
 
   bootstrap: [AppComponent]
