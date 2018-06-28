@@ -36,7 +36,7 @@
         </mat-toolbar>
     </div>
     <!--End of HL-->
-    <h2>Recent Searches</h2> <!--Start of Recent Searches-->
+    <h2 class="section-name">Recent Searches</h2> <!--Start of Recent Searches-->
     <mat-toolbar>
         <mat-toolbar-row *ngFor="let recent of recentArray">
             <button (click)="searchMovie(recent.search, recent.endpoint)" >{{recent.view | titlecase}}</button>
