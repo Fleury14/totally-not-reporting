@@ -38,9 +38,9 @@ p {
     width: 88%;
     height: 325px;
     margin: 20px 10px 10px 20px;
-    background-color: hsl(0, 0%, 100%);
+    background-color: var(--white-color);
     border-radius: 4px;
-    box-shadow: 5px 5px 15px hsl(0, 0%, 92%);
+    box-shadow: 3px 3px 15px var(--shadow-color);
     display: grid;
     grid-template-rows: 60% 1fr;
     grid-template-areas: 
@@ -49,21 +49,21 @@ p {
 }
 .top{
     grid-area: top;
-    background-color: hsl(0, 0%, 85%);
+    background-color: var(--gray-color);
     border-radius: 4px 4px 0px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all linear 0.1s;
     i{
-        color: hsl(0, 0%, 80%);
+        color: var(--darker-gray-color);
         position: absolute;
         transition: all linear 0.1s;
     }
     .tagline{
         position: relative;
         margin: 0px;
-        font-size: 20px;
+        font-size: 18px;
         max-width: 400px;
         text-align: center;
         font-style: italic;
