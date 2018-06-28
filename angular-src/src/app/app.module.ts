@@ -23,7 +23,6 @@ import { AppMaterialModule } from './material.module';
     AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
   ],
   imports: [
-<<<<<<< HEAD
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule,
   ],
@@ -31,6 +30,7 @@ import { AppMaterialModule } from './material.module';
   providers: [ SearchService, HttpService, RecentSearchService  ],
 =======
   providers: [ SearchService, HttpService ],
+<<<<<<< HEAD
 =======
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule,
     HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule,
@@ -40,6 +40,8 @@ import { AppMaterialModule } from './material.module';
   providers: [ SearchService, HttpService, MatDialog, FormsModule],
 >>>>>>> fix(stepper part2)
 >>>>>>> rebase fix 1
+=======
+>>>>>>> rebase fix 3
   entryComponents: [ ModalComponent ],
 
   bootstrap: [AppComponent]
