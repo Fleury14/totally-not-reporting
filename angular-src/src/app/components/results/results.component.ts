@@ -27,7 +27,6 @@ export class ResultComponent implements OnInit {
             this._rawResults = results.result;
 
             this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
-            // console.log(this.storedResults.data.overview);
         });
 
         this._search.refreshResults();
@@ -46,7 +45,6 @@ export class ResultComponent implements OnInit {
     }
 
     showMovieModal(movie: any): void {
-        console.log(movie);
         const openModal = this.dialog.open( ModalComponent, {
           width: '700px',
           height: '650px',
