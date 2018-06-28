@@ -1,9 +1,14 @@
+
+
 aside h2 {
   padding-left: 0.5em;
 }
 
+.mat-toolbar{
+  color: var(--text-black);
+}
 .mat-toolbar-row, .mat-toolbar-single-row {
-  background-color: hsla(0, 0%, 100%, 1);
+  background-color: var(--white-color);
   font-size: 13px;
   height: 46px;
   font-weight: bold;
