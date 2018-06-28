@@ -6,6 +6,10 @@ aside h2 {
 
 .mat-toolbar{
   color: var(--text-black);
+
+  a{
+    color: inherit;
+  }
 }
 .mat-toolbar-row, .mat-toolbar-single-row {
   background-color: var(--white-color);
@@ -18,7 +22,7 @@ input {
   font-size: 15px;
   width: 90px;
   margin-left: 24px;
-  color: red;
+  color: var(--text-black);
 }
 
 a{
