@@ -135,29 +135,63 @@ p {
     }
 
 
-    .information-row-left, .information-row-right {
-        display: inline-block;
-        width: 50%;
+    // .information-row-left, .information-row-right {
+    //     display: inline-block;
+    //     width: 50%;
 
-        .information-row{
-        display: flex;
-        
-        .content-left{
-            width: 50%;
-            justify-content: flex-start;
-        }
+    //         .information-row{
+    //         display: flex;
+            
+    //         .content-left{
+    //             width: 50%;
+    //             justify-content: flex-start;
+    //         }
 
-        .content-right{
-            width: 50%;
-            justify-content: flex-start;
-            margin: {
-                top: 21px;
-                bottom: 16px
+    //         .content-right{
+    //             width: 50%;
+    //             justify-content: flex-start;
+    //             margin: {
+    //                 top: 21px;
+    //                 bottom: 16px
+    //             }
+    //         }
+    //     }
+    // }
+    .info-center {
+        text-align: center;
+    }
+
+    .info-container {
+        display: grid;
+        // border: 1px solid black;
+        height: 400px;
+        width: 400px;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 5px;
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            width: 200px;
+            background: #d9d9d9; 
+            box-shadow: 5px 5px 15px hsl(0, 0%, 92%);
+
+            .info-inline {
+                font-size: 17px;
+                font-weight: 400;
+            }
+
+            // border: 1px solid pink;
+
+            .info-budget, .info-runtime, .info-revenue, .info-adult {
+                text-align: center;
+                color: #000;
             }
         }
     }
-    }
-    
 }
 
 /* End of Modal Styles */ 

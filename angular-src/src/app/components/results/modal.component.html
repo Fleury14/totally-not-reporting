@@ -2,6 +2,7 @@
   <div class="row header-row">
     <div class="header-left">
       <h1 class="modal-title">{{ data?.title }}</h1>
+      <p>Release Date: {{ data?.release_date | date }}</p>
       <p class="tagline">{{ data?.tagline }}</p>
     </div>
     <div class="header-right">
@@ -16,15 +17,15 @@
 
   <div class="row header-row">
     <div class="header-left">
-      <h2>Overview</h2>
+      <h2 class="info-center">Overview</h2>
       <p>{{ data?.overview }}</p>
     </div>
   </div>
 
   <hr>
 
-  <h2>Information</h2>
-  <div class="information-row-left">
+  <h2 class="info-center">Information</h2>
+  <!-- <div class="information-row-left">
     <div class="row information-row">
       <h3 class="content-left">Release Date</h3>
       <p class="content-right">{{ data?.release_date | date }}</p>
@@ -35,7 +36,7 @@
     </div>
     <div class="row information-row">
       <h3 class="content-left">Revenue</h3>
-      <p class="content-right">{{ data?.revenue | currency:'USD' }}</p>
+      <p class="content-right">{{ data?.revenue | currency:'USD' }} </p>
     </div>
     <div class="row information-row">
       <h3 class="content-left">Run Time</h3>
@@ -60,6 +61,36 @@
       <h3 class="content-left">Vote Count</h3>
       <p class="content-right">{{ data?.vote_count }}</p>
     </div>
+  </div> -->
+
+  <div class="info-container">
+    <div class="info-item">
+      <div class="info-budget">
+        <i class="far fa-money-bill-alt fa-4x fa-icon"></i>
+        <h5>Budget</h5>
+        <p class="info-inline"> {{ roundMillion(data?.budget) }} </p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-runtime">
+        <i class="fas fa-stopwatch fa-4x fa-icon"></i>
+        <h5>Runtime</h5>
+        <p class="info-inline"> {{data?.runtime}} Min</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-revenue">
+        <i class="fas fa-money-bill-wave fa-4x fa-icon"></i>
+        <h5>Revenue</h5>
+        <p class="info-inline"> {{ roundMillion(data?.revenue) }} </p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-adult">
+        <i class="far fa-user fa-4x fa-icon"></i>
+        <h5>Adult</h5>
+        <p class="info-inline">{{ data?.adult && 'Yes' || 'No' }}</p>
+      </div>
+    </div>
   </div>
-  <hr>
 </div>

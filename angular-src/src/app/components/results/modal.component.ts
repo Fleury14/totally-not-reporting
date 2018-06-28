@@ -20,4 +20,10 @@ export class ModalComponent implements OnInit {
   onNoClick(): void {
     this.openModal.close();
   }
+
+  public roundMillion(number: number) {
+    const roundedMillion  = Math.round(number * 10 / 1000000) / 10;
+    return '$' + roundedMillion.toString() + 'm';
+  }
+
 }
