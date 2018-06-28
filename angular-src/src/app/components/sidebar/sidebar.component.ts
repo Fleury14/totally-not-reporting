@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { SearchService } from './../../services/search.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -31,9 +31,9 @@ export class SideBarComponent implements DoCheck {
     }
 
     public byYearSearch(year?) {
-        const byYear = year ? year: document.querySelector<HTMLInputElement>('#byYear').value;
+        const byYear = year ? year : document.querySelector<HTMLInputElement>('#byYear').value;
         this._search.getByYearSearch( parseInt(byYear) ).pipe( take(1)).subscribe( (data) => {
-            this._recent.addSearchList(data.search, data.endpoint);
+            this._recent.addSearchList(byYear, data.endpoint);
             this._search.storeResults(data);
             this._router.navigate(['results']);
         });
