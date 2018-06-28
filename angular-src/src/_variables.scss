@@ -1,10 +1,11 @@
 :root{
     --text-black: hsl(0, 0%, 25%);
 
+    --primary-color: #4054B2;
     --background-color: hsl(210, 25%, 95%);
     --white-color: hsl(0, 0%, 100%);
     --gray-color: hsl(0, 0%, 85%);
     --darker-gray-color: hsl(0, 0%, 80%);
 
-    --shadow-color: hsl(0, 0%, 92%);
+    --shadow-color: hsla(0, 0%, 10%, 0.05);
 }
