@@ -9,13 +9,14 @@ aside h2 {
 
   a{
     color: inherit;
+    font-weight: 300;
   }
 }
 .mat-toolbar-row, .mat-toolbar-single-row {
   background-color: var(--white-color);
   font-size: 13px;
   height: 46px;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 input {
@@ -43,4 +44,5 @@ a{
 .section-name{
   margin-left: 16px;
   font-size: 18px;
+  font-weight: 700;
 }

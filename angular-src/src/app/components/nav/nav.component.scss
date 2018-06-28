@@ -19,3 +19,12 @@ nav {
 .mat-input-element{
     color: var(--text-black);
 }
+.search-btn{
+    margin: 0px 0px 0px 15px;
+    padding: 0px;
+    min-width: 0px;
+    width: 50px;
+    i{
+        color: var(--white-color);
+    }
+}
