@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule, MatMenuModule,
-   MatDialog, MatDialogModule, MatCheckboxModule, MatRadioModule, MatSelectModule} from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
 
@@ -18,17 +16,17 @@ import { ResultComponent } from './components/results/results.component';
 
 import { SearchService } from './services/search.service';
 import { HttpService } from './services/http.service';
+import { AppMaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
     AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule,
-    HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule,
-    MatToolbarModule, MatMenuModule, MatDialogModule, MatCheckboxModule, MatRadioModule, MatSelectModule
+    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
+    HttpClientModule, 
   ],
-  providers: [ SearchService, HttpService, MatDialog ],
+  providers: [ SearchService, HttpService ],
   entryComponents: [ ModalComponent ],
 
   bootstrap: [AppComponent]
