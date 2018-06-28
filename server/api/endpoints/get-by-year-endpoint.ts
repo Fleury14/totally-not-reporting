@@ -12,7 +12,7 @@ export function getByYear(req: Request, res: Response, next: NextFunction) {
             res.json({message: "Search results",
                 result: resp,
                 query: query,
-                endpoint: 'get-by-year',
+                endpoint: 'by-year',
                 search: req.body.search
             })
         }).catch( err => res.json({message: "Error", result: err}))
