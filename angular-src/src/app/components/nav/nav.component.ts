@@ -32,14 +32,6 @@ export class NavComponent {
         //     vote_average: false,
         //     vote_count: false
         // }
-        // if(entry){
-        //     this.search = entry; 
-        // }
-        // let obj = {
-        //     search: capitalize, //whats its going to show
-        //     entry: entry, // parametry it takes in
-        //     method: method // method it uses
-        // }
         
         if (this.search) {
             this._search.basicSearch(this.search).pipe( take(1) ).subscribe( data => {
