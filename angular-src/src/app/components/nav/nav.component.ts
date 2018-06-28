@@ -14,7 +14,7 @@ import { RecentSearchService } from '../../services/recent-search.service';
 export class NavComponent {
     public search: string;
 
-    constructor (private _search: SearchService, private _router: Router, private recent:RecentSearchService) {}
+    constructor (private _search: SearchService, private _router: Router, private _recent: RecentSearchService) {}
 
     public searchMovie() {
         // Example of request object. Incluse this in the search method function if you wish to try it out
@@ -32,9 +32,17 @@ export class NavComponent {
         //     vote_average: false,
         //     vote_count: false
         // }
+        // if(entry){
+        //     this.search = entry; 
+        // }
+        // let obj = {
+        //     search: capitalize, //whats its going to show
+        //     entry: entry, // parametry it takes in
+        //     method: method // method it uses
+        // }
         
         if (this.search) {
-            this.recent.searchList(this.search)
+            this._recent.addSearchList(this.search, this.search ,'searchMovie')
             this._search.basicSearch(this.search).pipe( take(1) ).subscribe( data => {
                 console.log(data);
                 this._search.storeResults(data);
