@@ -23,10 +23,23 @@ import { AppMaterialModule } from './material.module';
     AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
   ],
   imports: [
+<<<<<<< HEAD
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule,
   ],
+<<<<<<< HEAD
   providers: [ SearchService, HttpService, RecentSearchService  ],
+=======
+  providers: [ SearchService, HttpService ],
+=======
+    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule,
+    HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule,
+    MatToolbarModule, MatMenuModule, MatDialogModule, MatCheckboxModule, MatRadioModule, MatSelectModule, MatStepperModule,
+    ReactiveFormsModule
+  ],
+  providers: [ SearchService, HttpService, MatDialog, FormsModule],
+>>>>>>> fix(stepper part2)
+>>>>>>> rebase fix 1
   entryComponents: [ ModalComponent ],
 
   bootstrap: [AppComponent]

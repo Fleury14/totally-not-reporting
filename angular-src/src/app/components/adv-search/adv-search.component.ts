@@ -61,7 +61,7 @@ export class AdvSearchComponent implements OnInit {
     secondFormGroup: FormGroup;
     thirdFormGroup: FormGroup;
 
-    public selectedCategory: string;
+    public selectedCategory: CatergorySelection;
     public categoryValueNum: number;
     public requestedColumns: IDynamicRequest = {
         adult: false,

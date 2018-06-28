@@ -1,6 +1,6 @@
 <main>
   <h1>Advanced Search</h1>
-  <mat-vertical-stepper [linear]='isLinear' #stepper>
+  <mat-vertical-stepper [linear]='!isLinear' #stepper>
     <mat-step [stepControl]='firstFormGroup'>
       <form [formGroup]='firstFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
         <ng-template matStepLabel>Return Type:</ng-template>
@@ -20,7 +20,6 @@
         <mat-select placeholder="Category" name="category" class="category-select" ngModel [(value)]="selectedCategory">
           <mat-option *ngFor="let option of searchCategory" [value]="option">{{option.name}}</mat-option>
         </mat-select>
-        <!-- <p>Category Selected: {{ selectedCategory?.name }}, {{ selectedCategory?.type }}</p> -->
         <mat-form-field *ngIf="selectedCategory?.type === 'text'">
           <input matInput [placeholder]="selectedCategory.name" ngModel name="categoryValue" class="category-value">
         </mat-form-field>
@@ -64,4 +63,3 @@
     </mat-step>
   </mat-vertical-stepper>
 </main>
-    <!-- <button (click)="whoAmI()">Who am i</button> -->
