@@ -6,25 +6,32 @@ import { Subject, Observable } from 'rxjs';
 export class RecentSearchService {
  public emptylist:any = [];
  public list:any;
+ private copy: boolean;
+//  private spacedEndpoint: string;
 
  constructor(){}
 
- public addSearchList(search, entry, method){
+ public addSearchList(search, endpoint){
     this.list = localStorage.getItem("search list")? JSON.parse(localStorage.getItem("search list")): this.emptylist;
-    let lowerCase = search.toLowerCase();
-    let capitalize = lowerCase.replace(/^\w/, c => c.toUpperCase());
+    let spacedEndpoint = endpoint.includes('-') ? endpoint.replace('-', ' ') : endpoint;
+    let spacedSearch = search.includes('_') ? search.replace('_', ' ') : search;
+    let view = spacedEndpoint.concat(`: ${spacedSearch}`);
     let obj = {
-        search: capitalize, //whats its going to show
-        entry: entry, // parametry it takes in
-        method: method // method it uses
-    }
+        search: spacedSearch, 
+        endpoint: spacedEndpoint,
+        view
+    };
     localStorage.getItem("search list")?this.list = JSON.parse(localStorage.getItem("search list")): this.list = this.emptylist;
-    // for(let index in obj){ 
-    //    if(this.list['index']['entry'] == entry){
-    //        break;
-    //    }
-    // }
-    if(this.list.length >= 5){
+    
+    for(let i = 0; i < this.list.length; i++){
+        if(this.list[i]['search'] == spacedSearch){
+            this.copy = true;
+        };
+    }
+
+    if (this.copy){
+        return
+    } else if(this.list.length >= 5){
         this.list.pop();
         this.list.splice(0,0, obj);
         localStorage.setItem("search list",JSON.stringify(this.list));
@@ -35,7 +42,7 @@ export class RecentSearchService {
  }
 
  public getSearchList(){
-    let list = JSON.parse(localStorage.getItem("search list"))
+    let list = JSON.parse(localStorage.getItem("search list"));
     return list
  }
 }

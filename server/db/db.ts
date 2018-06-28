@@ -16,6 +16,7 @@ const pgp:IMain = pgPromise({
     // message to display on connection
     connect(client, dc, useCount) {
         const cp = client.connectionParameters;
+        // console.log('client connection para meters:', cp);
         console.log('Connected to database: ', cp.database);
     },
     // message to display on errors

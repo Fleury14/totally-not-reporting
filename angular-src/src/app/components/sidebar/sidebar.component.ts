@@ -19,38 +19,37 @@ export class SideBarComponent implements DoCheck {
     ) {}
 
     ngDoCheck(){
-        this.recentArray = this._recent.getSearchList()
-        console.log('array',this.recentArray);
+        this.recentArray = this._recent.getSearchList();
     }
 
     public topTen(category: string) {
-        // this._recent.addSearchList(category, 'topTen');
         this._search.topTenSearch(category).pipe( take(1)).subscribe( (data) => {
+            this._recent.addSearchList(category, data.endpoint);
             this._search.storeResults(data);
             this._router.navigate(['results'])
         });
     }
 
-    public byYearSearch() {
-        const byYear = document.querySelector<HTMLInputElement>('#byYear').value;
-        // this._recent.addSearchList(byYear, 'byYearSearch');
+    public byYearSearch(year?) {
+        const byYear = year ? year: document.querySelector<HTMLInputElement>('#byYear').value;
         this._search.getByYearSearch( parseInt(byYear) ).pipe( take(1)).subscribe( (data) => {
+            this._recent.addSearchList(data.search, data.endpoint);
             this._search.storeResults(data);
             this._router.navigate(['results']);
         });
     }
 
-    public searchMovie(entry) {
-        console.log('search',entry)
-        // if (entry = "top10")
-        if (entry) {
-            console.log('try')
-            // this._recent.addSearchList(this.search)
-            this._search.basicSearch(entry).pipe( take(1) ).subscribe( data => {
-                console.log(data);
+    public searchMovie(search, endpoint) {
+        if (endpoint == 'search title') {
+            this._search.basicSearch(search).pipe( take(1) ).subscribe( data => {
+                this._recent.addSearchList(data.search, data.endpoint);
                 this._search.storeResults(data);
                 this._router.navigate(['results']);
             } );
+        } else if (endpoint == 'by year') {
+            this.byYearSearch(search);
+        } else {
+            this.topTen(search); 
         }
     }
 }

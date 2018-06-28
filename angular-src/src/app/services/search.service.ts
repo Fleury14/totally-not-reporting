@@ -21,6 +21,7 @@ export class SearchService {
         };
         return this._http.post('search-title', payload).pipe(
             map( (response) => {
+                // console.log(this._mapResults(response, returnType))
                 return this._mapResults(response, returnType);      
             })
         );
@@ -40,8 +41,10 @@ export class SearchService {
                 dataToBeSent.push(newMovie);
             } );
             response['result'] = dataToBeSent;
+            // console.log(response)
             return response;
         } else {
+            // console.log(response)
             return response;
         }
     }
@@ -68,6 +71,7 @@ export class SearchService {
         };
         return this._http.post('top10', payload).pipe(
             map( (response) => {
+                // console.log(this._mapResults(response, returnType))
                 return this._mapResults(response, returnType);
             })
         );
@@ -79,6 +83,7 @@ export class SearchService {
         };
         return this._http.post('get-by-year', payload).pipe(
             map( (response) => {
+                // console.log(this._mapResults(response, returnType))
                 return this._mapResults(response, returnType);
             })
         );

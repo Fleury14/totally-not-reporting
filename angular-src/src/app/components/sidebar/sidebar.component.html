@@ -1,7 +1,8 @@
-<aside>
+<!-- <aside> -->
     <!--Start of sidebar-->
-    <h2>Hot Links:</h2> <!--Hot Links section-->
-    <mat-toolbar>
+    <a routerLink="home"><h1>TNR: Movies</h1></a>
+    <h2 class="pad">Hot Links:</h2> <!--Hot Links section-->
+    <mat-toolbar class="pad">
         <mat-toolbar-row [matMenuTriggerFor]="linkMenu">
             Top Ten: <i class="material-icons">
                     keyboard_arrow_down
@@ -34,7 +35,7 @@
     <h2>Recent Searches</h2> <!--Start of Recent Searches-->
     <mat-toolbar>
         <mat-toolbar-row *ngFor="let recent of recentArray">
-            <button click="searchMovie(recent.entry)">{{recent.search}}</button>
+            <button (click)="searchMovie(recent.search, recent.endpoint)" >{{recent.view | titlecase}}</button>
         </mat-toolbar-row>
     </mat-toolbar> 
     <!--End of RS-->
@@ -42,4 +43,4 @@
         <i class="material-icons md-48">home</i>
     </a>
     <!--End of sidebar-->
-</aside>
+<!-- </aside> -->

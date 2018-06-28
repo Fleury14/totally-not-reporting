@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
 }
 
@@ -11,4 +11,16 @@ body {
         margin-left: 40px;
         margin-right: 40px;
     }
+}
+
+.grid-container{
+    // border: 1px dashed red;
+    display: grid;
+    width: 100%;
+}
+.flex-container{
+    border: 1px dashed blue;
+    display: flex;
+    width: 100%;
+
 }

@@ -42,9 +42,9 @@ export class NavComponent {
         // }
         
         if (this.search) {
-            this._recent.addSearchList(this.search, this.search ,'searchMovie')
             this._search.basicSearch(this.search).pipe( take(1) ).subscribe( data => {
                 console.log(data);
+                this._recent.addSearchList(data.search, data.endpoint)
                 this._search.storeResults(data);
                 this._router.navigate(['results']);
             } );
