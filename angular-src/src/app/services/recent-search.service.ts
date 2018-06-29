@@ -21,21 +21,24 @@ export class RecentSearchService {
     };
     localStorage.getItem("search list")?this.list = JSON.parse(localStorage.getItem("search list")): this.list = this.emptylist;
     
-    for(let i = 0; i < this.list.length; i++){
-        if(this.list[i]['search'] == spacedSearch){
+    this.list.forEach(e => {
+        if(e['search'] == spacedSearch){
             this.copy = true;
         };
-    }
-
+    })
     if (this.copy){
+        this.copy = false;
         return
-    } else if(this.list.length >= 5){
+    }
+    else if(this.list.length >= 5){
         this.list.pop();
         this.list.splice(0,0, obj);
         localStorage.setItem("search list",JSON.stringify(this.list));
+        this.copy = false;
     } else {
         this.list.splice(0,0, obj);
         localStorage.setItem("search list",JSON.stringify(this.list));
+        this.copy = false;
     }
  }
 
