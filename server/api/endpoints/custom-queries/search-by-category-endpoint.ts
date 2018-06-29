@@ -24,8 +24,10 @@ export async function categorySearch(req: Request, res: Response, next: NextFunc
                     message: "Search results",
                     result: resp,
                     query: query,
+                    endpoint: 'custom-search',
                     category: req.body.category,
-                    search: req.body.search
+                    search: req.body.search,
+                    order: req.body.order
                 })
             }).catch(err => res.status(500).json({message: "Error", error: err}));
         }

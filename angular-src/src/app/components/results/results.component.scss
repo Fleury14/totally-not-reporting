@@ -38,9 +38,9 @@ p {
     width: 88%;
     height: 325px;
     margin: 20px 10px 10px 20px;
-    background-color: hsl(0, 0%, 100%);
+    background-color: var(--white-color);
     border-radius: 4px;
-    box-shadow: 5px 5px 15px hsl(0, 0%, 92%);
+    box-shadow: 3px 3px 15px var(--shadow-color);
     display: grid;
     grid-template-rows: 60% 1fr;
     grid-template-areas: 
@@ -49,21 +49,21 @@ p {
 }
 .top{
     grid-area: top;
-    background-color: hsl(0, 0%, 85%);
+    background-color: var(--gray-color);
     border-radius: 4px 4px 0px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all linear 0.1s;
     i{
-        color: hsl(0, 0%, 80%);
+        color: var(--darker-gray-color);
         position: absolute;
         transition: all linear 0.1s;
     }
     .tagline{
         position: relative;
         margin: 0px;
-        font-size: 20px;
+        font-size: 18px;
         max-width: 400px;
         text-align: center;
         font-style: italic;
@@ -90,16 +90,21 @@ p {
 
 }
 .title{
-    margin: 17px 17px 0px 17px;
+    margin: 10px 15px 0px 15px;
     font-size: 20px;
 }
 .year{
-    margin: 7px 0px 7px 17px;
+    margin: 3px 0px 3px 15px;
     font-size: 15px;
 }
 .description{
     font-size: 12px;
     margin: 0px 17px 17px 17px;
+}
+
+.center-button {
+    margin: 20px auto;
+    display: block;
 }
 
 /* Modal Styles */
@@ -135,29 +140,63 @@ p {
     }
 
 
-    .information-row-left, .information-row-right {
-        display: inline-block;
-        width: 50%;
+    // .information-row-left, .information-row-right {
+    //     display: inline-block;
+    //     width: 50%;
 
-        .information-row{
-        display: flex;
-        
-        .content-left{
-            width: 50%;
-            justify-content: flex-start;
-        }
+    //         .information-row{
+    //         display: flex;
+            
+    //         .content-left{
+    //             width: 50%;
+    //             justify-content: flex-start;
+    //         }
 
-        .content-right{
-            width: 50%;
-            justify-content: flex-start;
-            margin: {
-                top: 21px;
-                bottom: 16px
+    //         .content-right{
+    //             width: 50%;
+    //             justify-content: flex-start;
+    //             margin: {
+    //                 top: 21px;
+    //                 bottom: 16px
+    //             }
+    //         }
+    //     }
+    // }
+    .info-center {
+        text-align: center;
+    }
+
+    .info-container {
+        display: grid;
+        // border: 1px solid black;
+        height: 400px;
+        width: 400px;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 5px;
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            width: 200px;
+            background: #d9d9d9; 
+            box-shadow: 5px 5px 15px hsl(0, 0%, 92%);
+
+            .info-inline {
+                font-size: 17px;
+                font-weight: 400;
+            }
+
+            // border: 1px solid pink;
+
+            .info-budget, .info-runtime, .info-revenue, .info-adult {
+                text-align: center;
+                color: #000;
             }
         }
     }
-    }
-    
 }
 
 /* End of Modal Styles */ 

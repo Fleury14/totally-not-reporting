@@ -4,7 +4,7 @@
         <mat-form-field class="example-full-width">
             <input matInput placeholder="Movie Title" value="search" [(ngModel)]="search">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="searchMovie()">Search</button>
+        <button class="search-btn" mat-raised-button color="primary" (click)="searchMovie()"><i class="fas fa-search"></i></button>
+        <button class="adv-search-btn" mat-raised-button color="primary" routerLink="./../search">Advanced Search</button>
     </div>
-
 </nav>
