@@ -1,12 +1,23 @@
 <main>
   <h1>Advanced Search</h1>
-  <mat-vertical-stepper [linear]='!isLinear' #stepper>
+  <mat-vertical-stepper #stepper>
+    <!-- <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step> -->
     <mat-step [stepControl]='firstFormGroup'>
       <form [formGroup]='firstFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
         <ng-template matStepLabel>Return Type:</ng-template>
           <mat-radio-group class="return-type" name="returnType" ngModel>
-          <mat-radio-button value="table">Table</mat-radio-button>
-          <mat-radio-button value="cards">Cards</mat-radio-button>
+            <mat-radio-button value="table">Table</mat-radio-button>
+            <mat-radio-button value="cards">Cards</mat-radio-button>
         </mat-radio-group>
         <p class="small-font">Table will display the results you select in a traditional table. Cards will display a basic summary. Both formats will have the option to click on the result to get a detailed description.</p>
         <div>
@@ -36,7 +47,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]='thirdFormGroup'>
+    <!-- <mat-step [stepControl]='thirdFormGroup'>
       <form [formGroup]='thirdFormGroup'>
         <ng-template matStepLabel>Return The Following Data:</ng-template>
         <div class="return-checks">
@@ -60,6 +71,6 @@
           <button mat-fab color="secondary" (click)='stepper.reset()'>Reset Form</button>
         </div>
       </form>
-    </mat-step>
+    </mat-step> -->
   </mat-vertical-stepper>
 </main>

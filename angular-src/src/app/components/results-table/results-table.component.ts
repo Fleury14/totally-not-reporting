@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class ResultsTableComponent implements OnInit {
-    
+
     public storedResults: any;
     private _rawResults: any;
     public resultSub: Subscription;
@@ -54,7 +54,7 @@ export class ResultsTableComponent implements OnInit {
 
         this._search.refreshResults();
     }
-    
+
     public cardView() {
         this._router.navigate(['results']);
     }
