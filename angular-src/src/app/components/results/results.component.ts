@@ -18,7 +18,7 @@ export class ResultComponent implements OnInit {
     public storedResults: any;
     private _rawResults: any;
     public resultSub: Subscription;
-    
+
 
     constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
 
