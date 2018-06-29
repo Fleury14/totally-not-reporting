@@ -2,11 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< HEAD
-import { FormsModule } from '@angular/forms';
-=======
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
->>>>>>> commit 2
 
 // import { ModalComponent } from './components/modal/modal.component';
 import { AppComponent } from './app.component';
@@ -30,22 +26,7 @@ import { AppMaterialModule } from './material.module';
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule, ReactiveFormsModule
   ],
-<<<<<<< HEAD
-  providers: [ SearchService, HttpService, RecentSearchService  ],
-=======
-  providers: [ SearchService, HttpService ],
-<<<<<<< HEAD
-=======
-    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule,
-    HttpClientModule, MatInputModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule,
-    MatToolbarModule, MatMenuModule, MatDialogModule, MatCheckboxModule, MatRadioModule, MatSelectModule, MatStepperModule,
-    ReactiveFormsModule
-  ],
-  providers: [ SearchService, HttpService, MatDialog, FormsModule],
->>>>>>> fix(stepper part2)
->>>>>>> rebase fix 1
-=======
->>>>>>> rebase fix 3
+  providers: [ SearchService, HttpService, RecentSearchService ],
   entryComponents: [ ModalComponent ],
 
   bootstrap: [AppComponent]
