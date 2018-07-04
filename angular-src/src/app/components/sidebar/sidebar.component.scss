@@ -1,0 +1,64 @@
+
+
+aside h2 {
+  padding-left: 0.5em;
+}
+
+.mat-toolbar{
+  color: var(--text-black);
+
+  a{
+    color: inherit;
+    font-weight: 300;
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+  background-color: var(--white-color);
+  font-size: 13px;
+  height: 46px;
+  font-weight: 300;
+}
+
+input {
+  font-size: 15px;
+  width: 90px;
+  margin-left: 14px;
+  color: var(--text-black);
+  border-radius: 3px;
+  border: 1px solid hsl(0, 0%, 85%); 
+}
+.year-btn{
+  height: 21px;
+  margin: 0px;
+}
+
+a{
+  color: hsl(0, 0%, 5%);
+  text-decoration: none;
+}
+.title{
+  width: 100%;
+  background-color: var(--primary-color);
+  text-align: center;
+
+  a{
+    color: var(--white-color);
+  }
+  h1{
+    margin: 0px;
+    padding: 20px 0px;
+  }
+}
+.hot-links{
+  width: 100%;
+  border-bottom: 1px solid hsl(0, 0%, 95%);
+  padding-bottom: 30px;
+}
+.section-name{
+  margin-left: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}

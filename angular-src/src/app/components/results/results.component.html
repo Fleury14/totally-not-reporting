@@ -1,0 +1,22 @@
+<!-- <h1>Search Results</h1> -->
+<button *ngIf="storedResults" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
+<div class="grid-container">
+    <div class="search-result" *ngFor="let result of storedResults?.data">
+        <div class="top" (click)="showMovieModal(result)">
+            <i class="fas fa-film fa-6x"></i>
+            <p class="tagline">{{ result.tagline }}</p>
+        </div>
+        <div class="info">
+            <h2 class="title">{{ stringCutoff(result.title,24) }}</h2>
+            <h3 class="year">{{ result.release_date | date:'yyyy' }}</h3>
+            <p class="description">{{ stringCutoff(result.overview,100) }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <pre *ngIf="storedResults">
+    {{ storedResults | json }}
+</pre> -->

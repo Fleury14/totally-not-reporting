@@ -1,0 +1,10 @@
+<nav>
+    <!-- <a routerLink="home"><h1>TNR: Movies</h1></a> -->
+    <div class="search-bar">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Movie Title" value="search" [(ngModel)]="search">
+        </mat-form-field>
+        <button class="search-btn" mat-raised-button color="primary" (click)="searchMovie()"><i class="fas fa-search"></i></button>
+        <button class="adv-search-btn" mat-raised-button color="primary" routerLink="./../search">Advanced Search</button>
+    </div>
+</nav>
