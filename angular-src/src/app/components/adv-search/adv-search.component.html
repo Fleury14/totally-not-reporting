@@ -1,5 +1,6 @@
 <main>
   <h1>Advanced Search</h1>
+  <form class='fullFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
   <mat-vertical-stepper #stepper>
       <h1>Advanced Search</h1>
 
@@ -15,6 +16,7 @@
       </form>
     </mat-step> -->
     <mat-step [stepControl]='firstFormGroup'>
+<<<<<<< HEAD
       <form [formGroup]='firstFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
         <ng-template matStepLabel>Return Type:</ng-template>
           <mat-radio-group class="return-type" name="returnType" ngModel>
@@ -74,5 +76,61 @@
         </div>
       </form>
     </mat-step> -->
+=======
+      <ng-template matStepLabel>Return Type:</ng-template>
+        <mat-radio-group class="return-type" name="returnType" ngModel>
+          <mat-radio-button value="table">Table</mat-radio-button>
+          <mat-radio-button value="cards">Cards</mat-radio-button>
+      </mat-radio-group>
+      <p class="small-font">Table will display the results you select in a traditional table. Cards will display a basic summary. Both formats will have the option to click on the result to get a detailed description.</p>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]='secondFormGroup'>
+      <ng-template matStepLabel>Search By:</ng-template>
+      <mat-select placeholder="Category" name="category" class="category-select" ngModel [(value)]="selectedCategory">
+        <mat-option *ngFor="let option of searchCategory" [value]="option">{{option.name}}</mat-option>
+      </mat-select>
+      <mat-form-field *ngIf="selectedCategory?.type === 'text'">
+        <input matInput [placeholder]="selectedCategory.name" ngModel name="categoryValue" class="category-value">
+      </mat-form-field>
+      <mat-form-field *ngIf="selectedCategory?.type === 'number'" >
+        <input matInput [placeholder]="selectedCategory.name" type="number" ngModel name="categoryValue" class="category-value">
+      </mat-form-field>
+      <mat-select *ngIf="selectedCategory" placeholder="Order" name="order" ngModel class="search-order">
+        <mat-option value="ASC">Ascending</mat-option>
+        <mat-option value="DESC">Descending</mat-option>
+      </mat-select>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]='thirdFormGroup'>
+      <ng-template matStepLabel>Return The Following Data:</ng-template>
+      <div class="return-checks">
+        <div class="return-check-container" *ngFor="let column of searchCategory">
+          <mat-checkbox
+          [disabled]="searchForm?.controls.returnType?.value === 'cards'"
+          [(ngModel)]="requestedColumns[column.ref]"
+          [name]="column.ref"
+          >{{ column.name }}
+          </mat-checkbox>
+        </div>
+        <div class="return-check-container">
+          <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.adult" name="adult">Is Adult?</mat-checkbox>
+        </div>
+        <div class="return-check-container">
+          <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.movie_id" name="movie_id">Movie ID#</mat-checkbox>
+        </div>
+      </div>
+      <div class="submit-row">
+        <button mat-button matStepperSubmit type="submit">See Results!</button>
+        <button mat-button matStepperReset (click)='stepper.reset()'>Reset Form</button>
+      </div>
+    </mat-step>
+>>>>>>> feat: stepper with object
   </mat-vertical-stepper>
+  </form>
 </main>

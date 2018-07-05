@@ -11,14 +11,14 @@ import { RecentSearchService } from '../../services/recent-search.service';
 })
 
 export class SideBarComponent implements DoCheck {
-    private recentArray:any;
+    private recentArray: any;
     constructor(
         private _search: SearchService,
         private _router: Router,
         private _recent: RecentSearchService
     ) {}
 
-    ngDoCheck(){
+    ngDoCheck() {
         this.recentArray = this._recent.getSearchList();
     }
 
@@ -26,7 +26,7 @@ export class SideBarComponent implements DoCheck {
         this._search.topTenSearch(category).pipe( take(1)).subscribe( (data) => {
             this._recent.addSearchList(category, data.endpoint);
             this._search.storeResults(data);
-            this._router.navigate(['results'])
+            this._router.navigate(['results']);
         });
     }
 
@@ -40,16 +40,16 @@ export class SideBarComponent implements DoCheck {
     }
 
     public searchMovie(search, endpoint) {
-        if (endpoint == 'search title') {
+        if (endpoint === 'search title') {
             this._search.basicSearch(search).pipe( take(1) ).subscribe( data => {
                 this._recent.addSearchList(data.search, data.endpoint);
                 this._search.storeResults(data);
                 this._router.navigate(['results']);
             } );
-        } else if (endpoint == 'by year') {
+        } else if (endpoint === 'by year') {
             this.byYearSearch(search);
         } else {
-            this.topTen(search); 
+            this.topTen(search);
         }
     }
 }
