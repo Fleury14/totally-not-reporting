@@ -40,4 +40,8 @@
     background-color: var(--white-color);
     border-radius: 4px;
     box-shadow: 3px 3px 15px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
