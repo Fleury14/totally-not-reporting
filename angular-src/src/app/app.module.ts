@@ -19,6 +19,7 @@ import { SearchService } from './services/search.service';
 import { HttpService } from './services/http.service';
 import { RecentSearchService } from './services/recent-search.service';
 import { AppMaterialModule } from './material.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AppMaterialModule } from './material.module';
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
-    HttpClientModule, 
+    HttpClientModule, NgxChartsModule,
   ],
   providers: [ SearchService, HttpService, RecentSearchService  ],
   entryComponents: [ ModalComponent ],

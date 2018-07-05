@@ -19,6 +19,16 @@ export class ResultComponent implements OnInit {
     private _rawResults: any;
     public resultSub: Subscription;
     
+    // piechart options
+    public showLegend = true;
+    public view: any[] = [700, 400];
+    public colorScheme = {
+        domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+      };
+    public showLabels = true;
+    public explodeSlices = false;
+    public doughnut = false;
+    public pieData:any;
 
     constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
 
@@ -27,6 +37,7 @@ export class ResultComponent implements OnInit {
             this._rawResults = results.result;
 
             this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
+            this.setPieChart();
         });
 
         this._search.refreshResults();
@@ -55,4 +66,32 @@ export class ResultComponent implements OnInit {
       tableView() {
         this._router.navigate(['results-table']);
       }
+
+    public setPieChart() {
+        this.pieData = [{
+            name: "Under 50 million",
+            value: 0
+        },{
+            name: "Between 50 and 150 million",
+            value: 0
+        }, {
+            name: "Over 150 million",
+            value: 0
+        }]
+        this._rawResults.forEach( (movie:IMovie) => {
+            if (movie.revenue > 150000000) {
+                this.pieData[2].value++;
+            } else if (movie.revenue > 50000000 ) {
+                this.pieData[1].value++;
+            } else if (movie.revenue > 0) {
+                this.pieData[0].value++;
+            }
+        });
+        console.log('pie data', this.pieData);
+        Object.assign(this, this.pieData)
+    }
+
+    onSelect(event) {
+        console.log(event);
+    }
 }
