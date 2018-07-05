@@ -1,10 +1,27 @@
 <main>
     <h1>Totally Not Reporting</h1>
-    <p>This is our example of displaying queries from one or more tables in an easy to read manner.</p>
-    <p>Use the quick search above to search for movies by title, or the sidebar on the left for some of our more popular searches as well as your recent queries.</p>
-    <button mat-raised-button routerLink="./../search">Custom Search</button>
+    <div [ngStyle]="{'display':display}">
+        <p>This is our example of displaying queries from one or more tables in an easy to read manner.</p>
+        <p>Use the quick search above to search for movies by title, or the sidebar on the left for some of our more popular searches as well as your recent queries.</p>
+        <button mat-raised-button routerLink="./../search">Custom Search</button>
+    </div>
+    <div class="grid-container">
+        <div class="search-result" *ngFor="let recent of recentList">
+            <div class="top" (click)="searchMovie(recent.search, recent.endpoint)"> <!-- click event -->
+                <i class="fas fa-film fa-6x"></i>
+                <p class="tagline"></p>
+            </div>
+            <div class="info">
+                <h2 class="title"> {{ recent.view | titlecase}}</h2>
+                <h3 class="year"></h3>
+                <p class="description"></p>
+            </div>
+        </div>
+    </div>
     <div class="copyright">
         <p>&copy; Team Cucumber 2018</p>
         <div></div>
     </div>
+    
+
 </main>
