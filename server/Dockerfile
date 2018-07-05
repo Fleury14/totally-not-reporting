@@ -10,6 +10,8 @@ COPY package.json /home/node/server
 
 RUN npm install -g nodemon
 
+RUN npm install -g ts-node typescript
+
 RUN npm install --no-bin-links
 
 CMD ["npm", "run", "watch"];
