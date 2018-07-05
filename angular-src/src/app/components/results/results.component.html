@@ -1,5 +1,5 @@
 <!-- <h1>Search Results</h1> -->
-<button *ngIf="storedResults" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
+<!-- <button *ngIf="storedResults" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button> -->
 <div class="grid-container">
     <div class="search-result" *ngFor="let result of storedResults?.data">
         <div class="top" (click)="showMovieModal(result)">
