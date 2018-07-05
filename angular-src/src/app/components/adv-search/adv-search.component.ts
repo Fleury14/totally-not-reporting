@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CatergorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 
@@ -56,10 +56,10 @@ export class AdvSearchComponent implements OnInit {
         ref: 'vote_count',
         type: 'number'
     }];
-
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
-    thirdFormGroup: FormGroup;
+    fullFormGroup: FormGroup;
+    firstFormGroup: FormControl;
+    secondFormGroup: FormControl;
+    thirdFormGroup: FormControl;
 
     public selectedCategory: CatergorySelection;
     public categoryValueNum: number;
@@ -79,21 +79,19 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-    constructor(private _formBuilder: FormBuilder) {}
+    constructor(private _formBuilder: FormBuilder) {
+
+    }
 
     ngOnInit() {
-      this.firstFormGroup = this._formBuilder.group({
+      {
+      console.log('works');
+      this.fullFormGroup = this._formBuilder.group({
         firstCtrl: ['', Validators.required]
       });
-
-      this.secondFormGroup = this._formBuilder.group({
-        secondCtrl: ['', Validators.required]
-      });
-
-      this.thirdFormGroup = this._formBuilder.group({
-        thirdCtrl: ['', Validators.required]
-      });
+      console.log(this.fullFormGroup);
     }
+  }
 
     public submit(value) {
         console.log('submitting...', value, this.requestedColumns);
@@ -110,5 +108,4 @@ export class AdvSearchComponent implements OnInit {
 
     public cardSearch(value) {
     }
-
 }
