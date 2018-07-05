@@ -2,7 +2,6 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CatergorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
-
 @Component({
     selector: 'app-adv-search',
     templateUrl: './adv-search.component.html',
@@ -78,6 +77,18 @@ export class AdvSearchComponent implements OnInit {
         vote_average: false,
         vote_count: false
     };
+
+    public items = [
+      {name: 'Apple', type: 'fruit'},
+      {name: 'Carrot', type: 'vegetable'},
+      {name: 'Orange', type: 'fruit'}];
+    public droppedItems: any;
+
+
+      onItemDrop(e: any) {
+        // Get the dropped data here
+        this.droppedItems.push(e.dragData);
+      }
 
     constructor(private _formBuilder: FormBuilder) {
 
