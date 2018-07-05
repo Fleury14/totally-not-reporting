@@ -16,9 +16,7 @@ CREATE TABLE movies_meta (
     revenue float,
     runtime int,
     tagline VARCHAR(500),
-    title VARCHAR(255),
-    vote_average float,
-    vote_count int
+    title VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS movies_credits;
@@ -30,11 +28,23 @@ CREATE TABLE movies_credits (
 );
 -- TODO: include genres
 
+DROP TABLE IF EXISTS movie_vote;
 
-COPY movies_meta (adult,budget, movie_id, original_title, overview, popularity, release_date, revenue, runtime, tagline, title, vote_average, vote_count )
-FROM E'//docker-entrypoint-initdb.d//movies_metadata.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE movies_vote (
+    vote_id int,
+    vote_average float,
+    vote_count int
+);
+
+
+
+COPY movies_meta (adult,budget, movie_id, original_title, overview, popularity, release_date, revenue, runtime, tagline, title )
+FROM E'//docker-entrypoint-initdb.d//movies_metadata_split.csv' DELIMITER ',' CSV HEADER;
 
 COPY movies_credits (movie_cast, crew, credit_id )
 FROM E'//docker-entrypoint-initdb.d//movies_credits.csv' DELIMITER ',' CSV HEADER;
+
+COPY movies_vote (vote_id, vote_average, vote_count )
+FROM E'//docker-entrypoint-initdb.d//movies_vote_info.csv' DELIMITER ',' CSV HEADER;
 
 -- (adult,budget,genres,homepage,original_title,popularity, production, release_date, revenue, runtime, tagline, title, vote_average, vote_count )
