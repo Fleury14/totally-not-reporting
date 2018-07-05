@@ -15,6 +15,6 @@ export interface IMovie {
     vote_average?: number;
     vote_count?: number;
     movie_cast?: any;
-    crew: any;
+    crew?: any;
     id?: number;
 }
