@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DragulaModule } from 'ng2-dragula';
+// import { DragulaModule } from 'ng2-dragula';
+import { NgDragDropModule } from 'ng-drag-drop';
+
 
 // import { ModalComponent } from './components/modal/modal.component';
 import { AppComponent } from './app.component';
@@ -25,7 +27,8 @@ import { AppMaterialModule } from './material.module';
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
-    HttpClientModule, ReactiveFormsModule, DragulaModule
+    HttpClientModule, ReactiveFormsModule,  NgDragDropModule.forRoot()
+
 
   ],
   providers: [ SearchService, HttpService, RecentSearchService ],
