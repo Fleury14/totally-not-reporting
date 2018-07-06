@@ -1,0 +1,20 @@
+<h1>$ Revenue $</h1>
+<div class="revenue-top-row">
+    <div class="date-picker">
+        <form action="" (onSubmit)="submitYears()">
+            <mat-form-field class="revenue-year">
+                <input matInput type="number" name="startYear" ngModel placeholder="Starting Year">
+            </mat-form-field>
+            <mat-form-field class="revenue-year">
+                <input matInput type="number" name="endYear" [errorStateMatcher]="matcher" [formControl]="yearFormControl" ngModel placeholder="Ending year">
+                <mat-error *ngIf="yearFormControl.hasError('min')">
+                    Ending year must come after the start year.
+                </mat-error>
+            </mat-form-field>
+            <input type="submit" class="go-button" value="Go!">
+        </form>
+    </div>
+    <div class="revenue-desc">
+        <p>Select a starting year and an ending year and see some nifty revenue information about that time period.</p>
+    </div>
+</div>
