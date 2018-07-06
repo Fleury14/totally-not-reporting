@@ -1,4 +1,4 @@
-export interface CatergorySelection {
+export interface CategorySelection {
     name: string;
     ref: string;
     type: string;

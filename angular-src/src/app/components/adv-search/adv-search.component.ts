@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CatergorySelection } from '../../interfaces/category-selection';
+import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 @Component({
     selector: 'app-adv-search',
@@ -11,7 +11,7 @@ import { IDynamicRequest } from '../../interfaces/dynamic-request';
 export class AdvSearchComponent implements OnInit {
     @ViewChild('searchForm') private _searchForm: NgForm;
 
-    public searchCategory: CatergorySelection[] = [{
+    public searchCategory: CategorySelection[] = [{
         name: 'Budget',
         ref: 'budget',
         type: 'number'
@@ -57,13 +57,12 @@ export class AdvSearchComponent implements OnInit {
         type: 'number'
     }];
     fullFormGroup: FormGroup;
-    firstFormGroup: FormControl;
-    secondFormGroup: FormControl;
-    thirdFormGroup: FormControl;
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+    thirdFormGroup: FormGroup;
     droppedItems = [];
-    selection: true;
 
-    public selectedCategory: CatergorySelection;
+    public selectedCategory: CategorySelection;
     public categoryValueNum: number;
     public requestedColumns: IDynamicRequest = {
         adult: false,
@@ -81,20 +80,14 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-
-
-    constructor(private _formBuilder: FormBuilder) {
-    }
+    constructor(private _formBuilder: FormBuilder) {}
 
     ngOnInit() {
-      {
-      console.log('works');
       this.fullFormGroup = this._formBuilder.group({
         firstCtrl: ['', Validators.required]
       });
-      console.log(this.fullFormGroup);
     }
-  }
+
 
     public submit(value) {
         this.droppedItems.forEach(item => {
@@ -125,9 +118,9 @@ export class AdvSearchComponent implements OnInit {
       list.splice(index, 1);
     }
 
-    // public tableSearch(value) {
+    public tableSearch(value) {
 
-    // }
+    }
 
     public cardSearch(value) {
 
