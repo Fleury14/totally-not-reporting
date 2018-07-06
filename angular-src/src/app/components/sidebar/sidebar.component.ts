@@ -22,7 +22,6 @@ export class SideBarComponent implements DoCheck {
     ngDoCheck() {
         this.recentArray = this._recent.getSearchList();
         const screenSize = window.innerHeight;
-<<<<<<< HEAD
         if(screenSize < 800 ){
             this.sizedRecentArray = this.recentArray.slice(0,6);
         } else if(screenSize < 900){
@@ -32,17 +31,6 @@ export class SideBarComponent implements DoCheck {
 
         }else {
             this.sizedRecentArray = this.recentArray.slice(0,this.recentArray.length);
-=======
-        if (screenSize < 800 ) {
-            this.sizedRecentArray = this.recentArray.slice(0, 6);
-        } else if (screenSize < 900) {
-            this.sizedRecentArray = this.recentArray.slice(0, 8);
-        } else if (screenSize < 1000) {
-            this.sizedRecentArray = this.recentArray.slice(0, 10);
-
-        } else {
-            this.sizedRecentArray = this.recentArray.slice(0, this.recentArray.length);
->>>>>>> feat(adv-search): stepper w/ drag and drop
         }
     }
 
