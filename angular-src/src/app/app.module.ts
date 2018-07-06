@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import { ModalComponent } from './components/modal/modal.component';
 import { AppComponent } from './app.component';
@@ -26,7 +26,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
+    BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule, NgxChartsModule,
   ],
   providers: [ SearchService, HttpService, RecentSearchService  ],

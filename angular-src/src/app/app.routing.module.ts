@@ -6,6 +6,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { ResultComponent } from './components/results/results.component';
 import { ModalComponent } from './components/results/modal.component';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
+import { RevenueComponent } from './components/revenue-component/revenue.component';
 
 
 const routes: Route[] = [{
@@ -24,6 +25,10 @@ const routes: Route[] = [{
 {
     path: 'results-table',
     component: ResultsTableComponent
+},
+{
+    path: 'revenue',
+    component: RevenueComponent
 },
 {
     path: '',
@@ -48,4 +53,5 @@ const routes: Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent, ModalComponent, ResultsTableComponent];
+export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent,
+    ResultComponent, ModalComponent, ResultsTableComponent, RevenueComponent];

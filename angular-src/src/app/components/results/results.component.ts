@@ -27,7 +27,7 @@ export class ResultComponent implements OnInit {
       };
     public showLabels = true;
     public explodeSlices = false;
-    public doughnut = false;
+    public doughnut = true;
     public pieData:any;
 
     constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
