@@ -26,7 +26,17 @@
         <h3>Release Date</h3>
     </div>
     <div class="category">
-            <i class="fas fa-child fa-5x"></i>
+        <div class="pie">
+            <ngx-charts-pie-chart
+            [scheme]="colorScheme"
+            [results]="pieData"
+            [legend]="showLegend"
+            [explodeSlices]="explodeSlices"
+            [doughnut]="doughnut"
+            [gradient]="gradient"
+            (select)="onSelect($event)"
+            ></ngx-charts-pie-chart>
+        </div>
         <h3>Kid Friendly</h3>
     </div>
 </div>
