@@ -10,6 +10,7 @@ import { IDynamicRequest } from '../../interfaces/dynamic-request';
 
 export class AdvSearchComponent implements OnInit {
     @ViewChild('searchForm') private _searchForm: NgForm;
+
     public searchCategory: CatergorySelection[] = [{
         name: 'Budget',
         ref: 'budget',
@@ -59,6 +60,8 @@ export class AdvSearchComponent implements OnInit {
     firstFormGroup: FormControl;
     secondFormGroup: FormControl;
     thirdFormGroup: FormControl;
+    droppedItems = [];
+    selection: true;
 
     public selectedCategory: CatergorySelection;
     public categoryValueNum: number;
@@ -78,20 +81,9 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-    public items = [
-      {name: 'Apple', type: 'fruit'},
-      {name: 'Carrot', type: 'vegetable'},
-      {name: 'Orange', type: 'fruit'}];
-    public droppedItems: any;
 
-
-      onItemDrop(e: any) {
-        // Get the dropped data here
-        this.droppedItems.push(e.dragData);
-      }
 
     constructor(private _formBuilder: FormBuilder) {
-
     }
 
     ngOnInit() {
@@ -105,18 +97,39 @@ export class AdvSearchComponent implements OnInit {
   }
 
     public submit(value) {
+        this.droppedItems.forEach(item => {
+          this.requestedColumns[item.ref] = true;
+        });
         console.log('submitting...', value, this.requestedColumns);
         if (value.returnType === 'table') {
             this.tableSearch(value);
         } else if (value.returnType === 'cards') {
             this.cardSearch(value);
         }
+      }
+
+    onItemDrop(e: any) {
+      this.droppedItems.push(e.dragData);
+      console.log(this.droppedItems);
     }
 
-    public tableSearch(value) {
 
+    reset(value) {
+      this.removeItem(value, this.droppedItems);
     }
+
+    removeItem(item: any, list: Array<any>) {
+      const index = list.map(function (e) {
+        return e.name;
+      }).indexOf(item.name);
+      list.splice(index, 1);
+    }
+
+    // public tableSearch(value) {
+
+    // }
 
     public cardSearch(value) {
+
     }
 }

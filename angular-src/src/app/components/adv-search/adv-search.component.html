@@ -3,80 +3,7 @@
   <form class='fullFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
   <mat-vertical-stepper #stepper>
       <h1>Advanced Search</h1>
-
-    <!-- <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step> -->
     <mat-step [stepControl]='firstFormGroup'>
-<<<<<<< HEAD
-      <form [formGroup]='firstFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
-        <ng-template matStepLabel>Return Type:</ng-template>
-          <mat-radio-group class="return-type" name="returnType" ngModel>
-            <mat-radio-button value="table">Table</mat-radio-button>
-            <mat-radio-button value="cards">Cards</mat-radio-button>
-        </mat-radio-group>
-        <p class="small-font">Table will display the results you select in a traditional table. Cards will display a basic summary. Both formats will have the option to click on the result to get a detailed description.</p>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]='secondFormGroup'>
-      <form [formGroup]='secondFormGroup'>
-        <ng-template matStepLabel>Search By:</ng-template>
-        <mat-select placeholder="Category" name="category" class="category-select" ngModel [(value)]="selectedCategory">
-          <mat-option *ngFor="let option of searchCategory" [value]="option">{{option.name}}</mat-option>
-        </mat-select>
-        <mat-form-field *ngIf="selectedCategory?.type === 'text'">
-          <input matInput [placeholder]="selectedCategory.name" ngModel name="categoryValue" class="category-value">
-        </mat-form-field>
-        <mat-form-field *ngIf="selectedCategory?.type === 'number'" >
-          <input matInput [placeholder]="selectedCategory.name" type="number"ngModel name="categoryValue" class="category-value">
-        </mat-form-field>
-        <mat-select *ngIf="selectedCategory" placeholder="Order" name="order" ngModel class="search-order">
-          <mat-option value="ASC">Ascending</mat-option>
-          <mat-option value="DESC">Descending</mat-option>
-        </mat-select>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <!-- <mat-step [stepControl]='thirdFormGroup'>
-      <form [formGroup]='thirdFormGroup'>
-        <ng-template matStepLabel>Return The Following Data:</ng-template>
-        <div class="return-checks">
-          <div class="return-check-container" *ngFor="let column of searchCategory">
-            <mat-checkbox
-            [disabled]="searchForm?.controls.returnType?.value === 'cards'"
-            [(ngModel)]="requestedColumns[column.ref]"
-            [name]="column.ref"
-            >{{ column.name }}
-            </mat-checkbox>
-          </div>
-          <div class="return-check-container">
-            <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.adult" name="adult">Is Adult?</mat-checkbox>
-          </div>
-          <div class="return-check-container">
-            <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.movie_id" name="movie_id">Movie ID#</mat-checkbox>
-          </div>
-        </div>
-        <div class="submit-row">
-          <button mat-fab color="primary" type="submit">See Results!</button>
-          <button mat-fab color="secondary" (click)='stepper.reset()'>Reset Form</button>
-        </div>
-      </form>
-    </mat-step> -->
-=======
       <ng-template matStepLabel>Return Type:</ng-template>
         <mat-radio-group class="return-type" name="returnType" ngModel>
           <mat-radio-button value="table">Table*</mat-radio-button>
@@ -103,62 +30,47 @@
         <mat-option value="DESC">Descending</mat-option>
       </mat-select>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperPrevious (click)='reset(searchForm.value)'>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </mat-step>
-
-
-
-
-
-
-
     <mat-step [stepControl]='thirdFormGroup'>
       <ng-template matStepLabel>Return The Following Data:</ng-template>
-      <div class="return-checks">
-        <div class="return-check-container" *ngFor="let column of searchCategory">
-
-
-            <div>
-                <div class='wrapper'>
-                  <div class='container' [dragula]='"first-bag"'>
-                    <div>You can move these elements between these two containers</div>
-                    <div>Moving them anywhere else isn't quite possible</div>
-                    <div>There's also the possibility of moving elements around in the same container, changing their position</div>
-                  </div>
-                  <div class='container' [dragula]='"first-bag"'>
-                    <div>This is the default use case. You only need to specify the containers you want to use</div>
-                    <div>More interactive use cases lie ahead</div>
-                    <div>Make sure to check out the <a href='https://github.com/bevacqua/dragula#readme'>documentation on GitHub!</a></div>
-                  </div>
-                </div>
+      <div class="row">
+        <div class="col-sm-3 text">
+          <div class="card card-outline-success mb-3">
+            <div class="card-header card-inverse card-success">
+              Drag Selected Items to Drop Box
+            </div>
+            <br>
+            <div class="card-block scroll-list">
+              <div class="list-group">
+                <li class="list-group-item list-group-item-action list-group-item-success" [draggable] *ngFor="let column of searchCategory"
+                  [dragClass]="'active'" [dragData]="column"> {{column.name}}
+                </li>
               </div>
-          <mat-checkbox
-          [disabled]="searchForm?.controls.returnType?.value === 'cards'"
-          [(ngModel)]="requestedColumns[column.ref]"
-          [name]="column.ref"
-          >{{ column.name }}
-          </mat-checkbox>
+            </div>
+          </div>
         </div>
-        <div class="return-check-container">
-          <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.adult" name="adult">Is Adult?</mat-checkbox>
+        <div class="col-sm-3">
+            <div class="card card-outline-primary mb-3" droppable [dragHintClass]="'drag-hint'" (onDrop)="onItemDrop($event)">
+              <div class="card-header card-inverse card-primary">Drop Selected Items to Return</div>
+              <br>
+              <div class="card-block scroll-list">
+                  <li *ngFor="let column of droppedItems"
+                  [(ngModel)]="requestedColumns[column.ref]"
+                  [name]="column.ref" ngDefaultControl class="list-group-item">{{column.name}}</li>
+              </div>
+            </div>
         </div>
-        <div class="return-check-container">
-          <mat-checkbox [disabled]="searchForm?.controls.returnType?.value === 'cards'" [(ngModel)]="requestedColumns.movie_id" name="movie_id">Movie ID#</mat-checkbox>
-        </div>
+        <div class="col-sm-6"></div>
       </div>
-
-
-
-
 
       <div class="submit-row">
         <button mat-button matStepperSubmit type="submit">See Results!</button>
-        <button mat-button matStepperReset (click)='stepper.reset()'>Reset Form</button>
+        <button mat-button matStepperReset (click)='reset(searchForm.value)'>Reset Form</button>
       </div>
     </mat-step>
->>>>>>> feat: stepper with object
-  </mat-vertical-stepper>
+   </mat-vertical-stepper>
   </form>
 </main>
