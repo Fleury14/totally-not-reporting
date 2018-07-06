@@ -48,4 +48,5 @@ const routes: Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent, ModalComponent, ResultsTableComponent];
+export const RoutingComponents = [HomeComponent, AdvSearchComponent,
+  ErrorComponent, ResultComponent, ModalComponent, ResultsTableComponent];

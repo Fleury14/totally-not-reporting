@@ -1,3 +1,5 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 main {
     padding: 20px;
 }
@@ -9,7 +11,7 @@ mat-radio-group {
 }
 
 .small-font {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .row {
@@ -28,17 +30,49 @@ mat-radio-group {
     margin-bottom: 20px;
 }
 
-.return-check-container {
-    width: 25%;
-    display: inline-block;
-}
+// .return-check-container {
+//     width: 25%;
+//     display: inline-block;
+// }
 
 .submit-row {
     margin-top: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
 
+.basic-container {
+  padding: 30px;
+}
 
+// .version-info {
+//   font-size: 8pt;
+//   float: right;
+// }
+
+div.scroll-list {
+  overflow: auto;
+  max-height: 70vh;
+}
+
+.drag-over {
+  border: #ff525b dashed 2px;
+}
+
+.drag-hint {
+  border: #ffc100 dashed 2px;
+}
+
+.drag-target-border {
+  border: #00bfff dashed 2px;
+}
+
+// .drag-target-border-green {
+//   border: #3c763d dashed 2px;
+// }
