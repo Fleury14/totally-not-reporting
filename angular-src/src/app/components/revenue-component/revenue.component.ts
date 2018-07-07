@@ -94,7 +94,6 @@ export class RevenueComponent implements OnInit {
        document.querySelector('.revenue-top-row').classList.toggle('hide-stuff');
        document.querySelector('.toggle-year').classList.toggle('hide-stuff');
        this.showResults = !this.showResults;
-       console.log(`show results is now ${this.showResults}`);
    }
 
    private snackBarMessage(message: string) {
@@ -123,7 +122,7 @@ export class RevenueComponent implements OnInit {
                 this.pieData[0].value++;
             }
         });
-        console.log('pie data', this.pieData);
+        // console.log('pie data', this.pieData);
         Object.assign(this, this.pieData)
     }
 
@@ -171,7 +170,7 @@ export class RevenueComponent implements OnInit {
             };
             this.barDataTwo.push(peakObj);
         }
-        console.log('bar data', this.barData);
+        // console.log('bar data', this.barData);
     }
 
     private _treeData(movies:IMovie[]) {
@@ -186,7 +185,7 @@ export class RevenueComponent implements OnInit {
             this.treeData.push({name: `${otherLength} others`, value: sum});
         }
         this.treeData.splice(20);
-        console.log('tree data lol', this.treeData);
+        // console.log('tree data lol', this.treeData);
     }
 
     private _heatMapSetup(startYear: number, endYear: number, movies:IMovie[]) {
