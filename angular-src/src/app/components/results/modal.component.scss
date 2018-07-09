@@ -1,0 +1,19 @@
+
+.full-star:before {
+  content: "\2605";
+  position: absolute;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.span {
+  display: inline-block;
+  position: relative;
+  widows: 1.1em;
+  font-size: 40px;
+}

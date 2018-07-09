@@ -59,12 +59,4 @@
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
     </table>
-        <div class="rating" (mouseenter)="isHover = true" (mouseleave)="isHover = false">
-          <!-- Since you're using rtl to make it work the ngClass is also rtl. -->
-          <span (click)="rate(5)" [ngClass]="{'full-star': rating >= 5 && !isHover}">☆</span>
-          <span (click)="rate(4)" [ngClass]="{'full-star': rating >= 4 && !isHover}">☆</span>
-          <span (click)="rate(3)" [ngClass]="{'full-star': rating >= 3 && !isHover}">☆</span>
-          <span (click)="rate(2)" [ngClass]="{'full-star': rating >= 2 && !isHover}">☆</span>
-          <span (click)="rate(1)" [ngClass]="{'full-star': rating >= 1 && !isHover}">☆</span>
-        </div>
 </div>
