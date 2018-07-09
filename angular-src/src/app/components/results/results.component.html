@@ -1,6 +1,7 @@
 <!-- <h1>Search Results</h1> -->
 <button *ngIf="storedResults" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
-<div class="pie" *ngIf="storedResults">
+<button *ngIf="storedResults" routerLink="../revenue" mat-raised-button color="primary" class="center-button">Revenue information</button>
+<!-- <div class="pie" *ngIf="storedResults">
     <ngx-charts-pie-chart
     [scheme]="colorScheme"
     [results]="pieData"
@@ -10,7 +11,7 @@
     [gradient]="gradient"
     (select)="onSelect($event)"
     ></ngx-charts-pie-chart>
-</div>
+</div> -->
 <div class="grid-container">
     <div class="search-result" *ngFor="let result of storedResults?.data">
         <div class="top" (click)="showMovieModal(result)">

@@ -5,7 +5,7 @@ h1 {
 .revenue-top-row {
     display: flex;
     height: 400px;
-    transition: 0.5 all;
+    transition: 0.5s all;
 }
 
 .date-picker {
@@ -44,7 +44,7 @@ h1 {
 }
 
 .revenue-desc {
-    width: 70&;
+    width: 70%;
     min-width: 350px;
     height: 100%;
     display: flex;
