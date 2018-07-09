@@ -34,12 +34,27 @@
         </div>
     </div>
     <div class="category"> 
-            <i class="fas fa-clock fa-5x"></i>
         <h3>Runtime</h3>
+        <div class="runtime-bubble">
+            <ngx-charts-bubble-chart
+            [scheme]="multiColorScheme"
+            [results]="runtimeData">
+            </ngx-charts-bubble-chart>
+        </div>
     </div>
-    <div class="category"> <!-- bar graph-->
-            <i class="fas fa-calendar-alt fa-5x"></i>
+    <div id="release-date"class="category"> <!-- bar graph-->
         <h3>Release Date</h3>
+        <div class="budget-bar">
+            <ngx-charts-bar-vertical
+            [scheme]="whiteColorScheme"
+            [results]="budgetData"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
     </div>
     <div class="category pie-chart">
         <div class="title">
