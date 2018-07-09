@@ -37,7 +37,6 @@ export class ResultComponent implements OnInit {
             this._rawResults = results.result;
 
             this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
-            console.log(this.storedResults);
         });
 
         this._search.refreshResults();
