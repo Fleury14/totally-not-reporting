@@ -16,6 +16,7 @@ export async function actorSearch(req: Request, res: Response, next: NextFunctio
                     message: "Search results",
                     result: resp,
                     query: query,
+                    endpoint: 'actor-search',
                     category: 'cast',
                     search: req.body.search
                 })

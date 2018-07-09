@@ -1,0 +1,18 @@
+.center-button {
+    margin: 20px auto;
+    display: block;
+}
+
+.results-table.mat-table mat-header-row,
+.results-table.mat-table mat-row {
+  padding: 0 24px 0 0;
+}
+
+.results-table.mat-table mat-header-cell,
+.results-table.mat-table mat-cell {
+  padding: 0 0 0 24px;
+}
+
+.results-table {
+  font-size: 8px;
+}

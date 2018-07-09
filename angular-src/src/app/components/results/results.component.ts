@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs';
-import { MatPaginator, MatTableDataSource, PageEvent, MatSort } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { IMovie } from '../../interfaces/movie';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ModalComponent } from './modal.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-result',
@@ -17,40 +18,26 @@ export class ResultComponent implements OnInit {
     public storedResults: any;
     private _rawResults: any;
     public resultSub: Subscription;
-    public columnsToDisplay: String[] = [];
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
-    pageEvent: PageEvent;
-    public pageSize = 10;
-    public pageSizeOptions = [5, 10, 20];
+    
+    // piechart options
+    public showLegend = true;
+    public view: any[] = [700, 400];
+    public colorScheme = {
+        domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+      };
+    public showLabels = true;
+    public explodeSlices = false;
+    public doughnut = true;
+    public pieData:any;
 
-    constructor(private _search: SearchService, public dialog: MatDialog) {}
+    constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
 
     ngOnInit(): void {
         this._search.resultsSubscription().subscribe(results => {
             this._rawResults = results.result;
-            // console.log(this.storedResults);
 
-            this.columnsToDisplay = [];
-            for (const key in this._rawResults[0]) {
-                if (this._rawResults[0][key]) {
-                    this.columnsToDisplay.push(key);
-                }
-            }
-            // console.log('final columns to display', this.columnsToDisplay);
-            this.columnsToDisplay.sort(function(a, b) {
-
-                const subjectOrder: String[] = ['title', 'tagline', 'release_date', 'original_title', 'budget',
-                'revenue', 'runtime', 'overview', 'popularity', 'adult', 'vote_average', 'vote_count', 'movie_id'];
-
-                return subjectOrder.indexOf(a) - subjectOrder.indexOf(b);
-            });
             this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
-            // console.log('sort', this.sort);
-            this.storedResults.sort = this.sort;
-            this.storedResults.paginator = this.paginator;
-            // console.log(this.storedResults);
-            console.log(this.storedResults.data.overview);
+            this.setPieChart();
         });
 
         this._search.refreshResults();
@@ -69,11 +56,42 @@ export class ResultComponent implements OnInit {
     }
 
     showMovieModal(movie: any): void {
-        console.log(movie);
         const openModal = this.dialog.open( ModalComponent, {
           width: '700px',
           height: '650px',
           data: movie
         });
       }
+
+      tableView() {
+        this._router.navigate(['results-table']);
+      }
+
+    public setPieChart() {
+        this.pieData = [{
+            name: "Under 50 million",
+            value: 0
+        },{
+            name: "Between 50 and 150 million",
+            value: 0
+        }, {
+            name: "Over 150 million",
+            value: 0
+        }]
+        this._rawResults.forEach( (movie:IMovie) => {
+            if (movie.revenue > 150000000) {
+                this.pieData[2].value++;
+            } else if (movie.revenue > 50000000 ) {
+                this.pieData[1].value++;
+            } else if (movie.revenue > 0) {
+                this.pieData[0].value++;
+            }
+        });
+        console.log('pie data', this.pieData);
+        Object.assign(this, this.pieData)
+    }
+
+    onSelect(event) {
+        console.log(event);
+    }
 }
