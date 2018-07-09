@@ -7,10 +7,10 @@ import { ResultComponent } from './components/results/results.component';
 import { ModalComponent } from './components/results/modal.component';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
+import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
 
 
 const routes: Route[] = [{
-
     path: 'home',
     component: HomeComponent
 },
@@ -29,6 +29,10 @@ const routes: Route[] = [{
 {
     path: 'revenue',
     component: RevenueComponent
+},
+{
+    path: 'release',
+    component: ReleaseChartComponent
 },
 {
     path: '',
@@ -54,4 +58,4 @@ const routes: Route[] = [{
 export class AppRoutingModule {}
 
 export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent,
-    ResultComponent, ModalComponent, ResultsTableComponent, RevenueComponent];
+    ResultComponent, ModalComponent, ResultsTableComponent, RevenueComponent, ReleaseChartComponent];
