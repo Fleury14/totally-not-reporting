@@ -69,7 +69,7 @@ export class RevenueComponent implements OnInit {
 
     ngOnInit(): void {
         this._search.resultsSubscription().subscribe(response => {
-            console.log('search results from service', response);
+            // console.log('search results from service', response);
             if (response.result) {
                 this.searchResults = response.result;
                 this.toggleDisplay();
@@ -102,7 +102,7 @@ export class RevenueComponent implements OnInit {
         } );
         const firstYear = new Date(searchData[0].release_date);
         const lastYear = new Date (searchData[searchData.length - 1].release_date);
-        console.log(`start year: ${firstYear.getFullYear()}, end year: ${lastYear.getFullYear()}`);
+        // console.log(`start year: ${firstYear.getFullYear()}, end year: ${lastYear.getFullYear()}`);
         return {start: firstYear.getFullYear(), end: lastYear.getFullYear()}
     }
 

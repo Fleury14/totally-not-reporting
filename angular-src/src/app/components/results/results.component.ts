@@ -87,7 +87,7 @@ export class ResultComponent implements OnInit {
                 this.pieData[0].value++;
             }
         });
-        console.log('pie data', this.pieData);
+        // console.log('pie data', this.pieData);
         Object.assign(this, this.pieData)
     }
 
