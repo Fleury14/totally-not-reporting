@@ -31,10 +31,12 @@ p {
         padding-right: 20px;
     }
 }
+
 .grid-container{
     // grid-gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: 200px repeat(auto-fill, minmax(350px, 1fr) 300px);
 }
+
 .flex-container{
     flex-wrap: wrap;
     align-content: space-around;
@@ -87,13 +89,14 @@ p {
     grid-area: info;
     position: relative;
 }
-.rating{
-    position: absolute;
-    right: 0px;
-    margin: 11px 17px 0px 0px;
-    font-size: 15px;
 
-}
+// .rating{
+//     position: absolute;
+//     right: 0px;
+//     margin: 11px 17px 0px 0px;
+//     font-size: 15px;
+// }
+
 .title{
     margin: 10px 15px 0px 15px;
     font-size: 20px;
