@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import { ModalComponent } from './components/modal/modal.component';
 import { AppComponent } from './app.component';
@@ -20,17 +20,19 @@ import { HttpService } from './services/http.service';
 import { RecentSearchService } from './services/recent-search.service';
 import { AppMaterialModule } from './material.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { RevenueComponent } from './components/revenue-component/revenue.component';
+import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, AppMaterialModule,
+    BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule, NgxChartsModule,
   ],
   providers: [ SearchService, HttpService, RecentSearchService  ],
-  entryComponents: [ ModalComponent ],
+  entryComponents: [ ModalComponent, RevenueComponent ],
 
   bootstrap: [AppComponent]
 })

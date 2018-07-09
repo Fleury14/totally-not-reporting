@@ -73,6 +73,18 @@ export class SearchService {
         );
     }
 
+    public getYearRange(startYear: number, endYear: number, returnType?: IDynamicRequest) {
+        const payload = {
+            startYear: startYear,
+            endYear: endYear
+        }
+        return this._http.post('get-year-range', payload).pipe(
+            map( (response) => {
+                return this._mapResults(response, returnType);
+            })
+        )
+    }
+
     public getByYearSearch(search: any, returnType?: IDynamicRequest) {
         const payload = {
             search: search
@@ -80,6 +92,14 @@ export class SearchService {
         return this._http.post('get-by-year', payload).pipe(
             map( (response) => {
                 return this._mapResults(response, returnType);
+            })
+        );
+    }
+
+    public getCountOfYear(search: any){
+        return this._http.post('count-by-year', search).pipe(
+            map( (response) => {
+                return response
             })
         );
     }
