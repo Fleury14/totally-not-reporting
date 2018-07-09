@@ -16,18 +16,23 @@ export class HomeComponent implements OnInit{
     public pieData:any;
     public budgetData: any;
 
-
+    //  kid friendly
     public showLegend = false;
-    // public view: any[] = [500, 400];
     public colorScheme = {
         domain: ['#6FC5C1', '#C5354B', '#FFB544', '#99C56F']
       };
     public showLabels = false;
     public explodeSlices = false;
     public doughnut = false;
-    public legendTitle = '';
-    // public pieData:any;
 
+    // budget
+    public budgetColorScheme = {
+        domain: ['#fff']
+    };
+    public xAxis = true;
+    public yAxis = true;
+    public showXAxis = true;
+    public showYAxis = true;
 
     public setPieChart() {
         this.pieData = [{
@@ -44,14 +49,26 @@ export class HomeComponent implements OnInit{
     }
     public setBudgetData() {
         this.budgetData =[{
-            name: "Over 1 million",
+            name: "1",
             value: 5422
         },{
-            name: "Over 500 thousand",
+            name: "2",
             value: 8912
         },{
-            name: "Less than 500 thousand",
-            value: 200
+            name: "3",
+            value: 2500
+        },{
+            name: "4",
+            value: 3652
+        },{
+            name: "5",
+            value: 924
+        },{
+            name: "6",
+            value: 1623
+        },{
+            name: "7",
+            value: 963
         }];
 
         console.log('budget data', this.budgetData);
