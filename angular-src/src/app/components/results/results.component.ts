@@ -43,7 +43,7 @@ export class ResultComponent implements OnInit {
         this._search.refreshResults();
     }
 
-    public stringCutoff(string: string, maxLength){
+    public stringCutoff(string: string, maxLength) {
         if (!string) { return string; } else {
           if (string.length <= maxLength) {
             const result = string.substr(0, maxLength);
@@ -77,7 +77,7 @@ export class ResultComponent implements OnInit {
             name: 'Over 150 million',
             value: 0
         }];
-        this._rawResults.forEach( (movie:IMovie) => {
+        this._rawResults.forEach( (movie: IMovie) => {
             if (movie.revenue > 150000000) {
                 this.pieData[2].value++;
             } else if (movie.revenue > 50000000 ) {
