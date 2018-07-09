@@ -20,10 +20,11 @@ import { HttpService } from './services/http.service';
 import { RecentSearchService } from './services/recent-search.service';
 import { AppMaterialModule } from './material.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ReleaseChartComponent } from './release-chart/release-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,

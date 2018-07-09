@@ -83,4 +83,13 @@ export class SearchService {
             })
         );
     }
+
+    public getCountOfYear(search: any){
+        return this._http.post('count-by-year', search).pipe(
+            map( (response) => {
+                console.log('res', response)
+                return response
+            })
+        );
+    }
 }
