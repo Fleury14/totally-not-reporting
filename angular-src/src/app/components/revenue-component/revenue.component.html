@@ -1,6 +1,8 @@
 <h1>$ Revenue $</h1>
 <div class="revenue-top-row">
-    <div class="date-picker">
+    <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
+    <button class="go-button" (click)="submitYears()">Go!</button>
+    <!-- <div class="date-picker">
         <form action="" (ngSubmit)="submitYears(yearForm.value)" #yearForm="ngForm">
             <mat-form-field class="revenue-year">
                 <input matInput type="number" name="startYear" ngModel placeholder="Starting Year">
@@ -10,8 +12,8 @@
             </mat-form-field>
             <input type="submit" class="go-button" value="Go!">
         </form>
-    </div>
-    <div class="revenue-desc">
+    </div> -->
+    <div class="revenue-desc text-center">
         <p>Select a starting year and an ending year and see some nifty revenue information about that time period.</p>
     </div>
 </div>
