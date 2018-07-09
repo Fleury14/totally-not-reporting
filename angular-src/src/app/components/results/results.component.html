@@ -26,6 +26,11 @@
               <i class="far fa-star"></i> <!-- unselected -->
               <i class="fas fa-star"></i> <!-- selected -->
             </a>
+            <ul>
+              <li *ngFor="let ratings of Rating">
+                {{ratings}}
+              </li>
+            </ul>
         </div>
     </div>
 </div>

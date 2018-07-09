@@ -94,3 +94,13 @@ export class ResultComponent implements OnInit {
         console.log(event);
     }
 }
+
+export class Rating {
+  public ratings;
+  public isHover = false;
+  constructor() {
+    this.ratings = Array(5).fill(4).map((x, i) => i); // [0,1,2,3,4]
+    this.ratings = Array(5).fill(4); // [4,4,4,4,4]
+  }
+  rate = (r) => (this.ratings = r);
+}
