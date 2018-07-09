@@ -10,7 +10,7 @@
     </form>
 </div>
 
-<div *ngIf="releases.length>0">
+<div *ngIf="releases.length > 0">
   <ngx-charts-bar-vertical
     [view]="view"
     [scheme]="colorScheme"
@@ -21,7 +21,6 @@
     [showYAxisLabel]="showYAxisLabel"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
-    [yScaleMax]= "yMax"
     (select)="onSelect($event)">
   </ngx-charts-bar-vertical>
 </div>

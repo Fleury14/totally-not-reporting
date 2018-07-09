@@ -19,9 +19,6 @@ export class ReleaseChartComponent implements OnInit {
   public showYAxisLabel = true;
   public yAxisLabel = 'Number of Movies';
   public releases: any[];
-  public yMax:number;
-
-
   public colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
