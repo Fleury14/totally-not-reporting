@@ -13,7 +13,7 @@
         <h3>Budget</h3>
         <div class="budget-bar">
             <ngx-charts-bar-vertical
-            [scheme]="budgetColorScheme"
+            [scheme]="whiteColorScheme"
             [results]="budgetData"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
@@ -23,9 +23,15 @@
             </ngx-charts-bar-vertical>
         </div>
     </div>
-    <div class="category">
-        <i class="fas fa-hand-holding-usd fa-5x"></i> <!-- tree map-->
+    <div id="revenue" class="category"> <!-- tree map-->
         <h3>Revenue</h3>
+        <div class="revenue-tree">
+            <ngx-charts-tree-map
+            [scheme]="multiColorScheme"
+            [results]="budgetData">
+
+            </ngx-charts-tree-map>
+        </div>
     </div>
     <div class="category"> 
             <i class="fas fa-clock fa-5x"></i>
@@ -42,7 +48,7 @@
         <div class="pie">
             <ngx-charts-pie-chart
             [legendTitle]="legendTitle"
-            [scheme]="colorScheme"
+            [scheme]="multiColorScheme"
             [results]="pieData"
             [legend]="showLegend"
             [explodeSlices]="explodeSlices"

@@ -12,27 +12,34 @@ export class HomeComponent implements OnInit{
         this.setPieChart();
         this.setBudgetData();
     }
-
     public pieData:any;
     public budgetData: any;
+    public revenueData: any;
+
+
+    //global 
+    public multiColorScheme = {
+        domain: ['#6FC5C1', '#C5354B', '#FFB544', '#99C56F']
+      };
+    public whiteColorScheme = {
+        domain: ['#fff']
+    };
 
     //  kid friendly
     public showLegend = false;
-    public colorScheme = {
-        domain: ['#6FC5C1', '#C5354B', '#FFB544', '#99C56F']
-      };
     public showLabels = false;
     public explodeSlices = false;
     public doughnut = false;
 
     // budget
-    public budgetColorScheme = {
-        domain: ['#fff']
-    };
     public xAxis = true;
     public yAxis = true;
     public showXAxis = true;
     public showYAxis = true;
+
+    //revenue
+
+
 
     public setPieChart() {
         this.pieData = [{
