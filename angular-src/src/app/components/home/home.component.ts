@@ -9,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class HomeComponent implements OnInit{
     ngOnInit(): void {
-        this.setPieChart();
+        //different graph methods
         this.setBudgetData();
+        this.setRevenueData();
         this.setRuntimeData();
+        this.setReleaseDateData();
+        this.setKidFriendlyData();
     }
-
+    // different graph variables
     public budgetData: any;
     public revenueData: any;
     public runtimeData: any;
@@ -48,20 +51,6 @@ export class HomeComponent implements OnInit{
     public doughnut = false;
 
 
-
-    public setPieChart() {
-        this.kidFriendlyData = [{
-            name: "Yes",
-            value: 6306
-
-        },{
-            name: "No",
-            value: 1527
-        }];
-
-        console.log('pie data', this.kidFriendlyData);
-        Object.assign(this, this.kidFriendlyData);
-    }
     public setBudgetData() {
         this.budgetData =[{
             name: "1",
@@ -94,10 +83,36 @@ export class HomeComponent implements OnInit{
             name: "10",
             value: 4520
         }];
-
-        console.log('budget data', this.budgetData);
-        Object.assign(this, this.budgetData);
     }
+
+    public setRevenueData(){
+        this.revenueData = [{
+            name: "1",
+            value: 5421
+        },{
+            name: "2",
+            value: 8912
+        },{
+            name: "3",
+            value: 2500
+        },{
+            name: "4",
+            value: 3652
+        },{
+            name: "5",
+            value: 924
+        },{
+            name: "6",
+            value: 1623
+        },{
+            name: "7",
+            value: 963
+        },{
+            name: "8",
+            value: 3692
+        }];
+    }
+
     public setRuntimeData() {
         this.runtimeData = [
             {
@@ -193,8 +208,50 @@ export class HomeComponent implements OnInit{
               ]
             }
           ]
+    }
 
-        console.log('pie data', this.runtimeData);
-        Object.assign(this, this.runtimeData);
+    public setReleaseDateData(){
+        this.releaseDateData = [{
+            name: "1",
+            value: 5422
+        },{
+            name: "2",
+            value: 8912
+        },{
+            name: "3",
+            value: 2500
+        },{
+            name: "4",
+            value: 3652
+        },{
+            name: "5",
+            value: 924
+        },{
+            name: "6",
+            value: 1623
+        },{
+            name: "7",
+            value: 5963
+        },{
+            name: "8",
+            value: 3692
+        },{
+            name: "9",
+            value: 2952
+        },{
+            name: "10",
+            value: 9520
+        }];
+    }
+
+    public setKidFriendlyData() {
+        this.kidFriendlyData = [{
+            name: "Yes",
+            value: 6306
+
+        },{
+            name: "No",
+            value: 1527
+        }];
     }
 }
