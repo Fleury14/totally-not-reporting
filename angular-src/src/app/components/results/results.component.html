@@ -1,7 +1,12 @@
 <!-- <h1>Search Results</h1> -->
-<button *ngIf="storedResults" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
-<button *ngIf="storedResults" routerLink="../revenue" mat-raised-button color="primary" class="center-button">Revenue information</button>
+
+<h1 class="text-center bummer" *ngIf="!storedResults || storedResults.data.length === 0">
+    No results found. Bummer.
+</h1>
+<button *ngIf="storedResults?.length > 0" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
+<button *ngIf="storedResults?.length > 0" routerLink="../revenue" mat-raised-button color="primary" class="center-button">Revenue information</button>
 <!-- <div class="pie" *ngIf="storedResults">
+
     <ngx-charts-pie-chart
     [scheme]="colorScheme"
     [results]="pieData"
