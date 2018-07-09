@@ -13,10 +13,12 @@ export class HomeComponent implements OnInit{
         this.setBudgetData();
         this.setRuntimeData();
     }
-    public pieData:any;
+
     public budgetData: any;
     public revenueData: any;
     public runtimeData: any;
+    public releaseDateData: any;
+    public kidFriendlyData:any;
 
 
     //global 
@@ -27,12 +29,6 @@ export class HomeComponent implements OnInit{
         domain: ['#fff']
     };
 
-    //  kid friendly
-    public showLegend = false;
-    public showLabels = false;
-    public explodeSlices = false;
-    public doughnut = false;
-
     // budget
     public xAxis = true;
     public yAxis = true;
@@ -41,10 +37,20 @@ export class HomeComponent implements OnInit{
 
     //revenue
 
+    //runtime
+    
+    //release date
+
+    //  kid friendly
+    public showLegend = false;
+    public showLabels = false;
+    public explodeSlices = false;
+    public doughnut = false;
+
 
 
     public setPieChart() {
-        this.pieData = [{
+        this.kidFriendlyData = [{
             name: "Yes",
             value: 6306
 
@@ -53,8 +59,8 @@ export class HomeComponent implements OnInit{
             value: 1527
         }];
 
-        console.log('pie data', this.pieData);
-        Object.assign(this, this.pieData);
+        console.log('pie data', this.kidFriendlyData);
+        Object.assign(this, this.kidFriendlyData);
     }
     public setBudgetData() {
         this.budgetData =[{
@@ -188,7 +194,7 @@ export class HomeComponent implements OnInit{
             }
           ]
 
-        console.log('pie data', this.pieData);
-        Object.assign(this, this.pieData);
+        console.log('pie data', this.runtimeData);
+        Object.assign(this, this.runtimeData);
     }
 }
