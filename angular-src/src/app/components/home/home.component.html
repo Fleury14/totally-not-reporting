@@ -9,7 +9,7 @@
     </div>
 </main> -->
 <div class="grid-container">
-    <div id="budget" class="category">
+    <div id="budget" class="category" routerLink="../budget">
         <h3>Budget</h3>
         <div class="budget-bar">
             <ngx-charts-bar-vertical
@@ -23,26 +23,28 @@
             </ngx-charts-bar-vertical>
         </div>
     </div>
-    <div id="revenue" class="category"> <!-- tree map-->
+    <div id="revenue" class="category" routerLink="../revenue"> <!-- tree map-->
         <h3>Revenue</h3>
         <div class="revenue-tree">
             <ngx-charts-tree-map
             [scheme]="multiColorScheme"
+            [valueFormatting]="millions"
             [results]="revenueData">
-
+            
             </ngx-charts-tree-map>
         </div>
     </div>
-    <div class="category"> 
+    <div class="category" routerLink="../run-time"> 
         <h3>Runtime</h3>
         <div class="runtime-bubble">
             <ngx-charts-bubble-chart
             [scheme]="multiColorScheme"
+            [xScaleMin]="1950"
             [results]="runtimeData">
             </ngx-charts-bubble-chart>
         </div>
     </div>
-    <div id="release-date"class="category"> <!-- bar graph-->
+    <div id="release-date"class="category" routerLink="../release"> <!-- bar graph-->
         <h3>Release Date</h3>
         <div class="budget-bar">
             <ngx-charts-bar-vertical
