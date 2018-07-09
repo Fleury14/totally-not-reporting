@@ -19,6 +19,26 @@ export class RevenueComponent implements OnInit {
     public searchResults: IMovie[];
     public showResults = false;
 
+    // SLIDER OPTIONS
+    public yearValue = [1990, 1995]
+    public sliderConfig: any = {
+        behaviour: 'drag',
+        connect: true,
+        margin: 1,
+        limit: 5, // NOTE: overwritten by [limit]="10"
+        step: 1,
+        range: {
+          min: 1960,
+          max: 2017
+        },
+        pips: {
+            mode: 'count',
+            density: 2,
+            values: 7,
+            stepped: true
+        }
+      };
+
     // PIE CHART OPTIONS
      public showLegend = true;
      public view: any[] = [700, 400];
@@ -81,7 +101,11 @@ export class RevenueComponent implements OnInit {
     }
 
 
-   public submitYears(yearFormValues) {
+   public submitYears() {
+       let yearFormValues = {
+           startYear: this.yearValue[0],
+           endYear: this.yearValue[1]
+       };
        if (yearFormValues.startYear > yearFormValues.endYear) {
            this.snackBarMessage('Ending year needs to come after the starting year')
        } else {
