@@ -10,18 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit{
     ngOnInit(): void {
         this.setPieChart();
+        this.setBudgetData();
     }
 
     public pieData:any;
-    private _rawResults: any;
+    public budgetData: any;
+
+
     public showLegend = false;
-    public view: any[] = [700, 400];
+    // public view: any[] = [500, 400];
     public colorScheme = {
-        domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+        domain: ['#6FC5C1', '#C5354B', '#FFB544', '#99C56F']
       };
-    public showLabels = true;
+    public showLabels = false;
     public explodeSlices = false;
     public doughnut = false;
+    public legendTitle = '';
     // public pieData:any;
 
 
@@ -32,18 +36,25 @@ export class HomeComponent implements OnInit{
 
         },{
             name: "No",
-            value: 527
+            value: 1527
         }];
-        // this._rawResults.forEach( (movie:IMovie) => {
-        //     if (movie.revenue > 150000000) {
-        //         this.pieData[2].value++;
-        //     } else if (movie.revenue > 50000000 ) {
-        //         this.pieData[1].value++;
-        //     } else if (movie.revenue > 0) {
-        //         this.pieData[0].value++;
-        //     }
-        // });
+
         console.log('pie data', this.pieData);
         Object.assign(this, this.pieData);
+    }
+    public setBudgetData() {
+        this.budgetData =[{
+            name: "Over 1 million",
+            value: 5422
+        },{
+            name: "Over 500 thousand",
+            value: 8912
+        },{
+            name: "Less than 500 thousand",
+            value: 200
+        }];
+
+        console.log('budget data', this.budgetData);
+        Object.assign(this, this.budgetData);
     }
 }

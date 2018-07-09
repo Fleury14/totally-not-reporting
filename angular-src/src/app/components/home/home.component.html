@@ -10,8 +10,22 @@
 </main> -->
 <div class="grid-container">
     <div class="category">
-        <i class="fas fa-file-invoice-dollar fa-5x"></i>
-        <h3>Budget</h3>
+        <div class="budget-bar">
+            <ngx-charts-bar-vertical
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="single"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
     </div>
     <div class="category">
         <i class="fas fa-hand-holding-usd fa-5x"></i>
@@ -25,9 +39,13 @@
             <i class="fas fa-calendar-alt fa-5x"></i>
         <h3>Release Date</h3>
     </div>
-    <div class="category">
+    <div class="category pie-chart">
+        <div class="title">
+            <h3>Kid Friendly</h3>
+        </div>
         <div class="pie">
             <ngx-charts-pie-chart
+            [legendTitle]="legendTitle"
             [scheme]="colorScheme"
             [results]="pieData"
             [legend]="showLegend"
@@ -37,6 +55,5 @@
             (select)="onSelect($event)"
             ></ngx-charts-pie-chart>
         </div>
-        <h3>Kid Friendly</h3>
     </div>
 </div>
