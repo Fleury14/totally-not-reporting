@@ -15,7 +15,7 @@
         <p>Select a starting year and an ending year and see some nifty revenue information about that time period.</p>
     </div>
 </div>
-<button mat-raised-button color="primary" (click)="toggleDisplay()" class="toggle-year hide-stuff">Input New Years</button>
+<button mat-raised-button color="primary" (click)="toggleDisplay(true)" class="toggle-year hide-stuff">Input New Years</button>
 <div class="results-field" *ngIf="this.showResults">
         <div class="pie">
             <ngx-charts-advanced-pie-chart

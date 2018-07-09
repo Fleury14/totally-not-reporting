@@ -68,6 +68,16 @@ export class RevenueComponent implements OnInit {
     constructor(private _search: SearchService, public snackBar: MatSnackBar) {}
 
     ngOnInit(): void {
+        this._search.resultsSubscription().subscribe(response => {
+            // console.log('search results from service', response);
+            if (response.result) {
+                this.searchResults = response.result;
+                this.toggleDisplay();
+                const years = this._getFirstAndLastYear(response.result)
+                this._initializeGraphs(years.start, years.end, response.result);
+            }
+        });
+        this._search.refreshResults();
     }
 
 
@@ -78,19 +88,39 @@ export class RevenueComponent implements OnInit {
         this.toggleDisplay();
         this._search.getYearRange(yearFormValues.startYear, yearFormValues.endYear).pipe( take(1) ).subscribe(response => {
             this.searchResults = response.result;
-            this.setPieChart();
-            this.topFive = this._getTopFive(this.searchResults);
-            this._organizeBarData(yearFormValues.startYear, yearFormValues.endYear, this.searchResults);
-            this._treeData(this.searchResults);
-            this._heatMapSetup(yearFormValues.startYear, yearFormValues.endYear, this.searchResults);
+            this._initializeGraphs(yearFormValues.startYear, yearFormValues.endYear, this.searchResults);
             // console.log(response);
         });
-       }
-       
-       
+       }    
    }
 
-   public toggleDisplay() {
+    private _getFirstAndLastYear(searchData:IMovie[]) {
+        searchData.sort( (a, b) => {
+            const aDate = new Date(a.release_date);
+            const bDate = new Date(b.release_date);
+            return aDate.getFullYear() - bDate.getFullYear();
+        } );
+        const firstYear = new Date(searchData[0].release_date);
+        const lastYear = new Date (searchData[searchData.length - 1].release_date);
+        // console.log(`start year: ${firstYear.getFullYear()}, end year: ${lastYear.getFullYear()}`);
+        return {start: firstYear.getFullYear(), end: lastYear.getFullYear()}
+    }
+
+    private _initializeGraphs(startYear:number, endYear:number, data:IMovie[]) {
+        this.setPieChart();
+        this.topFive = this._getTopFive(data);
+        this._organizeBarData(startYear, endYear, data);
+        this._treeData(data);
+        this._heatMapSetup(startYear, endYear, data);
+    }
+
+   public toggleDisplay(button?: boolean) {
+    //    account for someone coming to the revenue component a second time, but if toggle is triggered from the button, it passes true, skipping this part
+       if (!button && this.searchResults && document.querySelector('.revenue-top-row').classList.contains('hide-stuff')) { 
+            this.showResults = !this.showResults;
+            return; 
+        }
+        
        document.querySelector('.revenue-top-row').classList.toggle('hide-stuff');
        document.querySelector('.toggle-year').classList.toggle('hide-stuff');
        this.showResults = !this.showResults;
@@ -155,6 +185,7 @@ export class RevenueComponent implements OnInit {
                 const dateCheck = new Date(movie.release_date);
                 return dateCheck.getFullYear() === year;
             });
+            if (yearData.length === 0) { continue; }
             let yearlyRevenues:number[] = [];
             yearData.forEach(movie => yearlyRevenues.push(movie.revenue));
             const yearPeak = Math.max(...yearlyRevenues);
@@ -195,6 +226,7 @@ export class RevenueComponent implements OnInit {
                 const dateCheck = new Date(movie.release_date);
                 return dateCheck.getFullYear() === year;
             });
+            if (yearData.length === 0) { continue; }
             let monthlyAverages:number[] = [];
             for (let month = 0; month < 12; month++) {
                 const monthlyData:IMovie[] = yearData.filter( (movie:IMovie) => {
@@ -202,9 +234,14 @@ export class RevenueComponent implements OnInit {
                     return thisMonth.getMonth() === month;
                 } )
                 // console.log('month number', monthlyData);
-                const monthlyRevValues:number[] = monthlyData.map( (movie:IMovie) => movie.revenue );
-                const monthlyAvg:number = monthlyRevValues.reduce( (a, b) => a + b, 0 ) / monthlyRevValues.length;
-                monthlyAverages.push(monthlyAvg);
+                if (!monthlyData || monthlyData.length === 0) {
+                    monthlyAverages.push(0)
+                } else {
+                    const monthlyRevValues:number[] = monthlyData.map( (movie:IMovie) => movie.revenue );
+                    const monthlyAvg:number = monthlyRevValues.reduce( (a, b) => a + b, 0 ) / monthlyRevValues.length;
+                    monthlyAverages.push(monthlyAvg);
+                }
+                
             }
             // console.log('monthly average', monthlyAverages);
             const yearObj = {
