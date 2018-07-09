@@ -69,6 +69,15 @@ export class HomeComponent implements OnInit{
         },{
             name: "7",
             value: 963
+        },{
+            name: "8",
+            value: 3692
+        },{
+            name: "9",
+            value: 952
+        },{
+            name: "10",
+            value: 4520
         }];
 
         console.log('budget data', this.budgetData);
