@@ -1,4 +1,5 @@
 <!-- <h1>Search Results</h1> -->
+
 <button *ngIf="storedResults" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
 <div class="pie" *ngIf="storedResults">
     <ngx-charts-pie-chart
@@ -21,6 +22,10 @@
             <h2 class="title">{{ stringCutoff(result.title,24) }}</h2>
             <h3 class="year">{{ result.release_date | date:'yyyy' }}</h3>
             <p class="description">{{ stringCutoff(result.overview,100) }}</p>
+            <a href="#" class="starRating">
+              <i class="far fa-star"></i> <!-- unselected -->
+              <i class="fas fa-star"></i> <!-- selected -->
+            </a>
         </div>
     </div>
 </div>

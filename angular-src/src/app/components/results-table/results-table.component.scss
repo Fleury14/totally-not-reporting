@@ -17,14 +17,3 @@
   font-size: 8px;
 }
 
-.rating {
-  margin:2px;
-  &:hover {
-      color:yellow;
-      content: "\2605";
-      position: absolute;
-  }
-  &:hover &:span {
-
-  }
-}

@@ -1,6 +1,26 @@
-// h1 {
-//     text-align: center;
+// .starRating {
+//   display: flex;
+//   justify-content: center;
+//   unicode-bidi: bidi-override;
+//   direction: rtl;
 // }
+
+// .span {
+//   display: inline-block;
+//   position: relative;
+//   widows: 1.1em;
+//   font-size: 40px;
+// }
+
+.starRating {
+  margin:2px;
+  &:hover .far {
+      display: none;
+  }
+  &:hover &:span .fas {
+    display: inline;
+  }
+}
 
 h3 {
   font-size: 16px;
