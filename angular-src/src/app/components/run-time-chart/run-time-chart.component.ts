@@ -57,7 +57,7 @@ export class RunTimeChartComponent implements OnInit {
     this._search.getRunTimeOfYear(search).pipe(take(1)).subscribe(async (data) => {
         const results = await data['result'];
         results.forEach(movie => {
-          if(movie['date_part'] &&  movie['count'] && movie['runtime']){
+          if((movie['date_part'] &&  movie['count'] && movie['runtime']) && movie['runtime'] < 300){
             const obj = {
                 "name": `${movie['date_part']}`,
                 "series": [
