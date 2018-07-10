@@ -15,7 +15,7 @@ export class KidFriendlyComponent implements OnInit {
     public searchResults: IMovie[];
     public showResults = false;
 
-    // SLIDER OPTIONS
+    // slider options
     public yearValue = [1990, 1995]
     public sliderConfig: any = {
         behaviour: 'drag',
@@ -34,6 +34,18 @@ export class KidFriendlyComponent implements OnInit {
             stepped: true
         }
       };
+
+      //pie chart options
+      public showLegend = true;
+      public view: any[] = [700, 400];
+      public colorScheme = {
+          domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+        };
+      public showLabels = true;
+      public explodeSlices = false;
+      public doughnut = true;
+      public pieData:any;
+      public gradient = true;
 
   constructor() { }
 

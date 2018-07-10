@@ -1,8 +1,18 @@
 <div class="container">
   <h1>Kid Friendly</h1>
   <div class="slider">
+    <p>Drag slider to find movie data on specific time frames</p>
     <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
     <button class="go-button" (click)="submitYears()">Go!</button>
   </div>
+  <div class="pie-chart-container">
+      <ngx-charts-advanced-pie-chart
+      [scheme]="colorScheme"
+      [results]="pieData"
+      [gradient]="gradient"
+      (select)="onSelect($event)"
+      ></ngx-charts-advanced-pie-chart>
+  </div>
+
 </div>
 
