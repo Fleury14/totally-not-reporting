@@ -8,6 +8,7 @@ import { ModalComponent } from './components/results/modal.component';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 
 
 const routes: Route[] = [{
@@ -33,6 +34,10 @@ const routes: Route[] = [{
 {
     path: 'release',
     component: ReleaseChartComponent
+},
+{
+    path: 'run-time',
+    component: RunTimeChartComponent
 },
 {
     path: '',

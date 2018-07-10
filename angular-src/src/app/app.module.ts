@@ -22,10 +22,11 @@ import { AppMaterialModule } from './material.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, RunTimeChartComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
