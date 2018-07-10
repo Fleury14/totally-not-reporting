@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { IMovie } from '../../interfaces/movie';
-// import { IMovie } from '../../interfaces/movie';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-home',
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit{
             }
         })
         //different graph methods
-        this.setRuntimeData();
+        this.setRuntimeData(2000,2017);
         this.setKidFriendlyData();
     }
     // different graph variables
@@ -94,9 +94,7 @@ export class HomeComponent implements OnInit{
                     this.budgetData[movieIndex]['value']++;
                 }
             }
-            
         })
-        
     }
 
     public setRevenueData(movies:IMovie[]){
@@ -110,7 +108,6 @@ export class HomeComponent implements OnInit{
         if (this.revenueData.length > 8) {
             this.revenueData.splice(8);
         }
-        // console.log('tree data lol', this.revenueData);
     }
 
     public millions(num: number): string {
@@ -125,102 +122,32 @@ export class HomeComponent implements OnInit{
         }
     }
 
-    public setRuntimeData() {
-        this.runtimeData = [
-            {
-              "name": "Germany",
-              "series": [
-                {
-                  "name": "2010",
-                  "x": 40632,
-                  "y": 80.3,
-                  "r": 80.4
-                },
-                {
-                  "name": "2000",
-                  "x": 36953,
-                  "y": 80.3,
-                  "r": 78
-                },
-                {
-                  "name": "1990",
-                  "x": 31476,
-                  "y": 75.4,
-                  "r": 79
-                }
-              ]
-            },
-            {
-              "name": "USA",
-              "series": [
-                {
-                  "name": "2010",
-                  "x": 49737,
-                  "y": 78.8,
-                  "r": 310
-                },
-                {
-                  "name": "2000",
-                  "x": 45986,
-                  "y": 76.9,
-                  "r": 283
-                },
-                {
-                  "name": "1990",
-                  "x": 3706,
-                  "y": 75.4,
-                  "r": 253
-                }
-              ]
-            },
-            {
-              "name": "France",
-              "series": [
-                {
-                  "name": "2010",
-                  "x": 36745,
-                  "y": 81.4,
-                  "r": 63
-                },
-                {
-                  "name": "2000",
-                  "x": 34774,
-                  "y": 79.1,
-                  "r": 59.4
-                },
-                {
-                  "name": "1990",
-                  "x": 29476,
-                  "y": 77.2,
-                  "r": 56.9
-                }
-              ]
-            },
-            {
-              "name": "United Kingdom",
-              "series": [
-                {
-                  "name": "2010",
-                  "x": 36240,
-                  "y": 80.2,
-                  "r": 62.7
-                },
-                {
-                  "name": "2000",
-                  "x": 32543,
-                  "y": 77.8,
-                  "r": 58.9
-                },
-                {
-                  "name": "1990",
-                  "x": 26424,
-                  "y": 75.7,
-                  "r": 57.1
-                }
-              ]
-            }
-          ]
-          
+    public setRuntimeData(startYear, endYear) {
+        this.runtimeData= []
+        const search = {
+            startYear,
+            endYear
+        }
+        this._search.getRunTimeOfYear(search).pipe(take(1)).subscribe(async (data) => {
+            const results = await data['result'];
+            results.forEach(movie => {
+              if((movie['date_part'] &&  movie['count'] && movie['runtime']) && movie['runtime'] < 300 && parseInt(movie['count']) < 70){
+                const obj = {
+                    "name": `${movie['date_part']}`,
+                    "series": [
+                      {
+                        "name":`${movie['date_part']}`,
+                        "x": movie['runtime'],
+                        "y": parseInt(movie['count']),
+                        "r": 1
+                      }
+                    ]
+                  };
+                  this.runtimeData.push(obj);
+                };
+              }) 
+   
+        });
     }
 
     public setReleaseDateData(movies: IMovie[]){
