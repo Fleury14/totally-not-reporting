@@ -21,15 +21,20 @@ import { RecentSearchService } from './services/recent-search.service';
 import { AppMaterialModule } from './material.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
+
 import { BudgetComponent } from "./components/budget-component/budget.component";
+
+import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { NouisliderModule } from 'ng2-nouislider';
+
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
-    HttpClientModule, NgxChartsModule,
+    HttpClientModule, NgxChartsModule, NouisliderModule
   ],
   providers: [ SearchService, HttpService, RecentSearchService  ],
   entryComponents: [ ModalComponent, RevenueComponent, BudgetComponent ],
