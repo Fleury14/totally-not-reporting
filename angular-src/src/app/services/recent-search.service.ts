@@ -30,7 +30,7 @@ export class RecentSearchService {
         this.copy = false;
         return
     }
-    else if(this.list.length >= 5){
+    else if(this.list.length >= 15){
         this.list.pop();
         this.list.splice(0,0, obj);
         localStorage.setItem("search list",JSON.stringify(this.list));
