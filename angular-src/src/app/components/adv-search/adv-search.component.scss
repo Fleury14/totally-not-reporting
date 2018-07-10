@@ -1,7 +1,6 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
-
 main {
     padding: 20px;
 }
@@ -41,6 +40,7 @@ mat-radio-group {
     margin-top: 40px;
     display: flex;
     justify-content: left;
+
 }
 
 
@@ -52,11 +52,6 @@ body {
 .basic-container {
   padding: 30px;
 }
-
-// .version-info {
-//   font-size: 8pt;
-//   float: right;
-// }
 
 div.scroll-list {
   overflow: auto;
@@ -88,9 +83,11 @@ p {
 }
 .mat-cell, .mat-header-cell {
     font-size: 10px !important;
+
 }
 
 .results-table {
+
 
     margin-left: 10px;
     width: 1250px;
@@ -184,3 +181,6 @@ p {
     display: block;
 }
 
+// .drag-target-border-green {
+//   border: #3c763d dashed 2px;
+// }

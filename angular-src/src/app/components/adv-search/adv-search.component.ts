@@ -1,10 +1,12 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+
 import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 import { SearchService } from '../../services/search.service';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-adv-search',
@@ -15,7 +17,9 @@ import { Router } from '@angular/router';
 export class AdvSearchComponent implements OnInit {
     @ViewChild('searchForm') private _searchForm: NgForm;
 
+
     public searchCategory: CategorySelection[] = [{
+
         name: 'Budget',
         ref: 'budget',
         type: 'number'
@@ -60,6 +64,13 @@ export class AdvSearchComponent implements OnInit {
         ref: 'vote_count',
         type: 'number'
     }];
+    fullFormGroup: FormGroup;
+    firstFormGroup: FormControl;
+    secondFormGroup: FormControl;
+    thirdFormGroup: FormControl;
+    droppedItems = [];
+    selection: true;
+
 
     fullFormGroup: FormGroup;
     firstFormGroup: FormGroup;
@@ -68,6 +79,7 @@ export class AdvSearchComponent implements OnInit {
     droppedItems = [];
 
     public selectedCategory: CategorySelection;
+
     public categoryValueNum: number;
     public requestedColumns: IDynamicRequest = {
         adult: false,
@@ -85,14 +97,17 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
+
     constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, public dialog: MatDialog, private _router: Router) {}
 
     ngOnInit(): void {}
+
 
     public submit(value) {
         this.droppedItems.forEach(item => {
           this.requestedColumns[item.ref] = true;
         });
+
         if (value.category !== undefined && value.search !== undefined && value.order !== undefined && value.column !== undefined) {
           console.log(value.returnType, value.category, value.search, value.order, value.column);
           this._advSearch.customSearch(value.category, value.search, value.order ).subscribe(res => {

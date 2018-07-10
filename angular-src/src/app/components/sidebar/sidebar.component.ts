@@ -11,8 +11,10 @@ import { RecentSearchService } from '../../services/recent-search.service';
 })
 
 export class SideBarComponent implements DoCheck {
+
     private recentArray: any;
     private sizedRecentArray: any;
+
     constructor(
         private _search: SearchService,
         private _router: Router,
@@ -22,6 +24,7 @@ export class SideBarComponent implements DoCheck {
     ngDoCheck() {
         this.recentArray = this._recent.getSearchList();
         const screenSize = window.innerHeight;
+
         if (screenSize < 800 ) {
             this.sizedRecentArray = this.recentArray.slice(0, 6);
         } else if (screenSize < 900) {
@@ -31,6 +34,7 @@ export class SideBarComponent implements DoCheck {
 
         } else {
             this.sizedRecentArray = this.recentArray.slice(0, this.recentArray.length);
+
         }
     }
 
