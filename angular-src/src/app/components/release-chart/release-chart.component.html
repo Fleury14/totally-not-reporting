@@ -1,0 +1,26 @@
+<div class="">
+    <form (ngSubmit)="submitYears(yearForm.value)" #yearForm="ngForm">
+        <mat-form-field class="revenue-year">
+            <input matInput type="number" name="startYear" ngModel placeholder="Starting Year">
+        </mat-form-field>
+        <mat-form-field class="revenue-year">
+            <input matInput type="number" name="endYear" ngModel placeholder="Ending year">
+        </mat-form-field>
+        <input type="submit" class="go-button" value="Go!">
+    </form>
+</div>
+
+<div *ngIf="releases.length > 0">
+  <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="releases"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    (select)="onSelect($event)">
+  </ngx-charts-bar-vertical>
+</div>

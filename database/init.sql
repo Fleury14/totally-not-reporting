@@ -36,6 +36,14 @@ CREATE TABLE movies_vote (
     vote_count int
 );
 
+DROP TABLE IF EXISTS movie_posters;
+
+CREATE TABLE movie_posters (
+    poster_id int,
+    poster_path VARCHAR(500),
+    poster_title VARCHAR(500)
+);
+
 
 
 COPY movies_meta (adult,budget, movie_id, original_title, overview, popularity, release_date, revenue, runtime, tagline, title )
@@ -47,4 +55,6 @@ FROM E'//docker-entrypoint-initdb.d//movies_credits.csv' DELIMITER ',' CSV HEADE
 COPY movies_vote (vote_id, vote_average, vote_count )
 FROM E'//docker-entrypoint-initdb.d//movies_vote_info.csv' DELIMITER ',' CSV HEADER;
 
+COPY movie_posters (poster_id, poster_path, poster_title )
+FROM E'//docker-entrypoint-initdb.d//movies_posters2.csv' DELIMITER ',' CSV HEADER;
 -- (adult,budget,genres,homepage,original_title,popularity, production, release_date, revenue, runtime, tagline, title, vote_average, vote_count )

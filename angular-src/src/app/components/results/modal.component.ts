@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Rating } from './results.rating';
+import { Rating } from './results.component';
 
 @Component({
   selector: 'app-modal',
