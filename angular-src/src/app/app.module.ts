@@ -25,12 +25,13 @@ import { RevenueComponent } from './components/revenue-component/revenue.compone
 import { BudgetComponent } from "./components/budget-component/budget.component";
 
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 import { NouisliderModule } from 'ng2-nouislider';
 
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, RunTimeChartComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
