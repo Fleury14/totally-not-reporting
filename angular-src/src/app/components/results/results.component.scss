@@ -44,12 +44,12 @@ p {
     align-content: space-around;
 }
 .search-result{
-    height: 325px;
+    height: 720px;
     background-color: var(--white-color);
     border-radius: 4px;
     box-shadow: 3px 3px 15px var(--shadow-color);
     display: grid;
-    grid-template-rows: 60% 1fr;
+    grid-template-rows: 80% 1fr;
     grid-template-areas: 
         "top"
         "info";
@@ -73,7 +73,7 @@ p {
         height: 100%;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 60% 100%;
+        background-size: cover;
     }
 
     .tagline{
