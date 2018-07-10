@@ -9,6 +9,12 @@ import { IMovie } from '../../interfaces/movie';
   styleUrls: ['./kid-friendly-component.component.scss']
 })
 export class KidFriendlyComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit():void {
+    this.setPieChart();
+  }
   @ViewChild('yearForm') private _yearForm: NgForm;
     public startYear: number;
     public endYear: number;
@@ -37,7 +43,7 @@ export class KidFriendlyComponent implements OnInit {
 
       //pie chart options
       public showLegend = true;
-      public view: any[] = [700, 400];
+      // public view: any[] = [700, 400];
       public colorScheme = {
           domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
         };
@@ -45,11 +51,25 @@ export class KidFriendlyComponent implements OnInit {
       public explodeSlices = false;
       public doughnut = true;
       public pieData:any;
-      public gradient = true;
 
-  constructor() { }
-
-  ngOnInit() {
+  public setPieChart() {
+    this.pieData = [{
+        name: "Yes",
+        value: 100
+    },{
+        name: "No",
+        value: 20
+    }]
+    movies.forEach( (movie:IMovie) => {
+      if(movie.adult === false){
+          this.kidFriendlyData[0]['value']++;
+      } else {
+          this.kidFriendlyData[1]['value']++;
+          console.log(movie.title);
+      }
+  })
+    console.log('pie data', this.pieData);
+    Object.assign(this, this.pieData)
   }
 
 }
