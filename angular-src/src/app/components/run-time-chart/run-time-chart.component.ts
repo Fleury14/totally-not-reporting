@@ -16,10 +16,14 @@ export class RunTimeChartComponent implements OnInit {
   public showLegend = true;
   public showXAxisLabel = true;
   public xAxisLabel = 'Years';
+  public x2AxisLabel = 'Run Time';
   public showYAxisLabel = true;
   public yAxisLabel = 'Run Time';
-  public data;
+  public y2AxisLabel = 'Count';
+  public runtimeYear;
+  public runtimeCount;
   public startYear:number;
+  public yAxisTicks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,20]
 
    // SLIDER OPTIONS
    public yearValue = [1990, 1995]
@@ -45,11 +49,11 @@ export class RunTimeChartComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.count(1960, 2018)
   }
 
   public count(startYear, endYear) {
-    this.data = [];
+    this.runtimeYear= [];
+    this.runtimeCount = [];
     const search = {
         startYear,
         endYear
@@ -58,25 +62,36 @@ export class RunTimeChartComponent implements OnInit {
         const results = await data['result'];
         results.forEach(movie => {
           if((movie['date_part'] &&  movie['count'] && movie['runtime']) && movie['runtime'] < 300){
-            const obj = {
-                "name": `${movie['date_part']}`,
-                "series": [
-                  {
-                    "name":`${movie['date_part']}`,
-                    "x":movie['date_part'],
-                    "y": movie['runtime'] ,
-                    "r": movie['count']
-                  }
-                ]
-              };
-              this.data.push(obj);
+            const obj1 = {
+              "name": `${movie['date_part']}`,
+              "series": [
+                {
+                  "name":`${movie['date_part']}`,
+                  "x": movie['date_part'],
+                  "y": movie['runtime'] ,
+                  "r": parseInt(movie['count'])
+                }
+              ]
             };
-          })      
+            const obj2 = {
+              "name": `${movie['date_part']}`,
+              "series": [
+                {
+                  "name":`${movie['date_part']}`,
+                  "x": movie['runtime'],
+                  "y": parseInt(movie['count']),
+                  "r": 1
+                }
+              ]
+            };
+            this.runtimeYear.push(obj1);
+            this.runtimeCount.push(obj2)
+            };
+          })    
     });
   }
 
   public submitYears() {
-    console.log(this.yearValue[0] , this.yearValue[1])
     if (this.yearValue[0] > this.yearValue[1]) {
         this.snackBarMessage('Ending year needs to come after the starting year')
     } else {

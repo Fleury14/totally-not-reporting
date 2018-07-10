@@ -39,7 +39,6 @@
         <div class="runtime-bubble" *ngIf="runtimeData && runtimeData.length > 0">
             <ngx-charts-bubble-chart
             [scheme]="multiColorScheme"
-            [xScaleMin]=2000
             [results]="runtimeData"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis">

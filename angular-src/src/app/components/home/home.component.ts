@@ -131,21 +131,22 @@ export class HomeComponent implements OnInit{
         this._search.getRunTimeOfYear(search).pipe(take(1)).subscribe(async (data) => {
             const results = await data['result'];
             results.forEach(movie => {
-              if((movie['date_part'] &&  movie['count'] && movie['runtime']) && movie['runtime'] < 300){
+              if((movie['date_part'] &&  movie['count'] && movie['runtime']) && movie['runtime'] < 300 && parseInt(movie['count']) < 70){
                 const obj = {
                     "name": `${movie['date_part']}`,
                     "series": [
                       {
                         "name":`${movie['date_part']}`,
-                        "x":movie['date_part'],
-                        "y": movie['runtime'] ,
-                        "r": movie['count']
+                        "x": movie['runtime'],
+                        "y": parseInt(movie['count']),
+                        "r": 1
                       }
                     ]
                   };
                   this.runtimeData.push(obj);
                 };
-              })    
+              }) 
+   
         });
     }
 
