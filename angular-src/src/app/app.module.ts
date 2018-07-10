@@ -23,10 +23,11 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
 import { NouisliderModule } from 'ng2-nouislider';
+import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, KidFriendlyComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,

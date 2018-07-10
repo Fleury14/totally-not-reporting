@@ -8,6 +8,8 @@ import { ModalComponent } from './components/results/modal.component';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
+
 
 
 const routes: Route[] = [{
@@ -33,6 +35,10 @@ const routes: Route[] = [{
 {
     path: 'release',
     component: ReleaseChartComponent
+},
+{
+    path: 'kid-friendly',
+    component: KidFriendlyComponent
 },
 {
     path: '',
