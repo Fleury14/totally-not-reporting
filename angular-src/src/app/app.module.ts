@@ -21,20 +21,26 @@ import { RecentSearchService } from './services/recent-search.service';
 import { AppMaterialModule } from './material.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RevenueComponent } from './components/revenue-component/revenue.component';
+
+import { BudgetComponent } from "./components/budget-component/budget.component";
+
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 import { NouisliderModule } from 'ng2-nouislider';
 import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
+
 
 @NgModule({
   declarations: [
     AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, KidFriendlyComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, RunTimeChartComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule, NgxChartsModule, NouisliderModule
   ],
   providers: [ SearchService, HttpService, RecentSearchService  ],
-  entryComponents: [ ModalComponent, RevenueComponent ],
+  entryComponents: [ ModalComponent, RevenueComponent, BudgetComponent ],
 
   bootstrap: [AppComponent]
 })
