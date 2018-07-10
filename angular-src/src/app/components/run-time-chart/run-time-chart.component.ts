@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IMovie } from '../../interfaces/movie';
 import { SearchService } from '../../services/search.service';
 import { take } from 'rxjs/operators';
+import { ErrorStateMatcher, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-run-time-chart',
@@ -16,175 +17,77 @@ export class RunTimeChartComponent implements OnInit {
   public showXAxisLabel = true;
   public xAxisLabel = 'Years';
   public showYAxisLabel = true;
-  public yAxisLabel = 'Number of Movies';
-  public releases;
+  public yAxisLabel = 'Run Time';
   public data;
+  public startYear:number;
 
-  constructor(public _search:SearchService) {}
+   // SLIDER OPTIONS
+   public yearValue = [1990, 1995]
+   public sliderConfig: any = {
+       behaviour: 'drag',
+       connect: true,
+       margin: 1,
+       limit: 5, // NOTE: overwritten by [limit]="10"
+       step: 1,
+       range: {
+         min: 1960,
+         max: 2017
+       },
+       pips: {
+           mode: 'count',
+           density: 2,
+           values: 7,
+           stepped: true
+       }
+     };
+
+  constructor(public _search:SearchService, public snackBar: MatSnackBar ) {}
+
+
+  ngOnInit() {
+    // this.count(1960, 2018)
+  }
+
   public count(startYear, endYear) {
-    this.releases = [];
+    this.data = [];
     const search = {
         startYear,
         endYear
     }
-    this._search.getCountOfYear(search).pipe(take(1)).subscribe(async (data) => {
+    this._search.getRunTimeOfYear(search).pipe(take(1)).subscribe(async (data) => {
         const results = await data['result'];
-        console.log(results)
-        // results.forEach(release => {
-        //   if(release.date_part){
-        //     let obj = {
-        //       name: release.date_part.toString(),
-        //       value: parseInt(release.count)
-        //     };
-        //     this.releases.push(obj);
-        //   }
-        // });
-        
+        results.forEach(movie => {
+          if(movie['date_part'] &&  movie['count'] && movie['runtime']){
+            const obj = {
+                "name": `${movie['date_part']}`,
+                "series": [
+                  {
+                    "name":`${movie['date_part']}`,
+                    "x":movie['date_part'],
+                    "y": movie['runtime'] ,
+                    "r": movie['count']
+                  }
+                ]
+              };
+              this.data.push(obj);
+            };
+          })      
     });
   }
 
-  ngOnInit() {
-    this.count(1900, 1920)
-  //   this.data = []
-  //   this._search.getYearRange(2000, 2018).pipe( take(1) ).subscribe(response => {
-  //     console.log(response.result);
-  //     response['result'].forEach((movie:IMovie) => {
-  //       let date = new Date(movie.release_date);
-  //       let year = date.getFullYear();
-  //       if(movie.runtime <30){
-  //         const obj = 
-  //         {
-  //           "name": "0",
-  //           "series": [
-  //             {
-  //               "name": "0",
-  //               "x": year,
-  //               "y": movie['runtime'] ,
-  //               "r": 1
-  //             }
-  //           ]
-  //         };
-  //         this.data.push(obj);
+  public submitYears() {
+    console.log(this.yearValue[0] , this.yearValue[1])
+    if (this.yearValue[0] > this.yearValue[1]) {
+        this.snackBarMessage('Ending year needs to come after the starting year')
+    } else {
+      this.startYear = this.yearValue[0]
+      this.count(this.yearValue[0],this.yearValue[1])
+    }    
+  }
 
-  //       } else if(movie.runtime < 60){
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "1",
-  //           "series": [
-  //             {
-  //               "name": "1",
-  //               "x": year,
-  //               "y": movie['runtime'],
-  //               "r": 1
-  //             }
-  //           ]
-  //         };
-  //         this.data.push(obj);
-
-  //       } else if(movie.runtime < 120){
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "2",
-  //           "series": [
-  //             {
-  //               "name": "2",
-  //               "x": year,
-  //               "y": movie['runtime'],
-  //               "r": 1
-  //             }
-  //           ]
-  //         };
-
-  //         this.data.push(obj)
-
-  //       } else if (movie.runtime < 180){
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "3",
-  //           "series": [
-  //             {
-  //               "name": "3",
-  //               "x": year,
-  //               "y": movie['runtime'],
-  //               "r": 1
-  //             }
-  //           ]
-  //         };
-
-  //         this.data.push(obj);
-
-  //       } else if (movie.runtime < 210){
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "4",
-  //           "series": [
-  //             {
-  //               "name": "4",
-  //               "x": year,
-  //               "y": movie['runtime'] ,
-  //               "r": 1
-  //             }
-  //           ]
-  //         }
-
-  //         this.data.push(obj);
-
-  //       }else if (movie.runtime < 300){
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "5",
-  //           "series": [
-  //             {
-  //               "name": "5",
-  //               "x": year,
-  //               "y": movie['runtime'] ,
-  //               "r": 1
-  //             }
-  //           ]
-  //         }
-
-  //         this.data.push(obj);
-
-  //       } else if (movie.runtime < 1050){
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "6",
-  //           "series": [
-  //             {
-  //               "name": "6",
-  //               "x": year,
-  //               "y": movie['runtime'],
-  //               "r": 1
-  //             }
-  //           ]
-  //         }
-
-  //         this.data.push(obj);
-
-  //       } else {
-  //         let date = new Date(movie.release_date);
-  //         let year = date.getFullYear();
-  //         const obj = {
-  //           "name": "7",
-  //           "series": [
-  //             {
-  //               "name": "7",
-  //               "x": year,
-  //               "y": movie['runtime'] ,
-  //               "r": 1
-  //             }
-  //           ]
-  //         }
-  //         this.data.push(obj);
-  //       }
-  //     })
-  //     console.log(this.data);
-  //   })
+  private snackBarMessage(message: string) {
+    this.snackBar.open(message, null, {
+        duration: 1000
+    });
   }
 }
