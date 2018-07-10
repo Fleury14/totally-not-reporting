@@ -4,8 +4,6 @@ import { Subject, Observable } from 'rxjs';
 import { IDynamicRequest } from '../interfaces/dynamic-request';
 import { map } from 'rxjs/operators';
 import { IMovie } from '../interfaces/movie';
-
-
 @Injectable()
 
 export class SearchService {
@@ -44,7 +42,6 @@ export class SearchService {
         } else {
             return response;
         }
-        console.log(this._mapResults);
     }
 
     public storeResults(data: any) {
@@ -84,16 +81,16 @@ export class SearchService {
         );
     }
 
-    public customSearch(search: string, returnType?: IDynamicRequest) {
+    public customSearch(category: string, search: string, order: string, returnType?: IDynamicRequest) {
       const Payload = {
-        search: search
+        search: search,
+        category: category,
+        order: order,
       };
       return this._http.post('custom-search', Payload).pipe(
         map ((response) => {
           return this._mapResults(response, returnType);
         })
       );
-      console.log(this.customSearch);
    }
-
 }

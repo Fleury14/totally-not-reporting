@@ -1,14 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 import { SearchService } from '../../services/search.service';
-import { Subscription } from 'rxjs';
-import { MatTableDataSource } from '@angular/material';
 import { MatDialog } from '@angular/material';
-// import { ModalComponent } from '../results/modal.component';
 import { Router } from '@angular/router';
-import { IMovie } from '../../interfaces/movie';
 
 @Component({
     selector: 'app-adv-search',
@@ -64,16 +60,12 @@ export class AdvSearchComponent implements OnInit {
         ref: 'vote_count',
         type: 'number'
     }];
+
     fullFormGroup: FormGroup;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     thirdFormGroup: FormGroup;
     droppedItems = [];
-
-    private _advSearchResults: any;
-    public advStoredResults: any;
-    public advResultsSub: Subscription;
-    public adSearch: string;
 
     public selectedCategory: CategorySelection;
     public categoryValueNum: number;
@@ -95,37 +87,25 @@ export class AdvSearchComponent implements OnInit {
 
     constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, public dialog: MatDialog, private _router: Router) {}
 
-    ngOnInit(): void {
-      this._advSearch.resultsSubscription().subscribe(advResults => {
-        this._advSearchResults = advResults.result;
-        this.advStoredResults = new MatTableDataSource<IMovie>(this._advSearchResults);
-        console.log(this.advStoredResults);
-      });
-
-      this._advSearch.refreshResults();
-
-      this.fullFormGroup = this._formBuilder.group({
-        firstCtrl: ['', Validators.required]
-      });
-    }
+    ngOnInit(): void {}
 
     public submit(value) {
         this.droppedItems.forEach(item => {
           this.requestedColumns[item.ref] = true;
         });
-        console.log('submitting...', value, this.requestedColumns);
-        if (value.returnType === 'table') {
-            this.tableSearch(value);
-        } else if (value.returnType === 'cards') {
-            this.cardSearch(value);
+        if (value.category !== undefined && value.search !== undefined && value.order !== undefined && value.column !== undefined) {
+          console.log(value.returnType, value.category, value.search, value.order, value.column);
+          this._advSearch.customSearch(value.category, value.search, value.order ).subscribe(res => {
+            this._router.navigate(['results']);
+          });
+          } else {
+            console.log('Please enter all fields...');
         }
       }
 
     onItemDrop(e: any) {
       this.droppedItems.push(e.dragData);
-      console.log(this.droppedItems);
     }
-
 
     reset(value) {
       this.removeItem(value, this.droppedItems);
@@ -137,27 +117,4 @@ export class AdvSearchComponent implements OnInit {
       }).indexOf(item.name);
       list.splice(index, 1);
     }
-
-    tableView() {
-      this._router.navigate(['results-table']);
-    }
-
-    public tableSearch(value) {
-      return value;
-    }
-    public cardSearch(value) {
-      return value;
-    }
-    public searchMovies() {
-      if (this.adSearch) {
-        console.log('slayer');
-        this._advSearch.customSearch(this.adSearch).pipe().subscribe( data => {
-          this._advSearch.storeResults(data);
-          this._router.navigate(['results']);
-
-          console.log('woriks');
-        } );
-    }
-
-}
 }

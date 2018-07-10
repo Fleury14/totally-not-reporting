@@ -20,10 +20,10 @@
         <mat-option *ngFor="let option of searchCategory" [value]="option">{{option.name}}</mat-option>
       </mat-select>
       <mat-form-field *ngIf="selectedCategory?.type === 'text'">
-        <input matInput [placeholder]="selectedCategory.name" ngModel name="categoryValue" class="category-value">
+        <input matInput [placeholder]="selectedCategory.name" ngModel name="search" class="search">
       </mat-form-field>
       <mat-form-field *ngIf="selectedCategory?.type === 'number'" >
-        <input matInput [placeholder]="selectedCategory.name" type="number" ngModel name="categoryValue" class="category-value">
+        <input matInput [placeholder]="selectedCategory.name" type="number" ngModel name="search" class="searchs">
       </mat-form-field>
       <mat-select *ngIf="selectedCategory" placeholder="Order" name="order" ngModel class="search-order">
         <mat-option value="ASC">Ascending</mat-option>
@@ -65,7 +65,7 @@
       </div>
 
       <div class="submit-row">
-        <button mat-button matStepperSubmit type="submit" value="adSearch" [(ngModel)]="adSearch" (click)="searchMovies()">See Results!</button>
+        <button mat-button matStepperSubmit type="submit">See Results!</button>
         <button mat-button matStepperReset (click)='reset(searchForm.value)'>Reset Form</button>
       </div>
     </mat-step>
