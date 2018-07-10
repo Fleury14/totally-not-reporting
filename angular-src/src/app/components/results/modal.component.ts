@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Rating } from './results.component';
 
 @Component({
   selector: 'app-modal',
@@ -10,15 +9,15 @@ import { Rating } from './results.component';
 
 export class ModalComponent implements OnInit {
 
+  rating: number;
+
   constructor(
     public openModal: MatDialogRef<ModalComponent>,
-    public _rating: Rating,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
     console.log(this.data);
-    console.log(this._rating);
-    this.data._rating();
+    console.log(this.rating);
   }
 
   onNoClick(): void {
