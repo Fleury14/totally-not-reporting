@@ -1,19 +1,11 @@
-<div class="">
-    <form (ngSubmit)="submitYears(yearForm.value)" #yearForm="ngForm">
-        <mat-form-field class="revenue-year">
-            <input matInput type="number" name="startYear" ngModel placeholder="Starting Year">
-        </mat-form-field>
-        <mat-form-field class="revenue-year">
-            <input matInput type="number" name="endYear" ngModel placeholder="Ending year">
-        </mat-form-field>
-        <input type="submit" class="go-button" value="Go!">
-    </form>
-</div>
+<div class="release-top-row ">
+    <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
+    <button class="go-button" (click)="submitYears()">Go!</button>
+  </div>
 
 <div *ngIf="releases.length > 0">
   <ngx-charts-bar-vertical
     [view]="view"
-    [scheme]="colorScheme"
     [results]="releases"
     [xAxis]="showXAxis"
     [yAxis]="showYAxis"

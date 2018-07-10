@@ -23,6 +23,25 @@ export class ReleaseChartComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
   public view: any[] = [700, 400];
+   // SLIDER OPTIONS
+   public yearValue = [1990, 1995]
+   public sliderConfig: any = {
+       behaviour: 'drag',
+       connect: true,
+       margin: 1,
+       limit: 5, // NOTE: overwritten by [limit]="10"
+       step: 1,
+       range: {
+         min: 1960,
+         max: 2017
+       },
+       pips: {
+           mode: 'count',
+           density: 2,
+           values: 7,
+           stepped: true
+       }
+     };
 
   constructor(private _search: SearchService,public snackBar: MatSnackBar ) {}
 
@@ -50,12 +69,12 @@ export class ReleaseChartComponent implements OnInit {
         
     });
   }
-  public submitYears(yearFormValues) {
-    if (yearFormValues.startYear > yearFormValues.endYear) {
+  public submitYears() {
+    if (this.yearValue[0] > this.yearValue[1]) {
         this.snackBarMessage('Ending year needs to come after the starting year')
     } else {
-      this.count(yearFormValues.startYear, yearFormValues.endYear);
-    }
+      this.count(this.yearValue[0],this.yearValue[1])
+    }    
   }
 
   private snackBarMessage(message: string) {
