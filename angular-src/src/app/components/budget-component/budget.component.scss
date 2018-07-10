@@ -1,0 +1,54 @@
+h1 {
+    text-align: center;
+}
+
+.revenue-top-row {
+    display: flex;
+    height: 400px;
+    transition: 0.5 all;
+}
+
+.date-picker {
+    width: 30%;
+    min-width: 150px;
+    height: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.hide-stuff {
+    opacity: 0;
+    height: 0px;
+}
+
+.toggle-year {
+    margin: 50px auto;
+    display: block;
+    transition: 0.5s all;
+}
+
+.go-button {
+    color: #eee;
+    background-color: var(--primary-color);
+    border: none;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    margin: 10px auto;
+    display: inherit;
+    border-radius: 5px;
+    transition: 0.25s;
+    
+    &:hover {
+        color: gold;
+    }
+}
+
+// .pie {
+//     height: 400px;
+// }
+
+.bar-graph {
+    width: 50%;
+    height: 500px;
+}
