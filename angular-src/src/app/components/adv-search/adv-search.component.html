@@ -53,13 +53,11 @@
           </div>
         </div>
         <div class="col-sm-3">
-            <div class="card card-outline-primary mb-3" droppable [dragHintClass]="'drag-hint'" (onDrop)="onItemDrop($event)">
+            <div class="card card-outline-primary mb-3" droppable  [dragOverClass]="'drag-target-border'" [dragHintClass]="'drag-hint'" (onDrop)="onItemDrop($event)">
               <div class="card-header card-inverse card-primary">Drop Selected Items to Return</div>
               <br>
               <div class="card-block scroll-list">
-                  <li *ngFor="let column of droppedItems"
-                  [(ngModel)]="requestedColumns[column.ref]"
-                  [name]="column.ref" ngDefaultControl class="list-group-item">{{column.name}}</li>
+                  <li *ngFor="let column of droppedItems" [(ngModel)]="requestedColumns[column.ref]" name="column" ngDefaultControl class="list-group-item">{{column.name}}</li>
               </div>
             </div>
         </div>
@@ -67,7 +65,7 @@
       </div>
 
       <div class="submit-row">
-        <button mat-button matStepperSubmit type="submit">See Results!</button>
+        <button mat-button matStepperSubmit type="submit" value="adSearch" [(ngModel)]="adSearch" (click)="searchMovies()">See Results!</button>
         <button mat-button matStepperReset (click)='reset(searchForm.value)'>Reset Form</button>
       </div>
     </mat-step>

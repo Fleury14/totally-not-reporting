@@ -2,6 +2,14 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
+import { SearchService } from '../../services/search.service';
+import { Subscription } from 'rxjs';
+import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material';
+// import { ModalComponent } from '../results/modal.component';
+import { Router } from '@angular/router';
+import { IMovie } from '../../interfaces/movie';
+
 @Component({
     selector: 'app-adv-search',
     templateUrl: './adv-search.component.html',
@@ -25,7 +33,7 @@ export class AdvSearchComponent implements OnInit {
         type: 'text'
     }, {
         name: 'Popularity',
-        ref: 'original_title',
+        ref: 'popularity',
         type: 'number'
     }, {
         name: 'Release Year',
@@ -37,11 +45,11 @@ export class AdvSearchComponent implements OnInit {
         type: 'number'
     }, {
         name: 'Run Time',
-        ref: 'run_time',
+        ref: 'runtime',
         type: 'number'
     }, {
         name: 'Tag Line',
-        ref: 'tag_line',
+        ref: 'tagline',
         type: 'text'
     }, {
         name: 'Title',
@@ -62,6 +70,11 @@ export class AdvSearchComponent implements OnInit {
     thirdFormGroup: FormGroup;
     droppedItems = [];
 
+    private _advSearchResults: any;
+    public advStoredResults: any;
+    public advResultsSub: Subscription;
+    public adSearch: string;
+
     public selectedCategory: CategorySelection;
     public categoryValueNum: number;
     public requestedColumns: IDynamicRequest = {
@@ -80,14 +93,21 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-    constructor(private _formBuilder: FormBuilder) {}
+    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, public dialog: MatDialog, private _router: Router) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
+      this._advSearch.resultsSubscription().subscribe(advResults => {
+        this._advSearchResults = advResults.result;
+        this.advStoredResults = new MatTableDataSource<IMovie>(this._advSearchResults);
+        console.log(this.advStoredResults);
+      });
+
+      this._advSearch.refreshResults();
+
       this.fullFormGroup = this._formBuilder.group({
         firstCtrl: ['', Validators.required]
       });
     }
-
 
     public submit(value) {
         this.droppedItems.forEach(item => {
@@ -118,11 +138,26 @@ export class AdvSearchComponent implements OnInit {
       list.splice(index, 1);
     }
 
+    tableView() {
+      this._router.navigate(['results-table']);
+    }
+
     public tableSearch(value) {
-
+      return value;
     }
-
     public cardSearch(value) {
-
+      return value;
     }
+    public searchMovies() {
+      if (this.adSearch) {
+        console.log('slayer');
+        this._advSearch.customSearch(this.adSearch).pipe().subscribe( data => {
+          this._advSearch.storeResults(data);
+          this._router.navigate(['results']);
+
+          console.log('woriks');
+        } );
+    }
+
+}
 }

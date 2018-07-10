@@ -10,30 +10,30 @@ import { IMovie } from '../interfaces/movie';
 
 export class SearchService {
 
-    public searchSubj:Subject<any> = new Subject<any>();
+    public searchSubj: Subject<any> = new Subject<any>();
     private storedSearchData: any;
 
-    constructor(private _http:HttpService) {}
+    constructor(private _http: HttpService) {}
 
-    public basicSearch(search:string, returnType?:IDynamicRequest) {
+    public basicSearch(search: string, returnType?: IDynamicRequest) {
         const payload = {
             search: search
         };
         return this._http.post('search-title', payload).pipe(
             map( (response) => {
-                return this._mapResults(response, returnType);      
+                return this._mapResults(response, returnType);
             })
         );
     }
 
-    private _mapResults(response:any, returnType:IDynamicRequest) {
+    private _mapResults(response: any, returnType: IDynamicRequest) {
         if (returnType) {
-            const movies:IMovie[] = response['result'];
+            const movies: IMovie[] = response['result'];
             const dataToBeSent = [];
-            movies.forEach( (movie:IMovie) => {
+            movies.forEach( (movie: IMovie) => {
                 const newMovie = {};
-                for (let key in returnType) {
-                    if(returnType[key]) {
+                for (const key in returnType) {
+                    if (returnType[key]) {
                         newMovie[key] = movie[key];
                     }
                 }
@@ -44,25 +44,25 @@ export class SearchService {
         } else {
             return response;
         }
+        console.log(this._mapResults);
     }
 
-    public storeResults(data:any) {
+    public storeResults(data: any) {
         this.storedSearchData = data;
-        this.searchSubj.next(data)
-
+        this.searchSubj.next(data);
     }
 
     public refreshResults() {
-        if(this.storedSearchData) {
+        if (this.storedSearchData) {
             this.searchSubj.next(this.storedSearchData);
         }
     }
 
-    public resultsSubscription():Observable<any> {
+    public resultsSubscription(): Observable<any> {
         return this.searchSubj.asObservable();
     }
 
-    public topTenSearch(category: string, returnType?: IDynamicRequest){
+    public topTenSearch(category: string, returnType?: IDynamicRequest) {
         const payload = {
             category: category
         };
@@ -83,4 +83,17 @@ export class SearchService {
             })
         );
     }
+
+    public customSearch(search: string, returnType?: IDynamicRequest) {
+      const Payload = {
+        search: search
+      };
+      return this._http.post('custom-search', Payload).pipe(
+        map ((response) => {
+          return this._mapResults(response, returnType);
+        })
+      );
+      console.log(this.customSearch);
+   }
+
 }
