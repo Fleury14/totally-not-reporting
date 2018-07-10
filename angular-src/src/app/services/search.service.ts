@@ -103,4 +103,12 @@ export class SearchService {
             })
         );
     }
+
+    public getRunTimeOfYear(search: any){
+        return this._http.post('run-time-by-year', search).pipe(
+            map( (response) => {
+                return response
+            })
+        );
+    }
 }

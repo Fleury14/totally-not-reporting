@@ -11,6 +11,7 @@ import { RevenueComponent } from './components/revenue-component/revenue.compone
 import { BudgetComponent } from "./components/budget-component/budget.component";
 
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 
 
 const routes: Route[] = [{
@@ -42,6 +43,10 @@ const routes: Route[] = [{
     path: 'release',
     component: ReleaseChartComponent
 
+},
+{
+    path: 'run-time',
+    component: RunTimeChartComponent
 },
 {
     path: '',

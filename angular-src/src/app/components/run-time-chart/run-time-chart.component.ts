@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs/operators';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { IMovie } from '../../interfaces/movie';
 import { SearchService } from '../../services/search.service';
+import { take } from 'rxjs/operators';
 import { ErrorStateMatcher, MatSnackBar } from '@angular/material';
-import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-release-chart',
-  templateUrl: './release-chart.component.html',
-  styleUrls: ['./release-chart.component.scss']
+  selector: 'app-run-time-chart',
+  templateUrl: './run-time-chart.component.html',
+  styleUrls: ['./run-time-chart.component.scss']
 })
-export class ReleaseChartComponent implements OnInit {
+export class RunTimeChartComponent implements OnInit {
+  public view: any[] = [700, 400];
   public showXAxis = true;
   public showYAxis = true;
   public showLegend = true;
   public showXAxisLabel = true;
   public xAxisLabel = 'Years';
   public showYAxisLabel = true;
-  public yAxisLabel = 'Number of Movies';
-  public releases: any[];
-  public colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
-  public view: any[] = [700, 400];
+  public yAxisLabel = 'Run Time';
+  public data;
+  public startYear:number;
+
    // SLIDER OPTIONS
    public yearValue = [1990, 1995]
    public sliderConfig: any = {
@@ -43,36 +41,46 @@ export class ReleaseChartComponent implements OnInit {
        }
      };
 
-  constructor(private _search: SearchService,public snackBar: MatSnackBar ) {}
+  constructor(public _search:SearchService, public snackBar: MatSnackBar ) {}
+
 
   ngOnInit() {
-    this.count(1900,2020);
+    // this.count(1960, 2018)
   }
 
   public count(startYear, endYear) {
-    this.releases = [];
+    this.data = [];
     const search = {
         startYear,
         endYear
     }
-    this._search.getCountOfYear(search).pipe(take(1)).subscribe(async (data) => {
+    this._search.getRunTimeOfYear(search).pipe(take(1)).subscribe(async (data) => {
         const results = await data['result'];
-        results.forEach(release => {
-          if(release.date_part){
-            let obj = {
-              name: release.date_part.toString(),
-              value: parseInt(release.count)
+        results.forEach(movie => {
+          if(movie['date_part'] &&  movie['count'] && movie['runtime']){
+            const obj = {
+                "name": `${movie['date_part']}`,
+                "series": [
+                  {
+                    "name":`${movie['date_part']}`,
+                    "x":movie['date_part'],
+                    "y": movie['runtime'] ,
+                    "r": movie['count']
+                  }
+                ]
+              };
+              this.data.push(obj);
             };
-            this.releases.push(obj);
-          }
-        });
-        
+          })      
     });
   }
+
   public submitYears() {
+    console.log(this.yearValue[0] , this.yearValue[1])
     if (this.yearValue[0] > this.yearValue[1]) {
         this.snackBarMessage('Ending year needs to come after the starting year')
     } else {
+      this.startYear = this.yearValue[0]
       this.count(this.yearValue[0],this.yearValue[1])
     }    
   }
@@ -82,5 +90,4 @@ export class ReleaseChartComponent implements OnInit {
         duration: 1000
     });
   }
-
 }
