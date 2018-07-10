@@ -20,8 +20,10 @@
 <div class="grid-container">
     <div class="search-result" *ngFor="let result of storedResults?.data">
         <div class="top" (click)="showMovieModal(result)">
-            <i class="fas fa-film fa-6x"></i>
-            <p class="tagline">{{ result.tagline }}</p>
+            <div *ngIf="result.poster_path" [ngStyle]="{'background': 'url(http://image.tmdb.org/t/p/w185//' + result.poster_path + ')', 'background-repeat': 'no-repeat', 'background-position': 'center'}" class="poster-background"></div>
+            <!-- <img *ngIf="result.poster_path" [src]="'http://image.tmdb.org/t/p/w185//' + result.poster_path"> -->
+            <i *ngIf="!result.poster_path" class="fas fa-film fa-6x"></i>
+            <p *ngIf="!result.poster_path" class="tagline">{{ result.tagline }}</p>
         </div>
         <div class="info">
             <h2 class="title">{{ stringCutoff(result.title,24) }}</h2>
