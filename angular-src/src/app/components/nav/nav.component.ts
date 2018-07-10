@@ -32,10 +32,9 @@ export class NavComponent {
         //     vote_average: false,
         //     vote_count: false
         // }
-        
         if (this.search) {
             this._search.basicSearch(this.search).pipe( take(1) ).subscribe( data => {
-                this._recent.addSearchList(data.search, data.endpoint)
+                this._recent.addSearchList(data.search, data.endpoint);
                 this._search.storeResults(data);
                 this._router.navigate(['results']);
             } );

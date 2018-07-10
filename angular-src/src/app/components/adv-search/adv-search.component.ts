@@ -1,7 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CatergorySelection } from '../../interfaces/category-selection';
+
+import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
+import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
+import { SearchService } from '../../services/search.service';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+
+
 @Component({
     selector: 'app-adv-search',
     templateUrl: './adv-search.component.html',
@@ -11,7 +17,9 @@ import { IDynamicRequest } from '../../interfaces/dynamic-request';
 export class AdvSearchComponent implements OnInit {
     @ViewChild('searchForm') private _searchForm: NgForm;
 
-    public searchCategory: CatergorySelection[] = [{
+
+    public searchCategory: CategorySelection[] = [{
+
         name: 'Budget',
         ref: 'budget',
         type: 'number'
@@ -25,7 +33,7 @@ export class AdvSearchComponent implements OnInit {
         type: 'text'
     }, {
         name: 'Popularity',
-        ref: 'original_title',
+        ref: 'popularity',
         type: 'number'
     }, {
         name: 'Release Year',
@@ -37,11 +45,11 @@ export class AdvSearchComponent implements OnInit {
         type: 'number'
     }, {
         name: 'Run Time',
-        ref: 'run_time',
+        ref: 'runtime',
         type: 'number'
     }, {
         name: 'Tag Line',
-        ref: 'tag_line',
+        ref: 'tagline',
         type: 'text'
     }, {
         name: 'Title',
@@ -63,7 +71,15 @@ export class AdvSearchComponent implements OnInit {
     droppedItems = [];
     selection: true;
 
-    public selectedCategory: CatergorySelection;
+
+    fullFormGroup: FormGroup;
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+    thirdFormGroup: FormGroup;
+    droppedItems = [];
+
+    public selectedCategory: CategorySelection;
+
     public categoryValueNum: number;
     public requestedColumns: IDynamicRequest = {
         adult: false,
@@ -82,37 +98,29 @@ export class AdvSearchComponent implements OnInit {
     };
 
 
+    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, public dialog: MatDialog, private _router: Router) {}
 
-    constructor(private _formBuilder: FormBuilder) {
-    }
+    ngOnInit(): void {}
 
-    ngOnInit() {
-      {
-      console.log('works');
-      this.fullFormGroup = this._formBuilder.group({
-        firstCtrl: ['', Validators.required]
-      });
-      console.log(this.fullFormGroup);
-    }
-  }
 
     public submit(value) {
         this.droppedItems.forEach(item => {
           this.requestedColumns[item.ref] = true;
         });
-        console.log('submitting...', value, this.requestedColumns);
-        if (value.returnType === 'table') {
-            this.tableSearch(value);
-        } else if (value.returnType === 'cards') {
-            this.cardSearch(value);
+
+        if (value.category !== undefined && value.search !== undefined && value.order !== undefined && value.column !== undefined) {
+          console.log(value.returnType, value.category, value.search, value.order, value.column);
+          this._advSearch.customSearch(value.category, value.search, value.order ).subscribe(res => {
+            this._router.navigate(['results']);
+          });
+          } else {
+            console.log('Please enter all fields...');
         }
       }
 
     onItemDrop(e: any) {
       this.droppedItems.push(e.dragData);
-      console.log(this.droppedItems);
     }
-
 
     reset(value) {
       this.removeItem(value, this.droppedItems);
@@ -123,13 +131,5 @@ export class AdvSearchComponent implements OnInit {
         return e.name;
       }).indexOf(item.name);
       list.splice(index, 1);
-    }
-
-    // public tableSearch(value) {
-
-    // }
-
-    public cardSearch(value) {
-
     }
 }
