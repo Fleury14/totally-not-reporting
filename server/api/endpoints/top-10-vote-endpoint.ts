@@ -9,7 +9,7 @@ export function topTen(req: Request, res: Response, next: NextFunction) {
     } else if ( !acceptableColumns.includes(req.body.category)) {
         res.status(500).json({message: "Error: Unacceptable category"})
     } else {
-        const query = "SELECT * FROM movies_meta FULL OUTER JOIN movie_posters ON (title = poster_title) FULL OUTER JOIN movies_vote ON (movie_id = vote_id) ORDER BY COALESCE (${category~}, 0) DESC LIMIT 10"
+        const query = "SELECT * FROM movies_meta FULL OUTER JOIN movie_posters ON (title = poster_title AND movie_id = poster_id) FULL OUTER JOIN movies_vote ON (movie_id = vote_id) ORDER BY COALESCE (${category~}, 0) DESC LIMIT 10"
         db.any(query, req.body).then( (resp) => {
             res.json({ message: "Search results",
                 result: resp,
