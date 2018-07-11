@@ -54,9 +54,6 @@ export class KidFriendlyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-
   public submitYears() {
     if (this.yearValue[0] > this.yearValue[1]) {
         this.snackBarMessage('Ending year needs to come after the starting year');

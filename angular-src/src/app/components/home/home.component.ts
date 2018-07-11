@@ -9,57 +9,56 @@ import { take } from 'rxjs/operators';
     styleUrls: [ './home.component.scss' ]
 })
 
-
-
 export class HomeComponent implements OnInit {
+  this.setRuntimeData(2000,2017);
 
-     // budget
-     public xAxis = true;
-     public yAxis = true;
-     public showXAxis = true;
-     public showYAxis = true;
+   // budget
+   public xAxis = true;
+   public yAxis = true;
+   public showXAxis = true;
+   public showYAxis = true;
 
-     // revenue
+   // revenue
 
-     // runtime
+   // runtime
 
-     // release date
-  //  kid friendly feilds
-  public showLegend = false;
-  public showLabels = false;
-  public explodeSlices = false;
-  public doughnut = false;
-   // different graph variables
-   public budgetData: any;
-   public revenueData: any;
-   public runtimeData: any;
-   public releaseDateData: any;
-   public kidFriendlyData: any;
-    // global
-    public multiColorScheme = {
-        domain: ['#6FC5C1', '#C5354B', '#FFB544', '#99C56F']
+   // release date
+    //  kid friendly feilds
+    public showLegend = false;
+    public showLabels = false;
+    public explodeSlices = false;
+    public doughnut = false;
+     // different graph variables
+     public budgetData: any;
+     public revenueData: any;
+     public runtimeData: any;
+     public releaseDateData: any;
+     public kidFriendlyData: any;
+      // global
+      public multiColorScheme = {
+          domain: ['#6FC5C1', '#C5354B', '#FFB544', '#99C56F']
+        };
+      public whiteColorScheme = {
+          domain: ['#fff']
       };
-    public whiteColorScheme = {
-        domain: ['#fff']
-    };
-    public allMovieResults: IMovie[];
-  ngOnInit(): void {
-        this._search.getYearRange(1900, 2017).subscribe(response => {
-            if (response.result) {
-                this.allMovieResults = response.result;
-                this.setRevenueData(this.allMovieResults);
-                this.setBudgetData(this.allMovieResults);
-                this.setReleaseDateData(this.allMovieResults);
-                this.setKidFriendlyData(this.allMovieResults);
+      public allMovieResults: IMovie[];
 
-            }
-        });
-        // different graph methods
+      constructor (private _search: SearchService) {}
+      ngOnInit(): void {
+              this._search.getYearRange(1900, 2017).subscribe(response => {
+                  if (response.result) {
+                      this.allMovieResults = response.result;
+                      this.setRevenueData(this.allMovieResults);
+                      this.setBudgetData(this.allMovieResults);
+                      this.setReleaseDateData(this.allMovieResults);
+                      this.setKidFriendlyData(this.allMovieResults);
 
-        this.setRuntimeData(2000, 2017);
-    }
-constructor (private _search: SearchService) {}
+                  }
+              });
+              // different graph methods
 
+              this.setRuntimeData(2000, 2017);
+        }
 
     public setBudgetData(movies: IMovie[]) {
         this.budgetData = [{
@@ -199,7 +198,6 @@ constructor (private _search: SearchService) {}
                 this.kidFriendlyData[0]['value']++;
             } else {
                 this.kidFriendlyData[1]['value']++;
-                console.log(movie.title);
             }
         });
     }

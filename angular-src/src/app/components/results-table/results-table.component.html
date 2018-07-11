@@ -5,7 +5,7 @@
         <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
             <td mat-cell *matCellDef="let movie">{{ movie?.title }}
-              <button mat-raised-button >See Movie Info</button>
+              <!-- <button mat-raised-button >See Movie Info</button> -->
             </td>
         </ng-container>
         <ng-container matColumnDef="tagline">
@@ -55,6 +55,18 @@
         <ng-container matColumnDef="movie_id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Movie ID</th>
             <td mat-cell *matCellDef="let movie">{{ movie?.movie_id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="poster_title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Poster Title</th>
+            <td mat-cell *matCellDef="let movie">{{ movie?.poster_title }}</td>
+        </ng-container>
+        <ng-container matColumnDef="poster_path">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Poster Path</th>
+            <td mat-cell *matCellDef="let movie">{{ movie?.poster_path }}</td>
+        </ng-container>
+        <ng-container matColumnDef="poster_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Poster Id</th>
+            <td mat-cell *matCellDef="let movie">{{ movie?.poster_id }}</td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>

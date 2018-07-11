@@ -1,3 +1,4 @@
+// tslint:disable-next-line:max-line-length
 // cast and crew are type any because of the complexity of each object. if someone wants to trim that data down and adjust the interface to conform, have at it
 export interface IMovie {
     adult: boolean;
