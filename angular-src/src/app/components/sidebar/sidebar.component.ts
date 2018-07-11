@@ -49,7 +49,7 @@ export class SideBarComponent implements DoCheck {
     public byYearSearch(year?) {
         const byYear = year ? year : document.querySelector<HTMLInputElement>('#byYear').value;
         this._search.getByYearSearch( parseInt(byYear) ).pipe( take(1)).subscribe( (data) => {
-            this._recent.addSearchList(byYear, data.endpoint);
+            this._recent.addSearchList(byYear, data['endpoint']);
             this._search.storeResults(data);
             this._router.navigate(['results']);
         });
