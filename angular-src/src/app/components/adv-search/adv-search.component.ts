@@ -94,10 +94,7 @@ export class AdvSearchComponent implements OnInit {
           this.requestedColumns[item.ref] = true;
         });
         if (value.category !== undefined && value.search !== undefined && value.order !== undefined && value.column !== undefined) {
-        //   console.log('passed data:', value.returnType, value.category, value.search, value.order, value.column, this.requestedColumns);
-        // console.log('return', value.category);
           this._advSearch.customSearch(value.category.ref, value.search, value.order ).subscribe(res => {
-            // console.log('RESUUUUUULLLLTTTTT', res['result']);
             this._advSearch.storeResults(res);
             this._router.navigate(['results']);
             this._advSearch.refreshResults();
