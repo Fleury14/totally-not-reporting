@@ -61,11 +61,15 @@ export class AdvSearchComponent implements OnInit {
         type: 'number'
     }];
 
+
     fullFormGroup: FormGroup;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     thirdFormGroup: FormGroup;
     droppedItems = [];
+    dragEnabled = true;
+    draggedItems = [];
+
 
     public selectedCategory: CategorySelection;
     public categoryValueNum: number;
@@ -94,7 +98,7 @@ export class AdvSearchComponent implements OnInit {
           this.requestedColumns[item.ref] = true;
         });
         if (value.category !== undefined && value.search !== undefined && value.order !== undefined && value.column !== undefined) {
-          console.log(value.returnType, value.category, value.search, value.order, value.column);
+          console.log(value.returnType, value.category, value.search, value.order, value.column, this.requestedColumns);
           this._advSearch.customSearch(value.category, value.search, value.order ).subscribe(res => {
             this._router.navigate(['results']);
           });
@@ -105,10 +109,12 @@ export class AdvSearchComponent implements OnInit {
 
     onItemDrop(e: any) {
       this.droppedItems.push(e.dragData);
+      this.removeItem(e.dragData, this.searchCategory);
     }
 
     reset(value) {
       this.removeItem(value, this.droppedItems);
+      this.draggedItems.push(value, this.searchCategory);
     }
 
     removeItem(item: any, list: Array<any>) {
