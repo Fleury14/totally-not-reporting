@@ -9,6 +9,19 @@
       <div class="closeBtn" mat-dialog-actions>
         <i class="fas fa-times buttonRight" (click)="onNoClick()"></i>
       </div>
+      <div id="ratings">
+          <ul>
+            <li *ngFor="let rate of ratings">
+              {{rate}}
+              <a href="#" class="starRating">
+                <i class="far fa-star"></i>
+                <!-- unselected -->
+                <i class="fas fa-star"></i>
+                <!-- selected -->
+              </a>
+            </li>
+          </ul>
+        </div>
     </div>
   </div>
 

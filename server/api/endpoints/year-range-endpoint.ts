@@ -7,7 +7,7 @@ export function getYearRange(req: Request, res: Response, next: NextFunction) {
     } else if (typeof req.body.startYear != "number" || typeof req.body.endYear != "number") {
         res.status(500).json({message: "You didn't supply a number. You should do that."})
     } else {
-        const query = "SELECT * FROM movies_meta FULL OUTER JOIN movie_posters ON (title = poster_title) WHERE EXTRACT (YEAR FROM release_date) BETWEEN $1 AND $2 "
+        const query = "SELECT * FROM movies_meta LEFT OUTER JOIN movie_posters ON (title = poster_title AND movie_id = poster_id) WHERE EXTRACT (YEAR FROM release_date) BETWEEN $1 AND $2 "
         db.any(query, [req.body.startYear, req.body.endYear]).then( (resp) => {
             res.json({message: "Search results",
                 result: resp,
