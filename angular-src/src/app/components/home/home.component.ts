@@ -17,12 +17,15 @@ export class HomeComponent implements OnInit{
                 this.setRevenueData(this.allMovieResults);
                 this.setBudgetData(this.allMovieResults);
                 this.setReleaseDateData(this.allMovieResults);
+                this.setKidFriendlyData(this.allMovieResults);
 
             }
         })
         //different graph methods
+
         this.setRuntimeData(2000,2017);
         this.setKidFriendlyData();
+
     }
     // different graph variables
     public budgetData: any;
@@ -182,14 +185,22 @@ export class HomeComponent implements OnInit{
         })
     }
 
-    public setKidFriendlyData() {
+    public setKidFriendlyData(movies:IMovie[]) {
         this.kidFriendlyData = [{
             name: "Yes",
-            value: 6306
+            value: 0
 
         },{
             name: "No",
-            value: 1527
+            value: 0
         }];
+        movies.forEach( (movie:IMovie) => {
+            if(movie.adult === false){
+                this.kidFriendlyData[0]['value']++;
+            } else {
+                this.kidFriendlyData[1]['value']++;
+                console.log(movie.title);
+            }
+        })
     }
 }
