@@ -3,7 +3,6 @@ import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 import { SearchService } from '../../services/search.service';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
@@ -61,14 +60,11 @@ export class AdvSearchComponent implements OnInit {
         type: 'number'
     }];
 
-
     fullFormGroup: FormGroup;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     thirdFormGroup: FormGroup;
     droppedItems = [];
-    dragEnabled = true;
-
 
     public selectedCategory: CategorySelection;
     public categoryValueNum: number;
@@ -88,7 +84,7 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, public dialog: MatDialog, private _router: Router) {}
+    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, private _router: Router) {}
 
     ngOnInit(): void {}
 
