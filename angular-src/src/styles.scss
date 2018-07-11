@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~nouislider/distribute/nouislider.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "variables";
 @import "~ng-drag-drop/style.css";
@@ -25,7 +26,10 @@ button{
 .grid-container{
     // border: 1px dashed red;
     display: grid;
-    width: 100%;
+    grid-gap: 30px;
+    // width: 100%;
+    padding: 0px 30px;
+    margin-bottom: 30px;
 }
 
 .flex-container{
@@ -34,7 +38,21 @@ button{
     width: 100%;
 }
 
+
+.text-center {
+    text-align: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
 .version-info {
   font-size: 8pt;
   float: right;
 }
+

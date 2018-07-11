@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
     <h1>Totally Not Reporting</h1>
     <p>This is our example of displaying queries from one or more tables in an easy to read manner.</p>
     <p>Use the quick search above to search for movies by title, or the sidebar on the left for some of our more popular searches as well as your recent queries.</p>
@@ -7,4 +7,73 @@
         <p>&copy; Team Cucumber 2018</p>
         <div></div>
     </div>
-</main>
+</main> -->
+<div class="grid-container">
+    <div id="budget" class="category" routerLink="../budget">
+        <h3>Budget</h3>
+        <div class="budget-bar">
+            <ngx-charts-bar-vertical
+            [scheme]="whiteColorScheme"
+            [results]="budgetData"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
+    </div>
+    <div id="revenue" class="category" routerLink="../revenue"> <!-- tree map-->
+        <h3>Revenue</h3>
+        <div class="revenue-tree">
+            <ngx-charts-tree-map
+            [scheme]="multiColorScheme"
+            [valueFormatting]="millions"
+            [results]="revenueData">
+            
+            </ngx-charts-tree-map>
+        </div>
+    </div>
+    <div class="category" routerLink="../run-time"> 
+        <h3>Runtime</h3>
+        <div class="runtime-bubble" *ngIf="runtimeData && runtimeData.length > 0">
+            <ngx-charts-bubble-chart
+            [scheme]="multiColorScheme"
+            [results]="runtimeData"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis">
+            </ngx-charts-bubble-chart>
+        </div>
+    </div>
+    <div id="release-date"class="category" routerLink="../release"> <!-- bar graph-->
+        <h3>Release Date</h3>
+        <div class="budget-bar">
+            <ngx-charts-bar-vertical
+            [scheme]="whiteColorScheme"
+            [results]="releaseDateData"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
+    </div>
+    <div class="category pie-chart" routerLink="../kid-friendly">
+        <div class="title">
+            <h3>Kid Friendly</h3>
+        </div>
+        <div class="pie">
+            <ngx-charts-pie-chart
+            [legendTitle]="legendTitle"
+            [scheme]="multiColorScheme"
+            [results]="kidFriendlyData"
+            [legend]="showLegend"
+            [explodeSlices]="explodeSlices"
+            [doughnut]="doughnut"
+            [gradient]="gradient"
+            (select)="onSelect($event)"
+            ></ngx-charts-pie-chart>
+        </div>
+    </div>
+</div>

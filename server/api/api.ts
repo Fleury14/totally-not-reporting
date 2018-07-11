@@ -8,6 +8,9 @@ import { getByYear } from "./endpoints/get-by-year-endpoint";
 import { testJoin } from "./endpoints/test-join";
 import { categorySearch } from "./endpoints/custom-queries/search-by-category-endpoint";
 import { actorSearch } from "./endpoints/join-queries/actor-search-endpoint";
+import { getYearRange } from "./endpoints/year-range-endpoint";
+import { countYearRange } from "./endpoints/count-year";
+import { runTimeByYearRange } from "./endpoints/run-time-by-year";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -18,6 +21,9 @@ export function initAPI (app:Application) {
 
     app.route('/api/top10').post(topTen);
     app.route('/api/get-by-year').post(getByYear);
+    app.route('/api/get-year-range').post(getYearRange);
+    app.route('/api/count-by-year').post(countYearRange);
+    app.route('/api/run-time-by-year').post(runTimeByYearRange);
 
     app.route('/api/join-test').post(testJoin);
     app.route('/api/actor-search').post(actorSearch);

@@ -1,0 +1,108 @@
+<h1>$ Revenue $</h1>
+<div class="revenue-top-row">
+    <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
+    <button class="go-button" (click)="submitYears()">Go!</button>
+    <!-- <div class="date-picker">
+        <form action="" (ngSubmit)="submitYears(yearForm.value)" #yearForm="ngForm">
+            <mat-form-field class="revenue-year">
+                <input matInput type="number" name="startYear" ngModel placeholder="Starting Year">
+            </mat-form-field>
+            <mat-form-field class="revenue-year">
+                <input matInput type="number" name="endYear" [errorStateMatcher]="matcher" ngModel placeholder="Ending year">
+            </mat-form-field>
+            <input type="submit" class="go-button" value="Go!">
+        </form>
+    </div> -->
+    <div class="revenue-desc text-center">
+        <p>Select a starting year and an ending year and see some nifty revenue information about that time period.</p>
+    </div>
+</div>
+<button mat-raised-button color="primary" (click)="toggleDisplay(true)" class="toggle-year hide-stuff">Input New Years</button>
+<div class="results-field" *ngIf="this.showResults">
+        <div class="pie">
+            <ngx-charts-advanced-pie-chart
+            [scheme]="colorScheme"
+            [results]="pieData"
+            [gradient]="gradient"
+            (select)="onSelect($event)"
+            ></ngx-charts-advanced-pie-chart>
+        </div>
+        <div class="flex-container">
+            <div class="top-five">
+                <ul>
+                    <li *ngFor="let movie of topFive">{{ millions(movie.revenue) }} -- {{ movie.title }}</li>
+                </ul>
+            </div>
+            <div class="top-5-desc flex-container align-center justify-center">
+                <p class="text-center">The top 5 earners for the time period</p>
+            </div>
+        </div>
+        <h2 class="text-center">Average Revenue</h2>
+        <div class="flex-container">
+            <div class="bar-graph">
+                <h2 class="text-center">Average Revenue</h2>
+                <ngx-charts-bar-vertical
+                [scheme]="barColorScheme"
+                [results]="barData"
+                [gradient]="barGradient"
+                [xAxis]="barShowXAxis"
+                [yAxis]="barShowYAxis"
+                [legend]="barShowLegend"
+                [showXAxisLabel]="barShowXAxisLabel"
+                [showYAxisLabel]="barShowYAxisLabel"
+                [xAxisLabel]="barXAxisLabel"
+                [yAxisLabel]="barYAxisLabel"
+                [yAxisTickFormatting]="millions"
+                (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+            </div>
+            <div class="bar-graph">
+                <h2 class="text-center">Peak Revenue</h2>
+                <ngx-charts-bar-vertical
+                [scheme]="barColorScheme"
+                [results]="barDataTwo"
+                [gradient]="barGradient"
+                [xAxis]="barShowXAxis"
+                [yAxis]="barShowYAxis"
+                [legend]="barShowLegend"
+                [showXAxisLabel]="barShowXAxisLabel"
+                [showYAxisLabel]="barShowYAxisLabel"
+                [xAxisLabel]="barXAxisLabel"
+                [yAxisLabel]="barYAxisLabel"
+                [yAxisTickFormatting]="millions"
+                (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+        
+        
+        <h2 class="text-center tree-map-desc">Highest net profit (revenue - budget)</h2>
+        <div class="tree-graph">
+            <ngx-charts-tree-map
+            [scheme]="treeColorScheme"
+            [results]="treeData"
+            [valueFormatting]="millions"
+            (select)="onSelect($event)">
+            </ngx-charts-tree-map>
+        </div>
+        <h2 class="text-center">Monthly Heat Map</h2>
+        <div class="heat-map">
+            <ngx-charts-heat-map
+                [scheme]="heatColorScheme"
+                [results]="heatMapData"
+                [legend]="showLegend"
+                [gradient]="heatGradient"
+                [xAxis]="barShowXAxis"
+                [yAxis]="barShowYAxis"
+                [showXAxisLabel]="barShowXAxisLabel"
+                [showYAxisLabel]="barShowYAxisLabel"
+                [xAxisLabel]="heatXAxisLabel"
+                [yAxisLabel]="heatYAxisLabel"
+                [tooltipText]="millions"
+                (select)="onSelect($event)">
+            </ngx-charts-heat-map>
+        </div>
+        
+
+        
+</div>

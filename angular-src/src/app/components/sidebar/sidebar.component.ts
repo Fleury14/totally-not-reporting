@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { SearchService } from './../../services/search.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';

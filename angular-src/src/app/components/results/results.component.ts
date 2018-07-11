@@ -18,6 +18,17 @@ export class ResultComponent implements OnInit {
     public storedResults: any;
     private _rawResults: any;
     public resultSub: Subscription;
+    
+    // piechart options
+    public showLegend = true;
+    public view: any[] = [700, 400];
+    public colorScheme = {
+        domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+      };
+    public showLabels = true;
+    public explodeSlices = false;
+    public doughnut = true;
+    public pieData:any;
 
 
     constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
@@ -56,4 +67,9 @@ export class ResultComponent implements OnInit {
       tableView() {
         this._router.navigate(['results-table']);
       }
+
+
+    onSelect(event) {
+        console.log(event);
+    }
 }

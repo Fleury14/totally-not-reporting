@@ -1,0 +1,25 @@
+<div class="run-top-row ">
+  <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
+  <button class="go-button" (click)="submitYears()">Go!</button>
+</div>
+<div *ngIf="runtimeYear && runtimeYear.length > 0">
+  <ngx-charts-bubble-chart
+    [results]= "runtimeYear"
+    [showXAxisLabel]="showXAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [xScaleMin]= "startYear">
+  </ngx-charts-bubble-chart>
+</div>
+<div *ngIf="runtimeCount && runtimeCount.length > 0">
+  <ngx-charts-bubble-chart
+    [results]= "runtimeCount"
+    [showXAxisLabel]="showXAxisLabel"
+    [xAxisLabel]="x2AxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [yAxisLabel]="y2AxisLabel"
+    >
+  </ngx-charts-bubble-chart>
+</div>
+<!-- [yAxisTicks]= "yAxisTicks " -->

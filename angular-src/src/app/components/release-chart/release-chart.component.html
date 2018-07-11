@@ -1,0 +1,18 @@
+<div class="release-top-row ">
+    <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
+    <button class="go-button" (click)="submitYears()">Go!</button>
+  </div>
+
+<div *ngIf="releases.length > 0">
+  <ngx-charts-bar-vertical
+    [view]="view"
+    [results]="releases"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    (select)="onSelect($event)">
+  </ngx-charts-bar-vertical>
+</div>
