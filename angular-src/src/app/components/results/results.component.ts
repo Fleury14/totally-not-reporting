@@ -30,6 +30,7 @@ export class ResultComponent implements OnInit {
     public doughnut = true;
     public pieData:any;
 
+
     constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
 
     ngOnInit(): void {
@@ -42,7 +43,7 @@ export class ResultComponent implements OnInit {
         this._search.refreshResults();
     }
 
-    public stringCutoff(string: string, maxLength){
+    public stringCutoff(string: string, maxLength) {
         if (!string) { return string; } else {
           if (string.length <= maxLength) {
             const result = string.substr(0, maxLength);
@@ -51,7 +52,7 @@ export class ResultComponent implements OnInit {
             const result = string.substr(0, maxLength) + '...';
             return result;
         }
-        }
+      }
     }
 
     showMovieModal(movie: any): void {
@@ -60,6 +61,7 @@ export class ResultComponent implements OnInit {
           height: '650px',
           data: movie
         });
+
       }
 
       tableView() {

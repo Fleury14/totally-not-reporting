@@ -33,11 +33,12 @@ p {
 
     th {
         padding-right: 20px;
-    }    
+    }
 }
 .grid-container{
     // grid-gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+
 }
 .flex-container{
     flex-wrap: wrap;
@@ -51,6 +52,7 @@ p {
     display: grid;
     grid-template-rows: 70% 1fr;
     grid-template-areas: 
+
         "top"
         "info";
 }
@@ -85,7 +87,7 @@ p {
         font-style: italic;
         font-weight: 100;
     }
-    
+
     &:hover{
         cursor: pointer;
         background-color: hsl(0, 0%, 90%);
@@ -134,12 +136,12 @@ p {
         .header-left{
             justify-content: flex-start;
             width: 100%;
-            
+
             .tagline {
                 font-style: italic;
             }
         }
-        
+
         .header-right{
             justify-content: flex-end;
             display: inline-block;
@@ -151,7 +153,7 @@ p {
                 .buttonRight {
                     cursor: pointer;
                 }
-            }    
+            }
         }
     }
 
@@ -162,7 +164,7 @@ p {
 
     //         .information-row{
     //         display: flex;
-            
+
     //         .content-left{
     //             width: 50%;
     //             justify-content: flex-start;
@@ -197,7 +199,7 @@ p {
             justify-content: center;
             height: 200px;
             width: 200px;
-            background: #d9d9d9; 
+            background: #d9d9d9;
             box-shadow: 5px 5px 15px hsl(0, 0%, 92%);
 
             .info-inline {
@@ -215,4 +217,4 @@ p {
     }
 }
 
-/* End of Modal Styles */ 
+/* End of Modal Styles */

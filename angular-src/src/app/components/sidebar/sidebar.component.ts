@@ -11,26 +11,30 @@ import { RecentSearchService } from '../../services/recent-search.service';
 })
 
 export class SideBarComponent implements DoCheck {
-    private recentArray:any;
-    private sizedRecentArray:any;
+
+    private recentArray: any;
+    private sizedRecentArray: any;
+
     constructor(
         private _search: SearchService,
         private _router: Router,
         private _recent: RecentSearchService
     ) {}
 
-    ngDoCheck(){
+    ngDoCheck() {
         this.recentArray = this._recent.getSearchList();
         const screenSize = window.innerHeight;
-        if(screenSize < 800 ){
-            this.sizedRecentArray = this.recentArray.slice(0,6);
-        } else if(screenSize < 900){
-            this.sizedRecentArray = this.recentArray.slice(0,8);
-        } else if(screenSize < 1000){
-            this.sizedRecentArray = this.recentArray.slice(0,10);
 
-        }else {
-            this.sizedRecentArray = this.recentArray.slice(0,this.recentArray.length);
+        if (screenSize < 800 ) {
+            this.sizedRecentArray = this.recentArray.slice(0, 6);
+        } else if (screenSize < 900) {
+            this.sizedRecentArray = this.recentArray.slice(0, 8);
+        } else if (screenSize < 1000) {
+            this.sizedRecentArray = this.recentArray.slice(0, 10);
+
+        } else {
+            this.sizedRecentArray = this.recentArray.slice(0, this.recentArray.length);
+
         }
     }
 
@@ -38,7 +42,7 @@ export class SideBarComponent implements DoCheck {
         this._search.topTenSearch(category).pipe( take(1)).subscribe( (data) => {
             this._recent.addSearchList(category, data.endpoint);
             this._search.storeResults(data);
-            this._router.navigate(['results'])
+            this._router.navigate(['results']);
         });
     }
 
@@ -52,16 +56,16 @@ export class SideBarComponent implements DoCheck {
     }
 
     public searchMovie(search, endpoint) {
-        if (endpoint == 'search title') {
+        if (endpoint === 'search title') {
             this._search.basicSearch(search).pipe( take(1) ).subscribe( data => {
                 this._recent.addSearchList(data.search, data.endpoint);
                 this._search.storeResults(data);
                 this._router.navigate(['results']);
             } );
-        } else if (endpoint == 'by year') {
+        } else if (endpoint === 'by year') {
             this.byYearSearch(search);
         } else {
-            this.topTen(search); 
+            this.topTen(search);
         }
     }
 }

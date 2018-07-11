@@ -2,9 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { NgDragDropModule } from 'ng-drag-drop';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 // import { ModalComponent } from './components/modal/modal.component';
 import { AppComponent } from './app.component';
@@ -36,11 +40,12 @@ import { KidFriendlyComponent } from './components/kid-friendly-component/kid-fr
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
-    HttpClientModule, NgxChartsModule, NouisliderModule
+    HttpClientModule, NgxChartsModule, NouisliderModule, NgDragDropModule.forRoot()
   ],
   providers: [ SearchService, HttpService, RecentSearchService  ],
   entryComponents: [ ModalComponent, RevenueComponent, BudgetComponent ],
 
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

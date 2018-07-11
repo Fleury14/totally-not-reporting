@@ -2,8 +2,7 @@
 @import "~nouislider/distribute/nouislider.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "variables";
-
-
+@import "~ng-drag-drop/style.css";
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -32,12 +31,13 @@ button{
     padding: 0px 30px;
     margin-bottom: 30px;
 }
+
 .flex-container{
     // border: 1px dashed blue;
     display: flex;
     width: 100%;
-
 }
+
 
 .text-center {
     text-align: center;
@@ -50,3 +50,9 @@ button{
 .justify-center {
     justify-content: center;
 }
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
