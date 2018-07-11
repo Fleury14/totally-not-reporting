@@ -88,7 +88,7 @@ export class SearchService {
         };
         return this._http.post('get-by-year', payload).pipe(
             map( (response) => {
-                
+                return this._mapResults(response, returnType);
             })
         );
     }
