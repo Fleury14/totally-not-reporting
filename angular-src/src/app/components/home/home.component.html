@@ -36,11 +36,12 @@
     </div>
     <div class="category" routerLink="../run-time"> 
         <h3>Runtime</h3>
-        <div class="runtime-bubble">
+        <div class="runtime-bubble" *ngIf="runtimeData && runtimeData.length > 0">
             <ngx-charts-bubble-chart
             [scheme]="multiColorScheme"
-            [xScaleMin]="1950"
-            [results]="runtimeData">
+            [results]="runtimeData"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis">
             </ngx-charts-bubble-chart>
         </div>
     </div>
