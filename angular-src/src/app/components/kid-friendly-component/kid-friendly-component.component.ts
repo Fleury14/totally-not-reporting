@@ -60,18 +60,11 @@ export class KidFriendlyComponent implements OnInit {
         if (this.yearValue[0] > this.yearValue[1]) {
             this.snackBarMessage('Ending year needs to come after the starting year')
         } else {
-            this._search.getYearRange(this.yearValue[0], this.yearValue[1]).pipe(take(1)).subscribe(response => {
-                
+            this._search.getYearRange(this.yearValue[0], this.yearValue[1]).pipe(take(1)).subscribe(response => {z
                 this.searchResults = response.result;
                 this.setPieChart(this.searchResults);
-    
-                
             } )
         }
-        
-        
-        // call the search service to get the movie data
-        // pass that jmovie data into setpiechart like this: this.setPieChart(response.result)
       }
 
       private snackBarMessage(message: string) {
@@ -81,7 +74,6 @@ export class KidFriendlyComponent implements OnInit {
       }
 
     public setPieChart(movie) {
-        console.log(movie);
         this.pieData = [{
             name: "Yes",
             value: 0
@@ -97,8 +89,6 @@ export class KidFriendlyComponent implements OnInit {
                 this.pieData[1]['value']++;
             }
         })
-        console.log(this.pieData)
-
     }
 
 }
