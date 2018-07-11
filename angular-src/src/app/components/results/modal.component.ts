@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ModalComponent implements OnInit {
 
-  rating: number;
+  ratings: number[];
 
   constructor(
     public openModal: MatDialogRef<ModalComponent>,
@@ -17,7 +17,6 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
-    console.log(this.rating);
   }
 
   onNoClick(): void {

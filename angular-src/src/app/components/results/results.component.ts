@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 
 export class ResultComponent implements OnInit {
-  public ratings;
+  public ratings: number[];
   public isHover = false;
   public storedResults: any;
   private _rawResults: any;
