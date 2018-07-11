@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit {
                       {
                         'name': `${movie['date_part']}`,
                         'x': movie['runtime'],
-                        'y': `${movie['count']}`,
+                        'y': parseInt(movie['count']}),
                         'r': 1
                       }
                     ]
