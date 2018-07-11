@@ -10,8 +10,6 @@ import { take } from 'rxjs/operators';
 })
 
 export class HomeComponent implements OnInit {
-  this.setRuntimeData(2000,2017);
-
    // budget
    public xAxis = true;
    public yAxis = true;
