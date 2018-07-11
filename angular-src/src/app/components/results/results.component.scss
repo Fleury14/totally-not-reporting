@@ -11,7 +11,9 @@
 //   widows: 1.1em;
 //   font-size: 40px;
 // }
-
+ul {
+  display: flex;
+}
 .starRating {
   margin:2px;
   &:hover .far {
@@ -20,6 +22,11 @@
   &:hover &:span .fas {
     display: inline;
   }
+
+}
+// .fa-star:hover {
+//   content: "\f089";
+// }
 .bummer {
     margin-top: 100px;
 }
@@ -229,7 +236,6 @@ p {
             }
         }
     }
-}
 }
 
 /* End of Modal Styles */

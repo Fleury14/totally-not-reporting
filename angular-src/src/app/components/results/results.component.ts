@@ -38,7 +38,7 @@ export class ResultComponent implements OnInit {
         this._search.resultsSubscription().subscribe(results => {
             this._rawResults = results.result;
             this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
-            this.ratings = Array(5).fill(4).map((x, i) => (i)); // [0,1,2,3,4]
+            this.ratings = Array(5); // [0,1,2,3,4]
             this.rate = (r) => (this.ratings = r);
         });
 
