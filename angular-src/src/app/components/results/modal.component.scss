@@ -16,3 +16,8 @@
 //   widows: 1.1em;
 //   font-size: 40px;
 // }
+ul {
+  flex-direction: center;
+  right: 50%;
+  -webkit-transform: translate(-50%, 0);
+}

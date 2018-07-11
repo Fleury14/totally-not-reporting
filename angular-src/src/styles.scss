@@ -3,6 +3,20 @@
   @import "~@angular/material/prebuilt-themes/indigo-pink.css";
   @import "variables";
 
+  #ratings {
+    list-style-type: none !important;
+    min-width: 100px;
+    padding: 0px;
+    .starRating {
+      .far {display: inline-block;};
+      .fas {display: none;};
+
+      &:hover {
+        .far {display: none;}
+        .fas {display: inline-block;}
+      }
+    }
+  }
 
 
   body {
@@ -49,19 +63,4 @@
 
   .justify-center {
       justify-content: center;
-  }
-
-
-  div.info ul {
-    list-style-type: none !important;
-    .starRating {
-
-      .far {display: inline-block;}
-      .fas {display: none;}
-
-      &:hover {
-        .far {display: none;}
-        .fas {display: inline-block;}
-      }
-    }
   }
