@@ -40,7 +40,7 @@ export class ResultsTableComponent implements OnInit {
             this.columnsToDisplay.sort(function(a, b) {
 
                 const subjectOrder: String[] = ['title', 'tagline', 'release_date', 'original_title', 'budget',
-                'revenue', 'runtime', 'overview', 'popularity', 'adult', 'vote_average', 'vote_count', 'movie_id'];
+                'revenue', 'runtime', 'overview', 'popularity', 'adult', 'vote_average', 'vote_count', 'movie_id', 'poster_id', 'poster_title', 'poster_path'];
 
                 return subjectOrder.indexOf(a) - subjectOrder.indexOf(b);
             });

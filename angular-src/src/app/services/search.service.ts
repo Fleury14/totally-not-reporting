@@ -109,7 +109,7 @@ export class SearchService {
             })
         );
     }
-}
+
 
     public customSearch(category: string, search: string, order: string, returnType?: IDynamicRequest) {
       const Payload = {
@@ -117,11 +117,9 @@ export class SearchService {
         category: category,
         order: order,
       };
-      return this._http.post('custom-search', Payload).pipe(
-        map ((response) => {
-          return this._mapResults(response, returnType);
-        })
-      );
+    //   console.log('******payload', Payload);
+      return this._http.post('custom-search', Payload);
+      
    }
 }
 

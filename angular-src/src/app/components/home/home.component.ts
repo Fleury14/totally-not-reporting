@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit{
         //different graph methods
 
         this.setRuntimeData(2000,2017);
-        this.setKidFriendlyData();
+
 
     }
     // different graph variables
@@ -199,7 +199,7 @@ export class HomeComponent implements OnInit{
                 this.kidFriendlyData[0]['value']++;
             } else {
                 this.kidFriendlyData[1]['value']++;
-                console.log(movie.title);
+                // console.log(movie.title);
             }
         })
     }

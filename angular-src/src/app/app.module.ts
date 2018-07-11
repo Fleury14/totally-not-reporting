@@ -7,8 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgDragDropModule } from 'ng-drag-drop';
 
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 // import { ModalComponent } from './components/modal/modal.component';
 import { AppComponent } from './app.component';
