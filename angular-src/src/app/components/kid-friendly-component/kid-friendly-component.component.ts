@@ -60,7 +60,7 @@ export class KidFriendlyComponent implements OnInit {
         if (this.yearValue[0] > this.yearValue[1]) {
             this.snackBarMessage('Ending year needs to come after the starting year')
         } else {
-            this._search.getYearRange(this.yearValue[0], this.yearValue[1]).pipe(take(1)).subscribe(response => {z
+            this._search.getYearRange(this.yearValue[0], this.yearValue[1]).pipe(take(1)).subscribe(response => {
                 this.searchResults = response.result;
                 this.setPieChart(this.searchResults);
             } )

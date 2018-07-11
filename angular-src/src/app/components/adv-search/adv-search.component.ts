@@ -4,6 +4,7 @@ import { CategorySelection } from '../../interfaces/category-selection';
 import { IDynamicRequest } from '../../interfaces/dynamic-request';
 import { SearchService } from '../../services/search.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'app-adv-search',
@@ -84,7 +85,7 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, private _router: Router) {}
+    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, private _router: Router, public snackBar: MatSnackBar) {}
 
     ngOnInit(): void {}
 
@@ -93,18 +94,25 @@ export class AdvSearchComponent implements OnInit {
           this.requestedColumns[item.ref] = true;
         });
         if (value.category !== undefined && value.search !== undefined && value.order !== undefined && value.column !== undefined) {
-          console.log(value.returnType, value.category, value.search, value.order, value.column, this.requestedColumns);
-          this._advSearch.customSearch(value.category, value.search, value.order ).subscribe(res => {
+          this._advSearch.customSearch(value.category.ref, value.search, value.order ).subscribe(res => {
+            this._advSearch.storeResults(res);
             this._router.navigate(['results']);
+            this._advSearch.refreshResults();
           });
           } else {
-            console.log('Please enter all fields...');
+            this.snackBarMessage('Please enter all the fields, dawg');
         }
       }
 
     onItemDrop(e: any) {
       this.droppedItems.push(e.dragData);
       this.removeItem(e.dragData, this.searchCategory);
+    }
+
+    private snackBarMessage(message: string) {
+        this.snackBar.open(message, null, {
+            duration: 1000
+        });
     }
 
     reset(value) {
