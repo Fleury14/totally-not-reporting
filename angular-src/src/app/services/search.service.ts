@@ -117,7 +117,6 @@ export class SearchService {
         category: category,
         order: order,
       };
-    //   console.log('******payload', Payload);
       return this._http.post('custom-search', Payload).pipe(
         map( (response) => {
             return this._mapResults(response, returnType);

@@ -199,7 +199,6 @@ export class HomeComponent implements OnInit{
                 this.kidFriendlyData[0]['value']++;
             } else {
                 this.kidFriendlyData[1]['value']++;
-                // console.log(movie.title);
             }
         })
     }
