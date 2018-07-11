@@ -53,6 +53,8 @@ export class ResultsTableComponent implements OnInit {
         });
 
         this._search.refreshResults();
+        // TODO unsubscribe to result
+        // this._search.resultsSubscription().unsubscribe();
     }
 
     public cardView() {

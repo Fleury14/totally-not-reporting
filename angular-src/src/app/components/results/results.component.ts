@@ -14,11 +14,13 @@ import { Router } from '@angular/router';
 })
 
 export class ResultComponent implements OnInit {
+  public ratings: number[];
+  public isHover = false;
+  public storedResults: any;
+  private _rawResults: any;
+  public resultSub: Subscription;
+  public rate;
 
-    public storedResults: any;
-    private _rawResults: any;
-    public resultSub: Subscription;
-    
     // piechart options
     public showLegend = true;
     public view: any[] = [700, 400];
@@ -28,7 +30,7 @@ export class ResultComponent implements OnInit {
     public showLabels = true;
     public explodeSlices = false;
     public doughnut = true;
-    public pieData:any;
+    public pieData: any;
 
 
     constructor(private _search: SearchService, public dialog: MatDialog, private _router: Router) {}
@@ -36,9 +38,11 @@ export class ResultComponent implements OnInit {
     ngOnInit(): void {
         this._search.resultsSubscription().subscribe(results => {
             this._rawResults = results.result;
-
             this.storedResults = new MatTableDataSource<IMovie>(this._rawResults);
+            this.ratings = Array(5); // [0,1,2,3,4]
+            this.rate = (r) => (this.ratings = r);
         });
+
 
         this._search.refreshResults();
     }
@@ -72,4 +76,4 @@ export class ResultComponent implements OnInit {
     onSelect(event) {
         console.log(event);
     }
-}
+  }
