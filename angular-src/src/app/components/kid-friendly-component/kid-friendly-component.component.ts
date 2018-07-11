@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { SearchService } from '../../services/search.service';
+import { take } from 'rxjs/operators';
 import { ErrorStateMatcher, MatSnackBar } from '@angular/material';
 import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/forms';
 import { IMovie } from '../../interfaces/movie';
@@ -10,16 +12,17 @@ import { IMovie } from '../../interfaces/movie';
 })
 export class KidFriendlyComponent implements OnInit {
 
-  constructor() { }
+    constructor(private _search: SearchService,public snackBar: MatSnackBar ) {}
 
   ngOnInit():void {
-    this.setPieChart();
   }
+
   @ViewChild('yearForm') private _yearForm: NgForm;
     public startYear: number;
     public endYear: number;
     public searchResults: IMovie[];
     public showResults = false;
+    public releases: any[];
 
     // slider options
     public yearValue = [1990, 1995]
@@ -52,24 +55,50 @@ export class KidFriendlyComponent implements OnInit {
       public doughnut = true;
       public pieData:any;
 
-  public setPieChart() {
-    this.pieData = [{
-        name: "Yes",
-        value: 100
-    },{
-        name: "No",
-        value: 20
-    }]
-    movies.forEach( (movie:IMovie) => {
-      if(movie.adult === false){
-          this.kidFriendlyData[0]['value']++;
-      } else {
-          this.kidFriendlyData[1]['value']++;
-          console.log(movie.title);
+
+      public submitYears() {
+        if (this.yearValue[0] > this.yearValue[1]) {
+            this.snackBarMessage('Ending year needs to come after the starting year')
+        } else {
+            this._search.getYearRange(this.yearValue[0], this.yearValue[1]).pipe(take(1)).subscribe(response => {
+                
+                this.searchResults = response.result;
+                this.setPieChart(this.searchResults);
+    
+                
+            } )
+        }
+        
+        
+        // call the search service to get the movie data
+        // pass that jmovie data into setpiechart like this: this.setPieChart(response.result)
       }
-  })
-    console.log('pie data', this.pieData);
-    Object.assign(this, this.pieData)
-  }
+
+      private snackBarMessage(message: string) {
+        this.snackBar.open(message, null, {
+            duration: 1000
+        });
+      }
+
+    public setPieChart(movie) {
+        console.log(movie);
+        this.pieData = [{
+            name: "Yes",
+            value: 0
+        },{
+            name: "No",
+            value: 0
+        }];
+
+        movie.forEach( (movie) => {
+            if(movie.adult === false){
+                this.pieData[0]['value']++;
+            } else {
+                this.pieData[1]['value']++;
+            }
+        })
+        console.log(this.pieData)
+
+    }
 
 }
