@@ -27,11 +27,12 @@ import { BudgetComponent } from "./components/budget-component/budget.component"
 import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
 import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 import { NouisliderModule } from 'ng2-nouislider';
+import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, RunTimeChartComponent
+    AppComponent, NavComponent, SideBarComponent, RoutingComponents, ResultComponent, ModalComponent, ReleaseChartComponent, KidFriendlyComponent,RunTimeChartComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
