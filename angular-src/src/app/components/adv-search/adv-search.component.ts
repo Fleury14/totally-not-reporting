@@ -68,7 +68,6 @@ export class AdvSearchComponent implements OnInit {
     thirdFormGroup: FormGroup;
     droppedItems = [];
     dragEnabled = true;
-    draggedItems = [];
 
 
     public selectedCategory: CategorySelection;
@@ -114,7 +113,6 @@ export class AdvSearchComponent implements OnInit {
 
     reset(value) {
       this.removeItem(value, this.droppedItems);
-      this.draggedItems.push(value, this.searchCategory);
     }
 
     removeItem(item: any, list: Array<any>) {
