@@ -19,6 +19,7 @@
 </div>
 <button mat-raised-button color="primary" (click)="toggleDisplay(true)" class="toggle-year hide-stuff">Input New Years</button>
 <div class="results-field" *ngIf="this.showResults">
+    <button mat-raised-button color="primary" *ngIf="blob" (click)="downloadCsv()" class="csv-button">Download data as CSV</button>
         <div class="pie">
             <ngx-charts-advanced-pie-chart
             [scheme]="colorScheme"
