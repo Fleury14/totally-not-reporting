@@ -73,7 +73,7 @@ export class RevenueComponent implements OnInit {
       };
 
      // tree optios
-     public treeData: any[];
+     public treeData: any[] = [{name: 'init', value: 0}];
      public treeColorScheme = {
         domain: ['rgb(102, 189, 109)', 'rgb(250, 197, 29)', 'rgb(250, 160, 38)', 'rgb(41, 187, 156)', 'rgb(233, 107, 86)', 'rgb(85, 172, 210)']
       };
@@ -243,7 +243,7 @@ export class RevenueComponent implements OnInit {
     }
 
     private _treeData(movies:IMovie[]) {
-        this.treeData = [];
+        this.treeData = [{name: 'init', value: 0}]; // we set an initial value because the tree map will throw a filter of undefined error with empty data
         movies.forEach(movie => this.treeData.push({name: movie.title, value: movie.revenue - movie.budget}));
         if (this.treeData.length > 50) {
             let otherArr = this.treeData.slice(50);
