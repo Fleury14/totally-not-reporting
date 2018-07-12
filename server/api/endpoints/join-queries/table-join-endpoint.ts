@@ -5,9 +5,30 @@ export async function tableJoin(req: Request, res: Response, next: NextFunction)
     try {
         if(!req.body.search) {
             res.status(400).json({message: "Missing Fields"});
-        } else if (req.body.search.length === 1) {
-            const query = 'SELECT * FROM req.body.search.table1';
-            } else if (req.body.search.length === 4) {
+        } else if (req.body.search === {selectMoviesMeta: true, selectMoviesVote: true, selectMoviesCredits: true}) {
+            const query = 'SELECT * FROM movies_meta FULL OUTER JOIN movies_vote ON movies_meta.movie_id = movies_vote.vote_id JOIN movies_credits ON movies_meta.movie_id = movies_credits.credit_id ORDER BY movies_meta.movie_id'
+            console.log('Query: ', query);
+            db.any(query, req.body.search).then( (resp) => {
+                // return all relevant info for the storing of the query
+                res.json({
+                    message: "Search results",
+                    result: resp,
+                    query: query,
+                    endpoint: 'table-join',
+                    category: `Joins movies_meta, movies_vote, and movie_credits`,
+                    search: req.body.search
+                })
+            }).catch(err => res.status(500).json({message: "Error", error: err}));
+            } else if (req.body.search === {selectMoviesMeta: false, selectMoviesVote: true, selectMoviesCredits: true})  {
+                const query = 'SELECT * FROM movies_vote FULL OUTER JOIN movies-credits ON movies_vote.vote_id = movies_credits.credit_id'
+            } else if (req.body.search === {selectMoviesMeta: true, selectMoviesVote: false, selectMoviesCredits: true})  {
+                const query = 'SELECT * FROM movies_meta FULL OUTER JOIN movies_credits ON movies_meta.movie_id = movies_credits.credit_id'
+            } else if (req.body.search === {selectMoviesMeta: true, selectMoviesVote: true, selectMoviesCredits: false})  {
+                const query = 'SELECT * FROM movies_meta FULL OUTER JOIN movies_credits ON movies_meta.movie_id = movies_credits.credit_id'
+            }
+            
+            
+            else if (req.body.search.length === 4) {
                 const query = 'SELECT * FROM movies_meta FULL OUTER JOIN req.body.search.table2 ON req.body.search.table1.id = req.body.search.table2.id'; 
                 // TODO: won't have IDs here
             console.log('Query: ', query);
