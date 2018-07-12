@@ -4,6 +4,7 @@ import { Subject, Observable } from 'rxjs';
 import { IDynamicRequest } from '../interfaces/dynamic-request';
 import { map } from 'rxjs/operators';
 import { IMovie } from '../interfaces/movie';
+import { MapOperator } from '../../../node_modules/rxjs/internal/operators/map';
 @Injectable()
 
 export class SearchService {
@@ -74,12 +75,12 @@ export class SearchService {
         const payload = {
             startYear: startYear,
             endYear: endYear
-        }
+        };
         return this._http.post('get-year-range', payload).pipe(
             map( (response) => {
                 return this._mapResults(response, returnType);
             })
-        )
+        );
     }
 
     public getByYearSearch(search: any, returnType?: IDynamicRequest) {
@@ -94,18 +95,18 @@ export class SearchService {
     }
 
 
-    public getCountOfYear(search: any){
+    public getCountOfYear(search: any) {
         return this._http.post('count-by-year', search).pipe(
             map( (response) => {
-                return response
+                return response;
             })
         );
     }
 
-    public getRunTimeOfYear(search: any){
+    public getRunTimeOfYear(search: any) {
         return this._http.post('run-time-by-year', search).pipe(
             map( (response) => {
-                return response
+                return response;
             })
         );
     }
@@ -121,8 +122,19 @@ export class SearchService {
         map( (response) => {
             return this._mapResults(response, returnType);
         })
-    );;
-      
-   }
+    );
+  }
+  public tableJoin(table1: string, table2 ?: string, table3 ?: string, table4 ?: string) {
+    const tables = {
+      table1: table1,
+      table2: table2,
+      table3: table3,
+    };
+    return this._http.post('table-join', tables).pipe(
+      map((resp) => {
+        return resp;
+      })
+    );
+  }
 }
 
