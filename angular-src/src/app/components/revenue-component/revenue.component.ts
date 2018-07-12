@@ -108,7 +108,7 @@ export class RevenueComponent implements OnInit {
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
             window.navigator.msSaveOrOpenBlob(this.blob, 'my.csv');
         } else {
-            const a = document.createElement('a');
+            let a = document.createElement('a');
             a.href = URL.createObjectURL(this.blob);
             const now = new Date();
             const filename = `TNR_revenue-${now.getHours()}${now.getMinutes()}_${now.getMonth() + 1}${now.getDate()}${now.getFullYear()}.csv`;
