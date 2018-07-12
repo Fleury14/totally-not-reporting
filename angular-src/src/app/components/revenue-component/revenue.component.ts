@@ -4,6 +4,7 @@ import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/fo
 import { SearchService } from '../../services/search.service';
 import { take } from 'rxjs/operators';
 import { IMovie } from '../../interfaces/movie';
+import { CsvService } from '../../services/csv.service';
 
 @Component({
     selector: 'app-revenue',
@@ -18,6 +19,8 @@ export class RevenueComponent implements OnInit {
     public endYear: number;
     public searchResults: IMovie[];
     public showResults = false;
+    public csv:any;
+    public blob: Blob;
 
     // SLIDER OPTIONS
     public yearValue = [1990, 1995]
@@ -85,7 +88,7 @@ export class RevenueComponent implements OnInit {
     public heatGradient = false;
     
 
-    constructor(private _search: SearchService, public snackBar: MatSnackBar) {}
+    constructor(private _search: SearchService, public snackBar: MatSnackBar, private _csv: CsvService) {}
 
     ngOnInit(): void {
         this._search.resultsSubscription().subscribe(response => {
@@ -95,11 +98,26 @@ export class RevenueComponent implements OnInit {
                 this.toggleDisplay();
                 const years = this._getFirstAndLastYear(response.result)
                 this._initializeGraphs(years.start, years.end, response.result);
+                
             }
         });
         this._search.refreshResults();
     }
 
+    public downloadCsv() {
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveOrOpenBlob(this.blob, 'my.csv');
+        } else {
+            let a = document.createElement('a');
+            a.href = URL.createObjectURL(this.blob);
+            const now = new Date();
+            const filename = `TNR_revenue-${now.getHours()}${now.getMinutes()}_${now.getMonth() + 1}${now.getDate()}${now.getFullYear()}.csv`;
+            a.download = filename;;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
 
    public submitYears() {
        let yearFormValues = {
@@ -113,7 +131,14 @@ export class RevenueComponent implements OnInit {
         this._search.getYearRange(yearFormValues.startYear, yearFormValues.endYear).pipe( take(1) ).subscribe(response => {
             this.searchResults = response.result;
             this._initializeGraphs(yearFormValues.startYear, yearFormValues.endYear, this.searchResults);
-            // console.log(response);
+            const fields:string[] = [];
+            for (let key in response.result) {
+                fields.push[key];
+            }
+            this.csv = this._csv.create(response.result, fields);
+            this.blob = new Blob ([this.csv], {
+                type: 'text/csv'
+            });
         });
        }    
    }
