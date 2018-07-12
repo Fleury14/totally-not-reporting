@@ -124,11 +124,12 @@ export class SearchService {
         })
     );
   }
-  public tableJoin(table1: string, table2 ?: string, table3 ?: string, table4 ?: string) {
+  public tableJoin(tableName1: string, tableName2 ?: string, tableName3 ?: string, tableName4 ?: string) {
     const tables = {
-      table1: table1,
-      table2: table2,
-      table3: table3,
+      table1: tableName1,
+      table2: tableName2,
+      table3: tableName3,
+      table4: tableName4,
     };
     return this._http.post('table-join', tables).pipe(
       map((resp) => {
