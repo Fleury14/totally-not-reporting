@@ -105,18 +105,7 @@ export class RevenueComponent implements OnInit {
     }
 
     public downloadCsv() {
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveOrOpenBlob(this.blob, 'my.csv');
-        } else {
-            let a = document.createElement('a');
-            a.href = URL.createObjectURL(this.blob);
-            const now = new Date();
-            const filename = `TNR_revenue-${now.getHours()}${now.getMinutes()}_${now.getMonth() + 1}${now.getDate()}${now.getFullYear()}.csv`;
-            a.download = filename;;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
+       this._csv.download(this.blob);
     }
 
    public submitYears() {
