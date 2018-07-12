@@ -73,7 +73,7 @@ export class RevenueComponent implements OnInit {
       };
 
      // tree optios
-     public treeData: any[];
+     public treeData: any[] = [{name: 'init', value: 0}];
      public treeColorScheme = {
         domain: ['rgb(102, 189, 109)', 'rgb(250, 197, 29)', 'rgb(250, 160, 38)', 'rgb(41, 187, 156)', 'rgb(233, 107, 86)', 'rgb(85, 172, 210)']
       };
@@ -105,18 +105,7 @@ export class RevenueComponent implements OnInit {
     }
 
     public downloadCsv() {
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveOrOpenBlob(this.blob, 'my.csv');
-        } else {
-            let a = document.createElement('a');
-            a.href = URL.createObjectURL(this.blob);
-            const now = new Date();
-            const filename = `TNR_revenue-${now.getHours()}${now.getMinutes()}_${now.getMonth() + 1}${now.getDate()}${now.getFullYear()}.csv`;
-            a.download = filename;;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
+       this._csv.download(this.blob);
     }
 
    public submitYears() {
@@ -254,7 +243,7 @@ export class RevenueComponent implements OnInit {
     }
 
     private _treeData(movies:IMovie[]) {
-        this.treeData = [];
+        this.treeData = [{name: 'init', value: 0}]; // we set an initial value because the tree map will throw a filter of undefined error with empty data
         movies.forEach(movie => this.treeData.push({name: movie.title, value: movie.revenue - movie.budget}));
         if (this.treeData.length > 50) {
             let otherArr = this.treeData.slice(50);
