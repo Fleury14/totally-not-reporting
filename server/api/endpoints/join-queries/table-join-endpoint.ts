@@ -7,8 +7,8 @@ export async function tableJoin(req: Request, res: Response, next: NextFunction)
             res.status(400).json({message: "Missing Fields"});
         } else if (req.body.search.length === 1) {
             const query = 'SELECT * FROM req.body.search.table1';
-            } else if (req.body.search.length === 2) {
-                const query = 'SELECT * FROM req.body.search.table1 FULL OUTER JOIN req.body.search.table2 ON req.body.search.table1.id = req.body.search.table2.id'; 
+            } else if (req.body.search.length === 4) {
+                const query = 'SELECT * FROM movies_meta FULL OUTER JOIN req.body.search.table2 ON req.body.search.table1.id = req.body.search.table2.id'; 
                 // TODO: won't have IDs here
             console.log('Query: ', query);
             db.any(query, req.body.search).then( (resp) => {

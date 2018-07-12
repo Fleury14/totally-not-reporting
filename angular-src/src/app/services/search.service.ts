@@ -124,12 +124,11 @@ export class SearchService {
         })
     );
   }
-  public tableJoin(tableName1: string, tableName2 ?: string, tableName3 ?: string, tableName4 ?: string) {
+  public tableJoin(selectMoviesMeta: boolean, selectMoviesVote: boolean, selectMoviesCredits: boolean) {
     const tables = {
-      table1: tableName1,
-      table2: tableName2,
-      table3: tableName3,
-      table4: tableName4,
+      selectMoviesMeta: selectMoviesMeta,
+      selectMoviesVote: selectMoviesVote,
+      selectMoviesCredits: selectMoviesCredits,
     };
     return this._http.post('table-join', tables).pipe(
       map((resp) => {
