@@ -1,36 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "variables";
+  /* You can add global styles to this file, and also import other style files */
+  @import "~nouislider/distribute/nouislider.min.css";
+  @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+  @import "variables";
 
+  #ratings {
+    list-style-type: none !important;
+    min-width: 100px;
+    padding: 0px;
+    .starRating {
+      .far {display: inline-block;};
+      .fas {display: none;};
 
-
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    color: var(--text-black);
-}
-
-.search-bar {
-    button {
-        margin: 0px 20px 0px 10px;
-        border-radius: 3px;
+      &:hover {
+        .far {display: none;}
+        .fas {display: inline-block;}
+      }
     }
-}
-button{
-    color: var(--text-black);
-}
-.mat-button-wrapper{
-    font-weight: 400;
-}
+  }
 
-.grid-container{
-    // border: 1px dashed red;
-    display: grid;
-    width: 100%;
-}
-.flex-container{
-    // border: 1px dashed blue;
-    display: flex;
-    width: 100%;
+  body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      color: var(--text-black);
+  }
 
-}
+  .search-bar {
+      button {
+          margin: 0px 20px 0px 10px;
+          border-radius: 3px;
+      }
+  }
+  button{
+      color: var(--text-black);
+  }
+  .mat-button-wrapper{
+      font-weight: 400;
+  }
+
+  .grid-container{
+      // border: 1px dashed red;
+      display: grid;
+      grid-gap: 30px;
+      // width: 100%;
+      padding: 0px 30px;
+      margin-bottom: 30px;
+  }
+  .flex-container{
+      // border: 1px dashed blue;
+      display: flex;
+      width: 100%;
+
+  }
+
+  .text-center {
+      text-align: center;
+  }
+
+  .align-center {
+      align-items: center;
+  }
+
+  .justify-center {
+      justify-content: center;
+  }
+
+  .justify-around {
+      justify-content: space-around;
+  }

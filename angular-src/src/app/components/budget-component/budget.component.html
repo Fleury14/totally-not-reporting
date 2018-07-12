@@ -1,0 +1,39 @@
+<h1>Budget</h1>
+
+<div class="revenue-top-row">
+    <nouislider class="year-slider" [config]="sliderConfig" [limit]="2017" [tooltips]="[true, true]" [(ngModel)]="yearValue"></nouislider>
+    <button class="go-button" (click)="submitYears()">Go!</button>
+    <!-- <div class="date-picker">
+        <form action="" (ngSubmit)="submitYears(yearForm.value)" #yearForm="ngForm">
+            <mat-form-field class="revenue-year">
+                <input matInput type="number" name="startYear" ngModel placeholder="Starting Year">
+            </mat-form-field>
+            <mat-form-field class="revenue-year">
+                <input matInput type="number" name="endYear" [errorStateMatcher]="matcher" ngModel placeholder="Ending year">
+            </mat-form-field>
+            <input type="submit" class="go-button" value="Go!">
+        </form>
+    </div> -->
+    <!-- <div class="revenue-desc">
+        <p>Select a starting year and an ending year and see some budget information about that time period.</p>
+    </div> -->
+</div>
+<button mat-raised-button color="primary" (click)="toggleDisplay()" class="toggle-year hide-stuff">Select New Years</button>
+<div class="results-field" *ngIf="this.showResults">
+    <div class="flex-container">
+        <div class="bar-graph">
+            <h2 class="text-center">Average Budget</h2>
+            <ngx-charts-bar-vertical [scheme]="barColorScheme" [results]="barData" [gradient]="barGradient" [xAxis]="barShowXAxis" [yAxis]="barShowYAxis"
+                [legend]="barShowLegend" [showXAxisLabel]="barShowXAxisLabel" [showYAxisLabel]="barShowYAxisLabel" [xAxisLabel]="barXAxisLabel"
+                [yAxisLabel]="barYAxisLabel" [yAxisTickFormatting]="millions" (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
+        <div class="bar-graph">
+            <h2 class="text-center">Peak Budget</h2>
+            <ngx-charts-bar-vertical [scheme]="barColorScheme" [results]="barDataTwo" [gradient]="barGradient" [xAxis]="barShowXAxis"
+                [yAxis]="barShowYAxis" [legend]="barShowLegend" [showXAxisLabel]="barShowXAxisLabel" [showYAxisLabel]="barShowYAxisLabel"
+                [xAxisLabel]="barXAxisLabel" [yAxisLabel]="barYAxisLabel" [yAxisTickFormatting]="millions" (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
+    </div>
+</div>

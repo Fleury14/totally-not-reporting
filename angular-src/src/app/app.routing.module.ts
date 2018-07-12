@@ -6,10 +6,17 @@ import { ErrorComponent } from './components/error/error.component';
 import { ResultComponent } from './components/results/results.component';
 import { ModalComponent } from './components/results/modal.component';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
+import { RevenueComponent } from './components/revenue-component/revenue.component';
+
+import { BudgetComponent } from "./components/budget-component/budget.component";
+
+import { ReleaseChartComponent } from './components/release-chart/release-chart.component';
+import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
+
+import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 
 
 const routes: Route[] = [{
-
     path: 'home',
     component: HomeComponent
 },
@@ -24,6 +31,28 @@ const routes: Route[] = [{
 {
     path: 'results-table',
     component: ResultsTableComponent
+},
+{
+    path: 'revenue',
+    component: RevenueComponent
+},
+{
+
+    path: 'budget',
+    component: BudgetComponent
+},
+{
+    path: 'release',
+    component: ReleaseChartComponent
+
+},
+{
+    path: 'run-time',
+    component: RunTimeChartComponent
+},
+{
+    path: 'kid-friendly',
+    component: KidFriendlyComponent
 },
 {
     path: '',
@@ -48,4 +77,6 @@ const routes: Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent, ModalComponent, ResultsTableComponent];
+export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent, KidFriendlyComponent,
+                                  ModalComponent, ResultsTableComponent, RevenueComponent, BudgetComponent, ReleaseChartComponent];
+

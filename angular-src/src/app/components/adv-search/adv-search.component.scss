@@ -1,3 +1,5 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 main {
     padding: 20px;
 }
@@ -9,7 +11,7 @@ mat-radio-group {
 }
 
 .small-font {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .row {
@@ -28,17 +30,48 @@ mat-radio-group {
     margin-bottom: 20px;
 }
 
-.return-check-container {
-    width: 25%;
-    display: inline-block;
-}
-
 .submit-row {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+
 }
 
 
+body {
+  font-family:'Poppins', sans-serif;
+  margin: 0;
+}
 
+.basic-container {
+  padding: 30px;
+}
 
+div.scroll-list {
+  overflow: auto;
+  max-height: 100vh;
+}
+
+.drag-hint {
+  border: #ffc100 dashed 2px;
+}
+
+.drag-target-border {
+  border: #00bfff dashed 2px;
+}
+
+.buttonbox {
+  background-color: hsl(210, 25%, 95%);
+  padding: 20px;
+  border-radius: 3px;
+}
+
+#pill {
+  background-color: #4054B2;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 100px;
+  padding: 7px;
+  text-align: center;
+}
