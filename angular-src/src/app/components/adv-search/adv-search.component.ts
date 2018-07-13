@@ -61,11 +61,11 @@ export class AdvSearchComponent implements OnInit {
         type: 'number'
     }];
 
-    fullFormGroup: FormGroup;
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
-    thirdFormGroup: FormGroup;
-    droppedItems = [];
+    public fullFormGroup: FormGroup;
+    public firstFormGroup: FormGroup;
+    public secondFormGroup: FormGroup;
+    public thirdFormGroup: FormGroup;
+    public droppedItems = [];
 
     public selectedCategory: CategorySelection;
     public categoryValueNum: number;
@@ -85,7 +85,11 @@ export class AdvSearchComponent implements OnInit {
         vote_count: false
     };
 
-    constructor(private _formBuilder: FormBuilder, private _advSearch: SearchService, private _router: Router, public snackBar: MatSnackBar) {}
+    constructor(
+      private _formBuilder: FormBuilder,
+      private _advSearch: SearchService,
+      private _router: Router,
+      public snackBar: MatSnackBar) { }
 
     ngOnInit(): void {}
 
@@ -125,4 +129,5 @@ export class AdvSearchComponent implements OnInit {
       }).indexOf(item.name);
       list.splice(index, 1);
     }
+
 }

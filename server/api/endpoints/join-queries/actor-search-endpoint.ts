@@ -9,7 +9,7 @@ export async function actorSearch(req: Request, res: Response, next: NextFunctio
         } else {
             // build our query, log it, and execute
             const query = 'SELECT * FROM movies_meta FULL OUTER JOIN movies_credits ON (movie_id = credit_id) WHERE LOWER (movie_cast) LIKE LOWER( \'%$1#%\' )';
-            console.log('Query: ', query);
+            // console.log('Query: ', query);
             db.any(query, req.body.search).then( (resp) => {
                 // return all relevant info for the storing of the query
                 res.json({

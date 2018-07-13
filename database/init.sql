@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS movies_meta;
 --   DROP TABLE movies; 
 
 CREATE TABLE movies_meta (
+    movie_id int,
     adult boolean,
     budget int,
-    movie_id int,
     original_title VARCHAR(255),
     overview VARCHAR(2000),
     popularity float,
@@ -22,9 +22,9 @@ CREATE TABLE movies_meta (
 DROP TABLE IF EXISTS movies_credits;
 
 CREATE TABLE movies_credits (
+    credit_id int,
     movie_cast VARCHAR(32768),
-    crew VARCHAR(32768),
-    credit_id int
+    crew VARCHAR(32768)
 );
 -- TODO: include genres
 
@@ -46,7 +46,7 @@ CREATE TABLE movie_posters (
 
 
 
-COPY movies_meta (adult,budget, movie_id, original_title, overview, popularity, release_date, revenue, runtime, tagline, title )
+COPY movies_meta ( adult, budget, movie_id, original_title, overview, popularity, release_date, revenue, runtime, tagline, title )
 FROM E'//docker-entrypoint-initdb.d//movies_metadata-dos.csv' DELIMITER ',' CSV HEADER;
 
 COPY movies_credits (movie_cast, crew, credit_id )

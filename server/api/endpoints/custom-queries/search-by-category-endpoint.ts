@@ -18,7 +18,7 @@ export async function categorySearch(req: Request, res: Response, next: NextFunc
             // build our query, log it, and execute
             req.body.search = [req.body.search]; // push req.body.search into an array so that we can add parameters if necessary
             const query = buildQuery(req);
-            console.log('Query: ', query);
+            // console.log('Query: ', query);
             db.any(query, req.body.search).then( (resp) => {
                 // return all relevant info for the storing of the query
                 res.json({

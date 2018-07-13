@@ -58,7 +58,7 @@ export class ResultComponent implements OnInit {
 
         this._search.refreshResults();
     }
-  
+
   public exportToCsv() {
     this._csv.download(this._blob);
   }
@@ -90,6 +90,6 @@ export class ResultComponent implements OnInit {
 
 
     onSelect(event) {
-        console.log(event);
+        // console.log(event);
     }
   }
