@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     public doughnut = false;
      // different graph variables
      public budgetData: any;
-     public revenueData: any;
+     public revenueData: any = [{name: "init", value: 0}];
      public runtimeData: any;
      public releaseDateData: any;
      public kidFriendlyData: any;
@@ -94,7 +94,8 @@ export class HomeComponent implements OnInit {
     }
 
     public setRevenueData(movies: IMovie[]) {
-        this.revenueData = [];
+        this.revenueData = []; // NOTE In addition to at the point of delcaration, in the revenue component, i added our dummy data here as well. 
+        // if this still throws a filer of undefined error, add the dummy data here too
         movies.forEach(movie => {
             if (movie.budget && movie.revenue && movie.title) {
                 this.revenueData.push({name: movie.title, value: movie.revenue - movie.budget});

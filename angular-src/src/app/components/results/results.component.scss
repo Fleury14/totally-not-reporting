@@ -66,6 +66,7 @@ p {
     justify-content: center;
     align-items: center;
     transition: all linear 0.1s;
+    grid-area: top;
     i{
         color: var(--darker-gray-color);
         position: absolute;
@@ -100,7 +101,7 @@ p {
 }
 
 .info{
-    // grid-area: info;
+    grid-area: info;
     position: relative;
 }
 

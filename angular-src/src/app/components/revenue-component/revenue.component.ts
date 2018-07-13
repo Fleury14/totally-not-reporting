@@ -4,6 +4,7 @@ import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/fo
 import { SearchService } from '../../services/search.service';
 import { take } from 'rxjs/operators';
 import { IMovie } from '../../interfaces/movie';
+import { CsvService } from '../../services/csv.service';
 
 @Component({
     selector: 'app-revenue',
@@ -18,6 +19,8 @@ export class RevenueComponent implements OnInit {
     public endYear: number;
     public searchResults: IMovie[];
     public showResults = false;
+    public csv:any;
+    public blob: Blob;
 
     // SLIDER OPTIONS
     public yearValue = [1990, 1995]
@@ -70,7 +73,7 @@ export class RevenueComponent implements OnInit {
       };
 
      // tree optios
-     public treeData: any[];
+     public treeData: any[] = [{name: 'init', value: 0}];
      public treeColorScheme = {
         domain: ['rgb(102, 189, 109)', 'rgb(250, 197, 29)', 'rgb(250, 160, 38)', 'rgb(41, 187, 156)', 'rgb(233, 107, 86)', 'rgb(85, 172, 210)']
       };
@@ -85,7 +88,7 @@ export class RevenueComponent implements OnInit {
     public heatGradient = false;
     
 
-    constructor(private _search: SearchService, public snackBar: MatSnackBar) {}
+    constructor(private _search: SearchService, public snackBar: MatSnackBar, private _csv: CsvService) {}
 
     ngOnInit(): void {
         this._search.resultsSubscription().subscribe(response => {
@@ -95,11 +98,15 @@ export class RevenueComponent implements OnInit {
                 this.toggleDisplay();
                 const years = this._getFirstAndLastYear(response.result)
                 this._initializeGraphs(years.start, years.end, response.result);
+                
             }
         });
         this._search.refreshResults();
     }
 
+    public downloadCsv() {
+       this._csv.download(this.blob);
+    }
 
    public submitYears() {
        let yearFormValues = {
@@ -113,7 +120,14 @@ export class RevenueComponent implements OnInit {
         this._search.getYearRange(yearFormValues.startYear, yearFormValues.endYear).pipe( take(1) ).subscribe(response => {
             this.searchResults = response.result;
             this._initializeGraphs(yearFormValues.startYear, yearFormValues.endYear, this.searchResults);
-            // console.log(response);
+            const fields:string[] = [];
+            for (let key in response.result) {
+                fields.push[key];
+            }
+            this.csv = this._csv.create(response.result, fields);
+            this.blob = new Blob ([this.csv], {
+                type: 'text/csv'
+            });
         });
        }    
    }
@@ -229,7 +243,7 @@ export class RevenueComponent implements OnInit {
     }
 
     private _treeData(movies:IMovie[]) {
-        this.treeData = [];
+        this.treeData = [{name: 'init', value: 0}]; // we set an initial value because the tree map will throw a filter of undefined error with empty data
         movies.forEach(movie => this.treeData.push({name: movie.title, value: movie.revenue - movie.budget}));
         if (this.treeData.length > 50) {
             let otherArr = this.treeData.slice(50);
