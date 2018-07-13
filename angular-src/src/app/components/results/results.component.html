@@ -4,7 +4,10 @@
     No results found. Bummer.
 </h1>
 
-<button *ngIf="storedResults?.data.length > 0" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
+<div class="flex-container justify-around">
+    <button *ngIf="storedResults?.data.length > 0" (click)="tableView()" mat-raised-button color="primary" class="center-button">Switch to Table View</button>
+    <button *ngIf="storedResults?.data.length > 0" (click)="exportToCsv()" mat-raised-button color="primary" class="center-button">Export To CSV</button>
+</div>
 <button *ngIf="storedResults?.data.length > 0" routerLink="../revenue" mat-raised-button color="primary" class="center-button">Revenue information</button>
 
 <!-- <div class="pie" *ngIf="storedResults">

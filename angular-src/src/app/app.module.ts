@@ -30,6 +30,7 @@ import { ReleaseChartComponent } from './components/release-chart/release-chart.
 import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
 import { NouisliderModule } from 'ng2-nouislider';
 import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
+import { CsvService } from './services/csv.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { KidFriendlyComponent } from './components/kid-friendly-component/kid-fr
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, AppMaterialModule,
     HttpClientModule, NgxChartsModule, NouisliderModule, NgDragDropModule.forRoot()
   ],
-  providers: [ SearchService, HttpService, RecentSearchService  ],
+  providers: [ SearchService, HttpService, RecentSearchService, CsvService ],
   entryComponents: [ ModalComponent, RevenueComponent, BudgetComponent ],
 
   bootstrap: [AppComponent]
