@@ -11,6 +11,7 @@ import { actorSearch } from "./endpoints/join-queries/actor-search-endpoint";
 import { getYearRange } from "./endpoints/year-range-endpoint";
 import { countYearRange } from "./endpoints/count-year";
 import { runTimeByYearRange } from "./endpoints/run-time-by-year";
+import { getAllClients } from "./endpoints/crm-queries/get-all-clients";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -29,4 +30,6 @@ export function initAPI (app:Application) {
     app.route('/api/actor-search').post(actorSearch);
 
     app.route('/api/custom-search').post(categorySearch);
+
+    app.route('/api/crm/get-all-clients').get(getAllClients);
 }
