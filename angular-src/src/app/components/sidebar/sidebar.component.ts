@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { SearchService } from './../../services/search.service';
+import { SearchService } from '../../services/search.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { RecentSearchService } from '../../services/recent-search.service';
@@ -14,6 +14,7 @@ export class SideBarComponent implements DoCheck {
 
     private recentArray: any;
     private sizedRecentArray: any;
+    public mode = 'Movies';
 
     constructor(
         private _search: SearchService,
@@ -39,6 +40,16 @@ export class SideBarComponent implements DoCheck {
             }
         }
         
+    }
+
+    public toggleMode() {
+        if (this.mode === 'Movies') {
+            this.mode = 'CRM';
+            this._router.navigateByUrl('crm/title');
+        } else {
+            this.mode = 'Movies';
+            this._router.navigateByUrl('home');
+        }
     }
 
     public topTen(category: string) {

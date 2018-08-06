@@ -1,8 +1,9 @@
 <!-- <aside> -->
     <!--Start of sidebar-->
     <div class="title">
-        <a routerLink="home"><h1>TNR Movies</h1></a>
+        <a routerLink="home"><h1>TNR {{ mode }}</h1></a>
     </div>
+    <button mat-raised-button color="accent" class="mode-toggle-button" (click)="toggleMode()">Switch to {{ mode === 'Movies' && 'CRM' || 'Movies' }} Data</button>
     <div class="hot-links">
         <h2 class="section-name">Hot Links</h2> <!--Hot Links section-->
         <mat-toolbar class="pad">
