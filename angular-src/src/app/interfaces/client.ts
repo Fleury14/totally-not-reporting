@@ -1,0 +1,45 @@
+export interface IClient {
+    id: number;
+    client_name: string;
+    phone: string;
+    fax: string;
+    website: string;
+    num_of_emp: number;
+    num_of_loc: number;
+    affiliated_branch: string;
+    active: boolean;
+    rep_id: number;
+    created_by: string;
+    updated_by: string;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at: Date;
+    source_type_id: number;
+    industry_type_id: number;
+    first_contact_by: string;
+    first_visit_by: string;
+    first_visit_at: Date;
+    first_contact_at: Date;
+    board_approval_at: Date;
+    status_type_id: number;
+    branch_id: number;
+    company_formed_year: string;
+    mailing_street: string;
+    mailing_city: string;
+    mailing_state: string;
+    mailing_zip: string;
+    mailing_county: string;
+    mailing_lat: string;
+    mailing_lon: string;
+    terminated: boolean;
+    lost: boolean;
+    lost_at: Date;
+    active_at: Date;
+    is_member: boolean;
+    num_of_member: number;
+    probablility_to_close: string;
+    estimated_close_date: Date;
+    xp_id: number;
+    turnover_rate: number;
+    
+}
