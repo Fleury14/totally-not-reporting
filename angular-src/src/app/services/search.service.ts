@@ -4,7 +4,6 @@ import { Subject, Observable } from 'rxjs';
 import { IDynamicRequest } from '../interfaces/dynamic-request';
 import { map } from 'rxjs/operators';
 import { IMovie } from '../interfaces/movie';
-import { MapOperator } from '../../../node_modules/rxjs/internal/operators/map';
 @Injectable()
 
 export class SearchService {

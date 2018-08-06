@@ -14,6 +14,7 @@ import { ReleaseChartComponent } from './components/release-chart/release-chart.
 import { KidFriendlyComponent } from './components/kid-friendly-component/kid-friendly-component.component';
 
 import { RunTimeChartComponent } from './components/run-time-chart/run-time-chart.component';
+import { CRMTitleComponent } from './components/crm-title/crm-title.component';
 
 
 const routes: Route[] = [{
@@ -55,6 +56,10 @@ const routes: Route[] = [{
     component: KidFriendlyComponent
 },
 {
+    path: 'crm/title',
+    component: CRMTitleComponent
+},
+{
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -78,5 +83,6 @@ const routes: Route[] = [{
 export class AppRoutingModule {}
 
 export const RoutingComponents = [HomeComponent, AdvSearchComponent, ErrorComponent, ResultComponent, KidFriendlyComponent,
-                                  ModalComponent, ResultsTableComponent, RevenueComponent, BudgetComponent, ReleaseChartComponent];
+                                  ModalComponent, ResultsTableComponent, RevenueComponent, BudgetComponent, ReleaseChartComponent,
+                                CRMTitleComponent ];
 
