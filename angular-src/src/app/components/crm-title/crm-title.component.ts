@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-crm-title',
@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
     styleUrls: [ './crm-title.component.scss' ]
 })
 
-export class CRMTitleComponent {}
+export class CRMTitleComponent implements OnInit {
+
+    ngOnInit(): void {
+        
+    }
+
+}
