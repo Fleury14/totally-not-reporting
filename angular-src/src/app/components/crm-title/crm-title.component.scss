@@ -1,0 +1,15 @@
+.grid-container{
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.client-result{
+    height: 260px;
+    background-color: var(--white-color);
+    border-radius: 4px;
+    box-shadow: 3px 3px 15px var(--shadow-color);
+    display: grid;
+    grid-template-rows: 65% 1fr;
+    grid-template-areas:
+        "top"
+        "info";
+}

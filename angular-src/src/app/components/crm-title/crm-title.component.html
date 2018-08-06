@@ -1,1 +1,8 @@
 <h1 class="text-center">CRM Title</h1>
+
+<div class="grid-container">
+    <div class="client-result" *ngFor="let client of clientList">
+        <h1>{{ client.id }}</h1>
+        <p>{{ client.website }}</p>
+    </div>
+</div>
