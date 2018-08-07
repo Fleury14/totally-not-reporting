@@ -1,1 +1,19 @@
 <h1 class="text-center">CRM Title</h1>
+
+<div class="grid-container">
+    <div class="client-result" *ngFor="let client of clientList">
+        <div class="top">
+            <h2>{{ client.client_name }}</h2>
+            <p>{{ client.phone }}</p>
+            <p>Employees: <strong>{{ client.num_of_emp || 0 }}</strong></p>
+            <p>Created at: {{ client.created_at | date: 'longDate' }}</p>
+            <div class="bottom">
+                <a href="{{ client.website }}">Website</a>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>CLICK FOR DETAILS</p>
+        </div>
+        
+    </div>
+</div>

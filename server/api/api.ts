@@ -12,6 +12,7 @@ import { getYearRange } from "./endpoints/year-range-endpoint";
 import { countYearRange } from "./endpoints/count-year";
 import { runTimeByYearRange } from "./endpoints/run-time-by-year";
 import { getAllClients } from "./endpoints/crm-queries/get-all-clients";
+import { getClientNames } from "./endpoints/crm-queries/get-client-names";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -32,4 +33,5 @@ export function initAPI (app:Application) {
     app.route('/api/custom-search').post(categorySearch);
 
     app.route('/api/crm/get-all-clients').get(getAllClients);
+    app.route('/api/crm/get-client-names').get(getClientNames);
 }
