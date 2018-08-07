@@ -26,7 +26,7 @@ export class CRMTitleComponent implements OnInit {
 
     public selectClient(client: IClient) {
         this._crm.currentClient = client;
-        this._router.navigateByUrl('crm/detail');
+        this._router.navigate(['crm/detail/', client.id]);
     }
 
 }

@@ -22,4 +22,16 @@ export class CRMDataService {
     public get currentClient(): IClient {
         return this.selectedClient
     }
+
+    public getClientById(id: number): Observable<any> {
+        if (!id) {
+            console.log('No id provided...');
+            return;
+        } else {
+            const payload = {
+                search: id
+            }
+            return this._http.post('crm/get-client-by-id', payload);
+        }
+    }
 }
