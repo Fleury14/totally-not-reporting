@@ -1,1 +1,2 @@
-<h1 class="text-center">Client Detail</h1>
+<h1 class="text-center">{{ client?.client_name || 'Client Detail' }}</h1>
+<p *ngIf="!client text-center">Oh no honey, you came here without clicking on a client first.</p>

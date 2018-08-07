@@ -1,7 +1,7 @@
 <h1 class="text-center">CRM Title</h1>
 
 <div class="grid-container">
-    <div class="client-result" *ngFor="let client of clientList">
+    <div class="client-result" *ngFor="let client of clientList" (click)="selectClient(client)">
         <div class="top">
             <h2>{{ client.client_name }}</h2>
             <p>{{ client.phone }}</p>

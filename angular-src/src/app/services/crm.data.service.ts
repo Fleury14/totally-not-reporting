@@ -15,11 +15,11 @@ export class CRMDataService {
         return this._http.get('crm/get-all-clients');
     }
 
-    public set selectClient(client: IClient) {
-        this.selectClient = client;
+    public set currentClient(client: IClient) {
+        this.selectedClient = client;
     }
 
-    public get getClient(): IClient {
+    public get currentClient(): IClient {
         return this.selectedClient
     }
 }
