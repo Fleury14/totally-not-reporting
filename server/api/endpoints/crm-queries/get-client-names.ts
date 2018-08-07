@@ -3,16 +3,14 @@ import * as db from './../../../db/db';
 // import * as cryptoJS from 'crypto-js';
 const cryptoJS = require('crypto-js');
 
-export async function getAllClients(req: Request, res: Response, next: NextFunction) {
+export async function getClientNames(req: Request, res: Response, next: NextFunction) {
     try {
-        const query = `SELECT * FROM "Client"`;
-        await db.any(query).then( async resp => {
-            await resp.forEach( (client, index) => {
-                if (client && client['client_name']) {
-                    const decryptedTitle = privateDecrypt(client['client_name']).then(title => {
-                        client['client_name'] = title;
-                    });
-                    
+        const query = `SELECT sp_decrypt(client_name) FROM "Client"`;
+        await db.any(query).then( resp => {
+            resp.forEach( (client, index) => {
+                if (client && client['client_name'] && index < 3) {
+                    const decryptedTitle = privateDecrypt(client['client_name']);
+                    client['client_name'] = decryptedTitle;
                 }
             });
             
@@ -29,13 +27,17 @@ export async function getAllClients(req: Request, res: Response, next: NextFunct
     
 }
 
+// TODO: DOES NOT COME BACK WITH PROPER RESULT
 async function privateDecrypt(hash:string) {
     try {
+        console.log('calling decrypt with hash', hash);
         if(hash != null && !hash.includes(' ')) {
-            const decrypted = cryptoJS.AES.decrypt(hash.toString(), '26252C233A402A3F');
+            const decrypted = cryptoJS.AES.decrypt(hash.toString(), process.env.BY_KEY);
+            console.log('decrypted', decrypted);
             if(decrypted.toString(cryptoJS.enc.Utf8) == '') {
                 return hash;
             }
+            console.log(decrypted.toString(cryptoJS.enc.Utf8));
             return decrypted.toString(cryptoJS.enc.Utf8);
         }
     } catch (e) {
