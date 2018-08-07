@@ -15,6 +15,8 @@ import { getAllClients } from "./endpoints/crm-queries/get-all-clients";
 import { getClientNames } from "./endpoints/crm-queries/get-client-names";
 import { getClientById } from "./endpoints/crm-queries/get-client-by-id";
 import { getTypeById } from "./endpoints/crm-queries/get-type-name-by-id";
+import { getBranchById } from "./endpoints/crm-queries/get-branch-by-id";
+import { getEmployeeById } from "./endpoints/crm-queries/get-employee-by-id";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -38,4 +40,6 @@ export function initAPI (app:Application) {
     app.route('/api/crm/get-client-names').get(getClientNames);
     app.route('/api/crm/get-client-by-id').post(getClientById);
     app.route('/api/crm/get-type-by-id').post(getTypeById);
+    app.route('/api/crm/get-branch-by-id').post(getBranchById);
+    app.route('/api/crm/get-employee-by-id').post(getEmployeeById);
 }
