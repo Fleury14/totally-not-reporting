@@ -9,7 +9,39 @@
     box-shadow: 3px 3px 15px var(--shadow-color);
     display: grid;
     grid-template-rows: 65% 1fr;
-    grid-template-areas:
-        "top"
-        "info";
+    transition: 0.5s all;
+    
+    &:hover {
+        background-color: lighten(#4054b2, 45);
+        cursor: pointer;
+    }
+
+}
+
+.top {
+    padding: 10px;
+    text-align: center;
+
+    h3, p {
+        margin: 8px;
+        font-size: 14px;
+    }
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: 0.75s all;
+
+        &:hover {
+            color: lighten(#4054b2, 30);
+        }
+    }
+}
+
+.bottom {
+    padding: 10px;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+    color: #ff4081;
+    
 }
