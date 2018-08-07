@@ -4,6 +4,7 @@ import { CRMDataService } from '../../services/crm.data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap, map } from '../../../../node_modules/rxjs/operators';
+import { IType } from '../../interfaces/type';
 
 @Component({
     selector: 'app-crm-detail',
@@ -15,6 +16,7 @@ export class CRMDetailComponent implements OnInit {
 
     public client: IClient;
     public subscriptions: Subscription[] = [];
+    public currentType: IType;
 
     constructor(private _crm: CRMDataService, private _actRoute: ActivatedRoute) {}
 
@@ -28,8 +30,15 @@ export class CRMDetailComponent implements OnInit {
                 } else {
                     this.client = this._crm.currentClient;
                 }
-            } )
-        ).subscribe( response => this.client = response.result[0] );
+            } ),
+        ).subscribe( response => {
+            this.client = response.result[0];
+            this.getTypeInfo();
+        } );
+        
+    }
+
+    private _getTypeInfo() {
         
     }
 

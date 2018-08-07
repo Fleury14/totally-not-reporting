@@ -34,4 +34,16 @@ export class CRMDataService {
             return this._http.post('crm/get-client-by-id', payload);
         }
     }
+
+    public getTypeById(id: number): Observable<any> {
+        if (!id) {
+            console.log('No id provided...');
+            return;
+        } else {
+            const payload = {
+                search: id
+            }
+            return this._http.post('crm/get-type-by-id', payload);
+        }
+    }
 }
