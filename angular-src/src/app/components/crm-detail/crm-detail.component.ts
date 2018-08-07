@@ -17,8 +17,9 @@ export class CRMDetailComponent implements OnInit {
     public client: IClient;
     public subscriptions: Subscription[] = [];
     public currentType: IType;
-    public currentBranch: IType;
-    public
+    public currentStatus: IType;
+    public sourceType: IType;
+    
 
     constructor(private _crm: CRMDataService, private _actRoute: ActivatedRoute) {}
 
