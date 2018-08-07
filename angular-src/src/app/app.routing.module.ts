@@ -61,6 +61,10 @@ const routes: Route[] = [{
     component: CRMTitleComponent
 },
 {
+    path: 'crm/detail/:id',
+    component: CRMDetailComponent
+},
+{
     path: 'crm/detail',
     component: CRMDetailComponent
 },
