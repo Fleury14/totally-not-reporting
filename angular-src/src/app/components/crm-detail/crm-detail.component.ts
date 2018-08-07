@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IClient } from '../../interfaces/client';
 import { CRMDataService } from '../../services/crm.data.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { switchMap, map } from '../../../../node_modules/rxjs/operators';
 
 @Component({
     selector: 'app-crm-detail',
@@ -12,19 +14,23 @@ import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 export class CRMDetailComponent implements OnInit {
 
     public client: IClient;
+    public subscriptions: Subscription[] = [];
 
     constructor(private _crm: CRMDataService, private _actRoute: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this._actRoute.paramMap.subscribe(route => {
-            const id = parseInt(route.get('id'));
-            if(id) {
-                this._crm.getClientById(id).subscribe( response => this.client = response.result[0] );
-            } else {
-                this.client = this._crm.currentClient;
-                console.log(this.client);
-            }
-        })
+        this._actRoute.paramMap.pipe(
+            map( paramResponse => paramResponse.get('id') ),
+            switchMap( (id:string) => {
+                let idNum = parseInt(id);
+                if(id) {
+                    return this._crm.getClientById(idNum);
+                } else {
+                    this.client = this._crm.currentClient;
+                }
+            } )
+        ).subscribe( response => this.client = response.result[0] );
+        
     }
 
 }
