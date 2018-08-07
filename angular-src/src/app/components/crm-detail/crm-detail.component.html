@@ -1,0 +1,62 @@
+<h1 class="text-center">{{ client?.client_name || 'Client Detail' }}</h1>
+<div class="container" *ngIf="client">
+    <p *ngIf="client.company_formed_year" class="text-center"><i>est. {{ client.company_formed_year }}</i></p>
+    <div class="grid-container">
+        <div class="top-left">
+            <p class="info-icon">Company Info</p>
+            <div class="flex-container align-center ">
+                <i class="fas fa-globe row-icon"></i>
+                <a href="{{client.website}}" target="_blank"><p class="font-12">{{ client.website }}</p></a>
+            </div>
+            <div class="flex-container align-center">
+                <i class="fas fa-phone row-icon"></i>
+                <p>{{ client.phone || '(559) 555-1234' }}</p>
+            </div>
+            <div class="flex-container align-center">
+                    <i class="fas fa-industry row-icon"></i>
+                <p>{{ currentType?.type_name || 'Docker Experts' }}</p>
+            </div>
+        </div>
+        <div class="top-right">
+            <p class="info-icon">Company Data</p>
+            <div class="flex-container align-center">
+                <i class="fas fa-users row-icon"></i>
+                <p>{{ client.num_of_emp || 0 }} employees</p>
+            </div>
+            <div class="flex-container align-center">
+                <i class="fas fa-code-branch row-icon"></i>
+                <p>{{ currentBranch?.branch_name || 'My Branch' }}</p>
+            </div>
+            <div class="flex-container align-center">
+                <span class="row-icon">REP</span>
+                <p>{{ currentEmployee?.first_name || 'Joe' }} {{ currentEmployee?.last_name || 'Dudeguy' }}</p>
+            </div>
+        </div>
+        <div class="bottom-left">
+            <p class="info-icon">Record Info</p>
+            <div class="flex-container align-center">
+                <span class="row-icon">Created</span>
+                <p>{{ client.created_at | date: 'longDate' }} </p>
+            </div>
+            <div class="flex-container align-center">
+                <span class="row-icon">Updated</span>
+                <p>{{ client.updated_at | date: 'longDate' }}</p>
+            </div>
+            <div class="flex-container align-center">
+                <p class="row-icon">Active:</p>
+                <i *ngIf="client.active" class="fas fa-check-circle success"></i>
+                <i *ngIf="!client.active" class="fas fa-times-circle danger"></i>
+            </div>
+        </div>
+        <div class="bottom-right">
+            <p class="info-icon">Miscellaneous</p>
+            <div class="flex-container align-center">
+                <span class="row-icon">Board Approval</span>
+                <p *ngIf="client.board_approval_at">{{ client.board_approval_at | date: 'longDate' }}</p>
+                <p *ngIf="!client.board_approval_at">Unknown!</p>
+            </div>
+        </div>
+    </div>
+    <a routerLink="../../../crm/title" class="back-link">Back to List</a>
+</div>
+<p *ngIf="!client" class="text-center">Oh no honey, you came here without clicking on a client first.</p>
