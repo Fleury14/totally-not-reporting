@@ -24,7 +24,7 @@ export class CRMDataService {
     }
 
     public getClientById(id: number): Observable<any> {
-        if (!id) {
+        if (!id && id !== 0) {
             console.log('No id provided...');
             return;
         } else {

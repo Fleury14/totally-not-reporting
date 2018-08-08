@@ -32,7 +32,8 @@ export class CRMDetailComponent implements OnInit {
             map( paramResponse => paramResponse.get('id') ),
             switchMap( (id:string) => {
                 let idNum = parseInt(id);
-                if(id) {
+                if(id || id === '0') {
+                    console.log('getting id number', id)
                     return this._crm.getClientById(idNum);
                 } else {
                     this.client = this._crm.currentClient;

@@ -5,7 +5,7 @@ const cryptoJS = require('crypto-js');
 
 export async function getClientById(req: Request, res: Response, next: NextFunction) {
     try {
-        if (!req.body.search) {
+        if (!req.body.search && req.body.search !== 0) {
             console.log('Missing paramter');
             res.status(500).json({message: 'Missing parameteres'})
         } else {
