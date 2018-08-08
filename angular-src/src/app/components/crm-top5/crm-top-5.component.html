@@ -1,0 +1,35 @@
+<h1 class="text-center">Total Shares</h1>
+<div class="bar-chart">
+    <ngx-charts-bar-vertical
+        [scheme]="barColorScheme"
+        [results]="barData"
+        [gradient]="barGradient"
+        [xAxis]="barShowXAxis"
+        [yAxis]="barShowYAxis"
+        [legend]="barShowLegend"
+        [showXAxisLabel]="barShowXAxisLabel"
+        [showYAxisLabel]="barShowYAxisLabel"
+        [xAxisLabel]="barXAxisLabel"
+        [yAxisLabel]="barYAxisLabel"
+        [yAxisTickFormatting]="millions"
+        (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+</div>
+
+<h1 class="text-center">Line Of Credit</h1>
+<div class="bar-chart">
+    <ngx-charts-bar-vertical
+        [scheme]="bar2ColorScheme"
+        [results]="bar2Data"
+        [gradient]="bar2Gradient"
+        [xAxis]="bar2ShowXAxis"
+        [yAxis]="bar2ShowYAxis"
+        [legend]="bar2ShowLegend"
+        [showXAxisLabel]="bar2ShowXAxisLabel"
+        [showYAxisLabel]="bar2ShowYAxisLabel"
+        [xAxisLabel]="bar2XAxisLabel"
+        [yAxisLabel]="bar2YAxisLabel"
+        [yAxisTickFormatting]="millions"
+        (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+</div>

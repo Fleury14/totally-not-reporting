@@ -24,7 +24,7 @@ export class CRMDataService {
     }
 
     public getClientById(id: number): Observable<any> {
-        if (!id) {
+        if (!id && id !== 0) {
             console.log('No id provided...');
             return;
         } else {
@@ -69,5 +69,9 @@ export class CRMDataService {
             }
             return this._http.post('crm/get-employee-by-id', payload);
         }
+    }
+
+    public getClientsAndAccounts(): Observable<any> {
+        return this._http.get('crm/get-clients-and-accounts');
     }
 }
