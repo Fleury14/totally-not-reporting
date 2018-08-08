@@ -70,4 +70,8 @@ export class CRMDataService {
             return this._http.post('crm/get-employee-by-id', payload);
         }
     }
+
+    public getClientsAndAccounts(): Observable<any> {
+        return this._http.get('crm/get-clients-and-accounts');
+    }
 }
