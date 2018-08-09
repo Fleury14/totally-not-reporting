@@ -7,6 +7,7 @@ WORKDIR /home/node/server
 ENV PATH /home/node/server/node_modules/.bin$PATH
 
 COPY package.json /home/node/server
+COPY . /home/node/server
 
 RUN npm install -g nodemon
 

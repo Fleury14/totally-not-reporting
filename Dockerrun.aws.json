@@ -1,0 +1,84 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "essential": true,
+            "image": "608308598267.dkr.ecr.us-west-2.amazonaws.com/tnr-database:latest",
+            "name": "tnr-database",
+            "memoryReservation": 256,
+            "portMappings": [
+                {
+                    "containerPort": 5432,
+                    "hostPort": 5436
+                }
+            ]
+        },
+        {
+            "name": "tnr-server",
+            "image": "608308598267.dkr.ecr.us-west-2.amazonaws.com/tnr-server:latest",
+            "essential": true,
+            "memoryReservation": 256,
+            "mountPoints": [
+               
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080
+                }
+            ],
+            "links": [
+                "tnr-database"
+            ]
+        },
+        {
+            "name": "tnr-client",
+            "image": "608308598267.dkr.ecr.us-west-2.amazonaws.com/tnr-client:latest",
+            "essential": true,
+            "memoryReservation": 512,
+            "mountPoints": [
+                
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 4200,
+                    "hostPort": 4200
+                },
+                {
+                    "containerPort": 49153,
+                    "hostPort": 49153
+                }
+            ],
+            "links": [
+                "tnr-server",
+                "tnr-database"
+            ]
+        }
+    ],
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "./angular-src"
+            },
+            "name": "_TNR-Client-Multi"
+        },
+        {
+            "host": {
+                "sourcePath": "/home/node/client/node_modules"
+            },
+            "name": "_TNR-Client-NodeModules"
+        },
+        {
+            "host": {
+                "sourcePath": "./server"
+            },
+            "name": "_TNR-Server-Multi"
+        },
+        {
+            "host": {
+                "sourcePath": "/home/node/server/node_modules"
+            },
+            "name": "_TNR-Server-NodeModules"
+        }
+    ]
+}
