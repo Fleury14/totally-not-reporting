@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 // cors
 app.use( (req:express.Request, res:express.Response, next:express.NextFunction) => {
-    var allowedOrigins = ['http://192.168.99.100:4200', 'http://localhost:4200', 'http://fleur.localhost.run']; // origin whitelist
+    var allowedOrigins = ['http://192.168.99.100:4200', 'http://localhost:4200', 'http://tnr-3.ttm76kf9pn.us-west-2.elasticbeanstalk.com:4200', 'http://fleur.localhost.run']; // origin whitelist
     var origin:any = req.headers.origin;
     if(Array.isArray(origin)) {origin = origin[0];}
     if(allowedOrigins.indexOf(origin) > -1){
