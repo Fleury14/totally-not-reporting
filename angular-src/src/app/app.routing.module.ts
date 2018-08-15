@@ -75,7 +75,7 @@ const routes: Route[] = [{
 },
 {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'crm/title',
     pathMatch: 'full'
 },
 {
