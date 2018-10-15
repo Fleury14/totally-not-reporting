@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 })
 
 export class AdvSearchComponent implements OnInit {
-    @ViewChild('searchForm') private _searchForm: NgForm;
+    @ViewChild('searchNGForm') private _searchForm: NgForm;
 
     public searchCategory: CategorySelection[] = [{
         name: 'Budget',
