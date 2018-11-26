@@ -104,7 +104,7 @@ export class AdvSearchComponent implements OnInit {
             this._advSearch.refreshResults();
           });
           } else {
-            this.snackBarMessage('Please enter all the fields, dawg');
+            this.snackBarMessage('Please enter all the fields');
         }
       }
 
