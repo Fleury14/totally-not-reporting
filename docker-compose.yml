@@ -5,8 +5,8 @@ services:
   tnr-frontend:
     build: './angular-src'
     ports:
-      - "4200:4200"
-      - "49153:49153"
+      - "4202:4202"
+      - "49154:49154"
     networks:
       - backend
     depends_on:

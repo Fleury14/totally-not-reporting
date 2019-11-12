@@ -1,78 +1,144 @@
 <main>
   <h1>Advanced Search</h1>
-  <form class='fullFormGroup' #searchForm="ngForm" (ngSubmit)="submit(searchForm.value)">
-  <mat-vertical-stepper #stepper>
+  <form
+    class="fullFormGroup"
+    #searchForm="ngForm"
+    (ngSubmit)="submit(searchForm.value)"
+  >
+    <mat-vertical-stepper #stepper>
       <h1>Advanced Search</h1>
-    <mat-step [stepControl]='firstFormGroup'>
-      <ng-template matStepLabel>Return Type:</ng-template>
+      <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Return Type:</ng-template>
         <mat-radio-group class="return-type" name="returnType" ngModel>
           <mat-radio-button value="table">Table*</mat-radio-button>
           <mat-radio-button value="cards">Cards*</mat-radio-button>
-      </mat-radio-group>
-      <p class="small-font">*Table will display the results you select in a traditional table. Cards will display a basic summary. Both formats will have the option to click on the result to get a detailed description.</p>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </mat-step>
-    <mat-step [stepControl]='secondFormGroup'>
-      <ng-template matStepLabel>Search By:</ng-template>
-      <mat-select placeholder="Category" name="category" class="category-select" ngModel [(value)]="selectedCategory">
-        <mat-option *ngFor="let option of searchCategory" [value]="option">{{option.name}}</mat-option>
-      </mat-select>
-      <mat-form-field *ngIf="selectedCategory?.type === 'text'">
-
-        <input matInput [placeholder]="selectedCategory.name" ngModel name="search" class="search">
-      </mat-form-field>
-      <mat-form-field *ngIf="selectedCategory?.type === 'number'" >
-        <input matInput [placeholder]="selectedCategory.name" type="number" ngModel name="search" class="search">
-
-      </mat-form-field>
-      <mat-select *ngIf="selectedCategory" placeholder="Order" name="order" ngModel class="search-order">
-        <mat-option value="ASC">Ascending</mat-option>
-        <mat-option value="DESC">Descending</mat-option>
-      </mat-select>
-      <div>
-        <button mat-button matStepperPrevious (click)='reset(searchForm.value)'>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </mat-step>
-    <mat-step [stepControl]='thirdFormGroup'>
-      <ng-template matStepLabel>Return The Following Data:</ng-template>
-      <div class="row">
-        <div class="col-sm-3 text">
-          <div class="card card-outline-success mb-3 buttonbox">
-            <div class="card-header card-inverse card-success">
-              Drag Selected Items to Drop Box
-            </div>
-            <br>
-            <div class="card-block scroll-list">
-              <div class="list-group">
-                <div class="list-group-item list-group-item-action list-group-item-success" id="pill" [draggable] *ngFor="let column of searchCategory" (onReset)="reset($event)"
-                  [dragClass]="'active'" [dragData]="column"> {{column.name}}
-                </div>
-              </div>
-            </div>
-          </div>
+        </mat-radio-group>
+        <p class="small-font">
+          *Table will display the results you select in a traditional table.
+          Cards will display a basic summary. Both formats will have the option
+          to click on the result to get a detailed description.
+        </p>
+        <div><button mat-button matStepperNext>Next</button></div>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel>Search By:</ng-template>
+        <mat-select
+          placeholder="Category"
+          name="category"
+          class="category-select"
+          ngModel
+          [(value)]="selectedCategory"
+        >
+          <mat-option *ngFor="let option of searchCategory" [value]="option">{{
+            option.name
+          }}</mat-option>
+        </mat-select>
+        <mat-form-field *ngIf="selectedCategory?.type === 'text'">
+          <input
+            matInput
+            [placeholder]="selectedCategory.name"
+            ngModel
+            name="search"
+            class="search"
+          />
+        </mat-form-field>
+        <mat-form-field *ngIf="selectedCategory?.type === 'number'">
+          <input
+            matInput
+            [placeholder]="selectedCategory.name"
+            type="number"
+            ngModel
+            name="search"
+            class="search"
+          />
+        </mat-form-field>
+        <mat-select
+          *ngIf="selectedCategory"
+          placeholder="Order"
+          name="order"
+          ngModel
+          class="search-order"
+        >
+          <mat-option value="ASC">Ascending</mat-option>
+          <mat-option value="DESC">Descending</mat-option>
+        </mat-select>
+        <div>
+          <button
+            mat-button
+            matStepperPrevious
+            (click)="reset(searchForm.value)"
+          >
+            Back
+          </button>
+          <button mat-button matStepperNext>Next</button>
         </div>
-        <div class="col-sm-3">
-            <div class="card card-outline-primary mb-3 buttonbox" droppable [dragOverClass]="'drag-target-border'" [dragHintClass]="'drag-hint'" (onDrop)="onItemDrop($event)">
-              <div class="card-header card-inverse card-primary">Drop Selected Items to Return</div>
-              <br>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <ng-template matStepLabel>Return The Following Data:</ng-template>
+        <div class="row">
+          <div class="col-sm-3 text">
+            <div class="card card-outline-success mb-3 buttonbox">
+              <div class="card-header card-inverse card-success">
+                Drag Selected Items to Drop Box
+              </div>
+              <br />
               <div class="card-block scroll-list">
                 <div class="list-group">
-                  <div class="list-group-item list-group-item-action list-group-item-success" id="pill" *ngFor="let column of droppedItems" [(ngModel)]="requestedColumns[column.ref]" name="column" ngDefaultControl class="list-group-item">{{column.name}}
+                  <div
+                    class="list-group-item list-group-item-action list-group-item-success"
+                    id="pill"
+                    [draggable]
+                    *ngFor="let column of searchCategory"
+                    (onReset)="reset($event)"
+                    [dragClass]="'active'"
+                    [dragData]="column"
+                  >
+                    {{ column.name }}
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-sm-3">
+            <div
+              class="card card-outline-primary mb-3 buttonbox"
+              droppable
+              [dragOverClass]="'drag-target-border'"
+              [dragHintClass]="'drag-hint'"
+              (onDrop)="onItemDrop($event)"
+            >
+              <div class="card-header card-inverse card-primary">
+                Drop Selected Items to Return
+              </div>
+              <br />
+              <div class="card-block scroll-list">
+                <div class="list-group">
+                  <div
+                    class="list-group-item list-group-item-action list-group-item-success"
+                    id="pill"
+                    *ngFor="let column of droppedItems"
+                    [(ngModel)]="requestedColumns[column.ref]"
+                    name="column"
+                    ngDefaultControl
+                    class="list-group-item"
+                  >
+                    {{ column.name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6"></div>
         </div>
-        <div class="col-sm-6"></div>
-      </div>
-      <div class="submit-row">
-        <button mat-button matStepperSubmit type="submit">See Results!</button>
-        <button mat-button matStepperReset (click)='reset(searchForm.value)'>Reset Form</button>
-      </div>
-    </mat-step>
-   </mat-vertical-stepper>
+        <div class="submit-row">
+          <button mat-button matStepperSubmit type="submit">
+            See Results!
+          </button>
+          <button mat-button matStepperReset (click)="reset(searchForm.value)">
+            Reset Form
+          </button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
   </form>
 </main>
