@@ -75,35 +75,35 @@
                 </ngx-charts-bar-vertical>
             </div>
         </div>
-        
-        
+
         <h2 class="text-center tree-map-desc">Highest net profit (revenue - budget)</h2>
-        <div class="tree-graph">
-            <ngx-charts-tree-map
-            [scheme]="treeColorScheme"
-            [results]="treeData"
-            [valueFormatting]="millions"
-            (select)="onSelect($event)">
-            </ngx-charts-tree-map>
+        <div class='flex-container'>
+          <div class="tree-graph">
+              <ngx-charts-tree-map
+              [scheme]="treeColorScheme"
+              [results]="treeData"
+              [valueFormatting]="millions"
+              (select)="onSelect($event)">
+              </ngx-charts-tree-map>
+          </div>
         </div>
         <h2 class="text-center">Monthly Heat Map</h2>
-        <div class="heat-map">
-            <ngx-charts-heat-map
-                [scheme]="heatColorScheme"
-                [results]="heatMapData"
-                [legend]="showLegend"
-                [gradient]="heatGradient"
-                [xAxis]="barShowXAxis"
-                [yAxis]="barShowYAxis"
-                [showXAxisLabel]="barShowXAxisLabel"
-                [showYAxisLabel]="barShowYAxisLabel"
-                [xAxisLabel]="heatXAxisLabel"
-                [yAxisLabel]="heatYAxisLabel"
-                [tooltipText]="millions"
-                (select)="onSelect($event)">
-            </ngx-charts-heat-map>
+        <div class='flex-container'>
+          <div class="heat-map">
+              <ngx-charts-heat-map
+                  [scheme]="heatColorScheme"
+                  [results]="heatMapData"
+                  [legend]="showLegend"
+                  [gradient]="heatGradient"
+                  [xAxis]="barShowXAxis"
+                  [yAxis]="barShowYAxis"
+                  [showXAxisLabel]="barShowXAxisLabel"
+                  [showYAxisLabel]="barShowYAxisLabel"
+                  [xAxisLabel]="heatXAxisLabel"
+                  [yAxisLabel]="heatYAxisLabel"
+                  [tooltipText]="millions"
+                  (select)="onSelect($event)">
+              </ngx-charts-heat-map>
+          </div>
         </div>
-        
-
-        
 </div>
